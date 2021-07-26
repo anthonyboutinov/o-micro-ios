@@ -11,7 +11,7 @@ import SwiftUI
 struct PersonalMobilityTravelTimeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SettingsView().environmentObject(ContentModel())
         }
     }
 }
