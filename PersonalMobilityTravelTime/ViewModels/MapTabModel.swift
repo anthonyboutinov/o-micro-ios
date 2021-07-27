@@ -66,8 +66,8 @@ class MapTabModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             // Get the placemark of the user
             let geocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(userLocation) { placemarks, error in
-                print(placemarks)
-                print(error)
+                print(placemarks ?? "no placemarks")
+                print(error ?? "no error")
                 if error == nil {
                     // Take the first placemark
                     self.placemark = placemarks?.first
@@ -101,13 +101,13 @@ struct RouteStat {
     
     var timeH: Double? {
         if let device = device {
-            return device.averageSpeedKmh/distanceKm
+            return distanceKm / device.averageSpeedKmh
         }
         return nil
     }
     var batteryPercentage: Double? {
         if let distanceOnFullChargeKm = device?.distanceOnFullChargeKm {
-            return distanceKm/distanceOnFullChargeKm
+            return distanceKm / distanceOnFullChargeKm
         }
         return nil
     }

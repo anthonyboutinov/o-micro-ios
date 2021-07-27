@@ -54,7 +54,7 @@ struct ChooseIconView: View {
             })
             
         }
-        .padding(.bottom, 40)
+        .padding(.bottom, Constants.UI.sheetBottomPadding)
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
     }
 }

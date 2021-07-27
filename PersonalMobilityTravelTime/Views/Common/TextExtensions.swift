@@ -14,7 +14,17 @@ extension Text {
             .font(.title2)
             .fontWeight(.bold)
             .padding(.top, 30)
-            .padding(.bottom, 30)
+//            .padding(.bottom, 30)
             
+    }
+    
+    func modifierBodyText() -> some View {
+        self
+            .font(.caption)
+//            .font(Font.system(size: 14, weight: .regular))
+            .foregroundColor(Constants.Colors.graphite)
+            .lineLimit(nil)
+            .multilineTextAlignment(.leading)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }

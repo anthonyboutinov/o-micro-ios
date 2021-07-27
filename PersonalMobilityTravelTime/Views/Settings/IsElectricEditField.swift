@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import PartialSheet
+//import PartialSheet
 
 struct IsElectricEditField: View {
-    @EnvironmentObject var partialSheetManager: PartialSheetManager
+//    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @Binding var isElectric: Bool
     

@@ -30,9 +30,11 @@ class Constants {
         static var deviceIconVerticalPaddingInButtons: CGFloat = -6
         
         static var sectionSpacing: CGFloat = 30
+        static var compactSpacing: CGFloat = 10
         static var itemSpacing: CGFloat = 8
         static var horizontalSectionSpacing: CGFloat = 20
         static var verticalSectionSpacing: CGFloat = 12
+        static var sheetBottomPadding: CGFloat = 12
         
     }
     

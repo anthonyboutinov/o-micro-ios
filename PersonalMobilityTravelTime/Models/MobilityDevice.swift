@@ -39,9 +39,11 @@ class MobilityDevice: Identifiable, ObservableObject {
         return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths])
     }
     
+    struct AverageSpeedCalculatorData {
+        var distanceKm: Double
+        var travelTimeMinutes: Double
+    }
+    
 }
 
-struct AverageSpeedCalculatorData {
-    var distanceKm: Double
-    var travelTimeH: Double
-}
+

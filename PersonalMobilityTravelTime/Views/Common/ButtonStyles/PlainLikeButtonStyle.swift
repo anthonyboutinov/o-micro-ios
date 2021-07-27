@@ -34,7 +34,8 @@ struct PlainLikeButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.system(size: 14))
+//            .font(Font.system(size: 14))
+            .font(.body)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, Constants.UI.horizontalButtonSpacing)
             .padding(.vertical, Constants.UI.verticalButtonSpacing)
