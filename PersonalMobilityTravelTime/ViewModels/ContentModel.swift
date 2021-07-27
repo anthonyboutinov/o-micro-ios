@@ -9,6 +9,26 @@ import Foundation
 
 class ContentModel: ObservableObject {
     
+    // MARK: - First Launch
+//
+//    @Published var isFirstLaunch: Bool {
+//        didSet {
+//            if oldValue == true {
+//                isSettingUpProcessActive = true
+//            }
+//        }
+//    }
+    @Published var setUpProcess = SetUpProcess.firstLaunch
+        
+    enum SetUpProcess {
+        case firstLaunch
+        case noDevices
+        case addDevice
+        case complete
+    }
+    
+    // MARK: - General
+    
     @Published var units = Units.metric
     
     @Published var devices = [MobilityDevice]()
@@ -20,19 +40,23 @@ class ContentModel: ObservableObject {
     
     //    @Published var calculatorTab: CalculatorTabModel
     @Published var calculator: RouteStat?
-    @Published var mapTab: MapTabModel
+    @Published var map: MapTabModel
     
     @Published var currentTab: Tabs {
         didSet {
             calculate()
         }
     }
+    @Published var selectedTabIndex = 0 {
+        didSet {
+            currentTab = selectedTabIndex == 0 ? .calculator : .map
+        }
+    }
     
     init() {
         
-        
         //        calculatorTab = CalculatorTabModel()
-        mapTab = MapTabModel()
+        map = MapTabModel()
         currentTab = Tabs.calculator
         
         populateDevices()
@@ -56,10 +80,15 @@ class ContentModel: ObservableObject {
     }
     
     func addDevice(_ device: MobilityDevice) {
-        devices.append(device)
-        devices.sort { a, b in
-            a.index < b.index
+        if devices.count > 0 {
+            device.index = devices.last!.index + 1
+        } else {
+            device.index = 0
         }
+        devices.append(device)
+//        devices.sort { a, b in
+//            a.index < b.index
+//        }
     }
     
     func updateDevice(_ device: MobilityDevice) {

@@ -7,18 +7,22 @@
 
 import Foundation
 
-class MobilityDevice: Identifiable {
+class MobilityDevice: Identifiable, ObservableObject {
     
     var id: UUID = UUID()
-    var index: Int
+    @Published var index: Int = 0
     
-    var title: String
-    var iconName: String
-    var isElectric: Bool = false
-    var averageSpeedCalculatorData: AverageSpeedCalculatorData?
-    var averageSpeedKmh: Double
-    var distanceOnFullChargeKm: Double?
-    var whereCanBeRidden = [String]()
+    @Published var title: String = ""
+    @Published var iconName: String = ""
+    @Published var isElectric: Bool = false
+    @Published var averageSpeedCalculatorData: AverageSpeedCalculatorData?
+    @Published var averageSpeedKmh: Double = 15
+    @Published var distanceOnFullChargeKm: Double?
+    @Published var whereCanBeRidden = [String]()
+    
+    init(index: Int?) {
+        self.index = index ?? 0
+    }
     
     init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, distanceOnFullChargeKm: Double?, whereCanBeRidden: [String]) {
         self.id = id

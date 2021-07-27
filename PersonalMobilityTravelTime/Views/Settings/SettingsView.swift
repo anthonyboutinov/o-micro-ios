@@ -29,11 +29,11 @@ struct SettingsView: View {
                             .buttonStyle(DefaultButtonStyle())
                         }
                         ForEach(model.devices) { device in
-                            NavigationLink(destination: EditingView()) {
+                            NavigationLink(destination: EditingView(deviceToEdit: device)) {
                                 DeviceMenuItem(imageName: device.iconName, label: device.title)
                             }
                         }
-                        NavigationLink(destination: EditingView()) {
+                        NavigationLink(destination: EditingView(deviceToEdit: nil)) {
                             CenteredMenuItem(icon: "plus.circle", label: "Add Device")
                         }
                         .buttonStyle(PlainLikeButtonStyle())

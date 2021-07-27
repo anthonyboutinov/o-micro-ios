@@ -3,14 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8826AF2F4500C17F30 /* MapView.swift */; };
+		A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */; };
+		A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8C26AF308300C17F30 /* OnboardingView.swift */; };
+		A81ACB8F26AF310F00C17F30 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8E26AF310F00C17F30 /* LaunchView.swift */; };
+		A81ACB9126AF31B600C17F30 /* GeolocationOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB9026AF31B600C17F30 /* GeolocationOnboardingView.swift */; };
+		A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB9226AF365700C17F30 /* MapViewContent.swift */; };
+		A81ACB9526AF396700C17F30 /* DeviceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB9426AF396700C17F30 /* DeviceIcon.swift */; };
 		A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397326AE99DB008F5EFF /* EditingView.swift */; };
 		A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397526AEA031008F5EFF /* NormalMenuItem.swift */; };
 		A83E397926AEA4A9008F5EFF /* CenteredMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397826AEA4A9008F5EFF /* CenteredMenuItem.swift */; };
 		A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */; };
+		A840F5C426AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5C326AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift */; };
+		A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5C526AF4467009EB7A8 /* FullscreenPromptView.swift */; };
+		A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5C726AF544E009EB7A8 /* InputFieldViewModifier.swift */; };
+		A840F5CB26AF5961009EB7A8 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = A840F5CA26AF5961009EB7A8 /* PartialSheet */; };
+		A840F5CD26AF6683009EB7A8 /* ChooseIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */; };
+		A840F5CF26AF872F009EB7A8 /* SheetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CE26AF872F009EB7A8 /* SheetTitle.swift */; };
+		A840F5D126AF8EAB009EB7A8 /* IconEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */; };
 		A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */; };
 		A8EF715D26ADF34000F0D1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715C26ADF34000F0D1FD /* Assets.xcassets */; };
 		A8EF716026ADF34000F0D1FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715F26ADF34000F0D1FD /* Preview Assets.xcassets */; };
@@ -25,10 +39,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A81ACB8826AF2F4500C17F30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		A81ACB8C26AF308300C17F30 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A81ACB8E26AF310F00C17F30 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		A81ACB9026AF31B600C17F30 /* GeolocationOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationOnboardingView.swift; sourceTree = "<group>"; };
+		A81ACB9226AF365700C17F30 /* MapViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewContent.swift; sourceTree = "<group>"; };
+		A81ACB9426AF396700C17F30 /* DeviceIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIcon.swift; sourceTree = "<group>"; };
 		A83E397326AE99DB008F5EFF /* EditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingView.swift; sourceTree = "<group>"; };
 		A83E397526AEA031008F5EFF /* NormalMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalMenuItem.swift; sourceTree = "<group>"; };
 		A83E397826AEA4A9008F5EFF /* CenteredMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredMenuItem.swift; sourceTree = "<group>"; };
 		A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainLikeButtonStyle.swift; sourceTree = "<group>"; };
+		A840F5C326AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddFirstDeviceView.swift; sourceTree = "<group>"; };
+		A840F5C526AF4467009EB7A8 /* FullscreenPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPromptView.swift; sourceTree = "<group>"; };
+		A840F5C726AF544E009EB7A8 /* InputFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldViewModifier.swift; sourceTree = "<group>"; };
+		A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseIconView.swift; sourceTree = "<group>"; };
+		A840F5CE26AF872F009EB7A8 /* SheetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTitle.swift; sourceTree = "<group>"; };
+		A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEditField.swift; sourceTree = "<group>"; };
 		A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalMobilityTravelTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMobilityTravelTimeApp.swift; sourceTree = "<group>"; };
 		A8EF715C26ADF34000F0D1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A840F5CB26AF5961009EB7A8 /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +165,7 @@
 				A8EF717726AE92A600F0D1FD /* Map */,
 				A8EF717826AE92CC00F0D1FD /* Calculator */,
 				A8EF717526AE929400F0D1FD /* Settings */,
+				A81ACB8E26AF310F00C17F30 /* LaunchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +175,8 @@
 			children = (
 				A8EF718026AE986F00F0D1FD /* SettingsView.swift */,
 				A83E397326AE99DB008F5EFF /* EditingView.swift */,
+				A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */,
+				A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -153,6 +184,8 @@
 		A8EF717626AE929900F0D1FD /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A81ACB8C26AF308300C17F30 /* OnboardingView.swift */,
+				A840F5C326AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -160,6 +193,9 @@
 		A8EF717726AE92A600F0D1FD /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				A81ACB8826AF2F4500C17F30 /* MapView.swift */,
+				A81ACB9226AF365700C17F30 /* MapViewContent.swift */,
+				A81ACB9026AF31B600C17F30 /* GeolocationOnboardingView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -167,6 +203,7 @@
 		A8EF717826AE92CC00F0D1FD /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -177,6 +214,9 @@
 				A83E397726AEA431008F5EFF /* ButtonStyles */,
 				A8EF717B26AE930B00F0D1FD /* MenuItems */,
 				A8EF717A26AE92FB00F0D1FD /* InputFields */,
+				A81ACB9426AF396700C17F30 /* DeviceIcon.swift */,
+				A840F5C526AF4467009EB7A8 /* FullscreenPromptView.swift */,
+				A840F5CE26AF872F009EB7A8 /* SheetTitle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -184,6 +224,7 @@
 		A8EF717A26AE92FB00F0D1FD /* InputFields */ = {
 			isa = PBXGroup;
 			children = (
+				A840F5C726AF544E009EB7A8 /* InputFieldViewModifier.swift */,
 			);
 			path = InputFields;
 			sourceTree = "<group>";
@@ -214,6 +255,9 @@
 			dependencies = (
 			);
 			name = PersonalMobilityTravelTime;
+			packageProductDependencies = (
+				A840F5CA26AF5961009EB7A8 /* PartialSheet */,
+			);
 			productName = PersonalMobilityTravelTime;
 			productReference = A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */;
 			productType = "com.apple.product-type.application";
@@ -241,6 +285,9 @@
 				Base,
 			);
 			mainGroup = A8EF714C26ADF33C00F0D1FD;
+			packageReferences = (
+				A840F5C926AF5961009EB7A8 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+			);
 			productRefGroup = A8EF715626ADF33D00F0D1FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,19 +314,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A81ACB9526AF396700C17F30 /* DeviceIcon.swift in Sources */,
 				A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */,
+				A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */,
 				A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */,
 				A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */,
+				A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */,
 				A83E397926AEA4A9008F5EFF /* CenteredMenuItem.swift in Sources */,
+				A81ACB8F26AF310F00C17F30 /* LaunchView.swift in Sources */,
 				A8EF717D26AE931B00F0D1FD /* DeviceMenuItem.swift in Sources */,
 				A8EF717326AE81EF00F0D1FD /* MapTabModel.swift in Sources */,
 				A8EF716F26AE808C00F0D1FD /* ContentModel.swift in Sources */,
+				A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */,
 				A8EF718126AE986F00F0D1FD /* SettingsView.swift in Sources */,
 				A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */,
+				A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */,
+				A81ACB9126AF31B600C17F30 /* GeolocationOnboardingView.swift in Sources */,
 				A8EF717126AE819A00F0D1FD /* CalculatorTabModel.swift in Sources */,
+				A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */,
 				A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */,
+				A840F5D126AF8EAB009EB7A8 /* IconEditField.swift in Sources */,
+				A840F5CF26AF872F009EB7A8 /* SheetTitle.swift in Sources */,
+				A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */,
+				A840F5CD26AF6683009EB7A8 /* ChooseIconView.swift in Sources */,
 				A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */,
 				A8EF716D26AE7F4A00F0D1FD /* Constants.swift in Sources */,
+				A840F5C426AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +528,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A840F5C926AF5961009EB7A8 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.12;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A840F5CA26AF5961009EB7A8 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A840F5C926AF5961009EB7A8 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8EF714D26ADF33C00F0D1FD /* Project object */;
 }

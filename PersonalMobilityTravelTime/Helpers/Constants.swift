@@ -25,16 +25,42 @@ class Constants {
         
         static var cornerRadius: CGFloat = 5.0
         
-        static var horizontalButtonSpacing: CGFloat = 15.0
-        static var verticalButtonSpacing: CGFloat = 6.0
+        static var horizontalButtonSpacing: CGFloat = 15
+        static var verticalButtonSpacing: CGFloat = 12
+        static var deviceIconVerticalPaddingInButtons: CGFloat = -6
         
         static var sectionSpacing: CGFloat = 30
         static var itemSpacing: CGFloat = 8
         static var horizontalSectionSpacing: CGFloat = 20
+        static var verticalSectionSpacing: CGFloat = 12
+        
     }
     
     class Colors {
-        static var quartz =  Color(red:0.965, green:0.965, blue:0.965) // Color(.displayP3, red: 173/255, green: 173/255, blue: 173.255, opacity: 0.1)
+        static var quartz = Color(red:0.965, green:0.965, blue:0.965) // Color(.displayP3, red: 173/255, green: 173/255, blue: 173.255, opacity: 0.1)
+        static var graphite = Color(red:0.427, green:0.447, blue:0.471)
     }
+    
+    static let allIcons = [
+        "022-electricscooter",
+        "020-scooter",
+        "023-scooterwithaseat",
+        
+        "028-bycicle",
+        "030-bike",
+        
+        "027-moped",
+        "021-motorbike",
+        
+        "025-segway",
+        "026-one wheel",
+        
+        "037-skateboard",
+        "038-longboard",
+        "036-rollerskate",
+        
+        "024-hoverboard",
+        "031-jetpack"
+    ]
 }
 
