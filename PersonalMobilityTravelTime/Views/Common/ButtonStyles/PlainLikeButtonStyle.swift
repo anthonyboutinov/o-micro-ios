@@ -14,7 +14,7 @@ struct PlainLikeButtonStyle: ButtonStyle {
         switch style {
         case .primary:
             return Color.white
-        case .danger:
+        case .destructive:
             return Color.red
         case .cancel:
             return Constants.Colors.graphite
@@ -51,7 +51,7 @@ struct PlainLikeButtonStyle: ButtonStyle {
     enum Styles {
         case white
         case primary
-        case danger
+        case destructive
         case cancel
     }
 }

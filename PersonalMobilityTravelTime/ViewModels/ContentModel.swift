@@ -23,8 +23,8 @@ class ContentModel: ObservableObject {
     enum SetUpProcess {
         case firstLaunch
         case noDevices
-        case addDevice
-        case complete
+        case addFirstDevice
+        case firstDeviceAddedSoComplete
     }
     
     // MARK: - General
@@ -60,6 +60,11 @@ class ContentModel: ObservableObject {
         currentTab = Tabs.calculator
         
         populateDevices()
+        selectedDevice = devices.first
+    }
+    
+    func isSelectedDevice(id: UUID) -> Bool {
+        return self.selectedDevice?.id == id
     }
     
     func populateDevices() {
@@ -86,20 +91,25 @@ class ContentModel: ObservableObject {
             device.index = 0
         }
         devices.append(device)
-//        devices.sort { a, b in
-//            a.index < b.index
-//        }
-    }
-    
-    func updateDevice(_ device: MobilityDevice) {
-        if selectedDevice?.id == device.id {
-            selectedDevice = device
+        
+        if self.setUpProcess == .addFirstDevice {
+            self.setUpProcess = .firstDeviceAddedSoComplete
         }
     }
     
-    func deleteDevice(_ device: MobilityDevice) {
-        // TODO: delete device
+    func updateDevice(_ device: MobilityDevice) {
+        if let index = self.devices.firstIndex(where: { d in
+            d.id == device.id
+        }) {
+            self.devices[index] = device
+        }
         
+//        if selectedDevice?.id == device.id {
+//            selectedDevice = device
+//        }
+    }
+    
+    func deleteDevice(_ device: MobilityDevice) {
         if let index = devices.lastIndex(where: { d in
             d.id == device.id
         }) {

@@ -12,7 +12,7 @@ struct AverageSpeedEditField: View {
     
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
-    @Binding var device: MobilityDevice
+    @ObservedObject var device: MobilityDevice
     
     @State private var tempValue = (distance: 0.0, time: 0.0, speed: 0.0)
     @State private var changeApproved = true // approve by default unless the user clicks Cancel
@@ -36,6 +36,7 @@ struct AverageSpeedEditField: View {
                 Text("km")
                     .foregroundColor(Constants.Colors.graphite)
                     .fontWeight(.regular)
+                    .frame(minWidth: 34, alignment: .trailing)
             }
             .modifier(InputFieldViewModifier())
         }
@@ -64,8 +65,8 @@ struct AverageSpeedEditField: View {
 }
 
 struct AverageSpeedEditField_Previews: PreviewProvider {
-    @State static var d = MobilityDevice(index: 0)
+    @StateObject static var d = MobilityDevice(index: 0)
     static var previews: some View {
-        AverageSpeedEditField(device: $d)
+        AverageSpeedEditField(device: d)
     }
 }

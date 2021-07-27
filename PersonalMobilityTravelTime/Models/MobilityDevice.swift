@@ -16,7 +16,7 @@ class MobilityDevice: Identifiable, ObservableObject {
     @Published var iconName: String = ""
     @Published var isElectric: Bool = false
     @Published var averageSpeedCalculatorData: AverageSpeedCalculatorData?
-    @Published var averageSpeedKmh: Double = 15
+    @Published var averageSpeedKmh: Double = 14
     @Published var distanceOnFullChargeKm: Double?
     @Published var whereCanBeRidden = [String]()
     

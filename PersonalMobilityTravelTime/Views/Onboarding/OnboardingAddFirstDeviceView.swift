@@ -11,7 +11,7 @@ struct OnboardingAddFirstDeviceView: View {
     @EnvironmentObject var model: ContentModel
     var body: some View {
         FullscreenPromptView(imageName: "022-electricscooter", text: "Let’s add your first micro-mobility device.", buttonLabel: "Add Device") {
-            model.setUpProcess = .addDevice
+            model.setUpProcess = .addFirstDevice
         }
 //        VStack {
 //            Spacer()

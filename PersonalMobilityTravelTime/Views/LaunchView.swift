@@ -16,10 +16,10 @@ struct LaunchView: View {
             OnboardingView()
         } else if model.setUpProcess == .noDevices {
             OnboardingAddFirstDeviceView()
-        } else if model.setUpProcess == .addDevice {
+        } else if model.setUpProcess == .addFirstDevice {
             EditingView(deviceToEdit: nil)
                 .addPartialSheet()
-        } else if model.setUpProcess == .complete {
+        } else if model.setUpProcess == .firstDeviceAddedSoComplete {
             TabView(selection: $model.selectedTabIndex) {
                 CalculatorView().tabItem {
                     Image(systemName: "slider.horizontal.below.rectangle")

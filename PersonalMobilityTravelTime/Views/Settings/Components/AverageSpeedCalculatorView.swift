@@ -46,7 +46,7 @@ struct AverageSpeedCalculatorView: View {
                     
                     Spacer()
                     
-                    TextField("", text: $distanceLabel) { bool in
+                    TextField("", text: $distanceLabel) { isEditing in
                         
                     } onCommit: {}
                     .multilineTextAlignment(.trailing)
@@ -65,7 +65,7 @@ struct AverageSpeedCalculatorView: View {
                     
                     Spacer()
                     
-                    TextField("", text: $timeLabel) { bool in
+                    TextField("", text: $timeLabel) { isEditing in
                         
                     } onCommit: {}
                     .multilineTextAlignment(.trailing)
@@ -84,7 +84,7 @@ struct AverageSpeedCalculatorView: View {
                     
                     Spacer()
                     
-                    TextField("", text: $speedLabel) { bool in
+                    TextField("", text: $speedLabel) { isEditing in
                         
                     } onCommit: {}
                     .multilineTextAlignment(.trailing)

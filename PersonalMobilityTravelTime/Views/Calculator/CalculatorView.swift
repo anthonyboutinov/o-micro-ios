@@ -9,7 +9,25 @@ import SwiftUI
 
 struct CalculatorView: View {
     var body: some View {
-        Text("Calculator View")
+        NavigationView() {
+            ScrollView {
+                VStack(alignment: .leading, spacing: Constants.UI.verticalSectionSpacing) {
+                    HStack {
+                        DeviceSelector()
+                        
+                        Spacer()
+                        
+                        NavigationLink("Settings", destination: SettingsView())
+                            .padding(.vertical, Constants.UI.verticalButtonSpacing)
+                    }
+                    
+                    
+                }
+                .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
+                .padding(.vertical, Constants.UI.verticalSectionSpacing)
+            }
+            .navigationBarHidden(true)
+        }
     }
 }
 

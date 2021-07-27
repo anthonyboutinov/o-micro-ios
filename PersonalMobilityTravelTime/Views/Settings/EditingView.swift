@@ -13,13 +13,26 @@ struct EditingView: View {
     @EnvironmentObject var model: ContentModel
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
-    @State var deviceToEdit: MobilityDevice
+    @ObservedObject var deviceToEdit: MobilityDevice // = MobilityDevice(index: nil)
     
-    @State var isNew: Bool
+    @State var isNew: Bool = false
+    
+//    var addingNewDevice = false
+    
+    private var lengthFormatter = LengthFormatter()
         
+//    init(deviceToEdit: MobilityDevice?) {
+//        self.isNew = deviceToEdit == nil
+// //        self.deviceToEdit = deviceToEdit ?? MobilityDevice(index: nil)
+//    }
+    
     init(deviceToEdit: MobilityDevice?) {
-        self.isNew = deviceToEdit == nil
-        self.deviceToEdit = deviceToEdit ?? MobilityDevice(index: nil)
+        if let deviceToEdit = deviceToEdit  {
+            self.deviceToEdit = deviceToEdit
+        } else {
+            self.isNew = true
+            self.deviceToEdit = MobilityDevice(index: nil)
+        }
     }
     
     var body: some View {
@@ -33,7 +46,7 @@ struct EditingView: View {
                     
                     HStack {
                         Text("Title")
-                        TextField("", text: $deviceToEdit.title) { bool in
+                        TextField("", text: $deviceToEdit.title) { isEditing in
                             
                         } onCommit: {}
                         .multilineTextAlignment(.trailing)
@@ -54,9 +67,36 @@ struct EditingView: View {
                     Text("Fill in the following details based on your experience with your micro-mobility device. Make a few rides and measure how on average you use it.")
                         .modifierBodyText()
                     
-                    AverageSpeedEditField(device: $deviceToEdit)
+                    AverageSpeedEditField(device: deviceToEdit)
+                    
+                    if self.deviceToEdit.isElectric == true {
+                        HStack {
+                            Text("Distance Travelled on Full Charge")
+                            
+                            Spacer()
+                            
+                            TextField("", value: $deviceToEdit.distanceOnFullChargeKm, formatter: lengthFormatter) { isEditing in
+                            } onCommit: {}
+                            .multilineTextAlignment(.trailing)
+                            .font(Font.system(size: 14, weight: .semibold))
+                            .keyboardType(.decimalPad)
+                            .frame(maxWidth: 50)
+                            
+                            Text("km/h")
+                                .foregroundColor(Constants.Colors.graphite)
+                                .fontWeight(.regular)
+                                .frame(minWidth: 34, alignment: .trailing)
+                        }
+                        .modifier(InputFieldViewModifier())
+                        .onAppear(perform: {
+                            lengthFormatter.isForPersonHeightUse = false
+                            lengthFormatter.numberFormatter.allowsFloats = true
+                        })
+                    }
                     
                 }
+                
+                // MARK: - Done/Delete Buttons
                 
                 Spacer()
                 
@@ -68,17 +108,15 @@ struct EditingView: View {
                     })
                     .buttonStyle(PlainLikeButtonStyle(.primary))
                 } else {
-                    Button(action: {
-                        model.deleteDevice(deviceToEdit)
-                    }, label: {
-                        Text("Delete \(deviceToEdit.title)")
-                    })
-                    .buttonStyle(PlainLikeButtonStyle(.danger))
+                    DeleteButton(deviceToEdit: deviceToEdit)
                 }
             }
             .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
             .padding(.vertical, Constants.UI.verticalSectionSpacing)
         }
+        .onDisappear(perform: {
+            model.updateDevice(deviceToEdit)
+        })
     }
 }
 
