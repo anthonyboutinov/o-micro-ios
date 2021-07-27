@@ -44,22 +44,7 @@ struct EditingView: View {
                 
                 IconEditField(iconName: self.$deviceToEdit.iconName)
                 
-                Button(action: {
-                    self.partialSheetManager.showPartialSheet({
-                        print("Partial sheet dismissed")
-                    }) {
-                        Text("This is a Partial Sheet")
-                    }
-                }) {
-                    HStack {
-                        Text("Is It Electric")
-                        Spacer()
-                        Text(deviceToEdit.isElectric ? "Yes" : "No")
-                            .multilineTextAlignment(.trailing)
-                            .font(Font.system(size: 14, weight: .semibold))
-                    }
-                    .modifier(InputFieldViewModifier())
-                }
+                IsElectricEditField(isElectric: self.$deviceToEdit.isElectric)
                 
                 
             }

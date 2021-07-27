@@ -25,6 +25,8 @@
 		A840F5CD26AF6683009EB7A8 /* ChooseIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */; };
 		A840F5CF26AF872F009EB7A8 /* SheetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CE26AF872F009EB7A8 /* SheetTitle.swift */; };
 		A840F5D126AF8EAB009EB7A8 /* IconEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */; };
+		A840F5D326AFA8E3009EB7A8 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D226AFA8E3009EB7A8 /* SelectorView.swift */; };
+		A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */; };
 		A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */; };
 		A8EF715D26ADF34000F0D1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715C26ADF34000F0D1FD /* Assets.xcassets */; };
 		A8EF716026ADF34000F0D1FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715F26ADF34000F0D1FD /* Preview Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseIconView.swift; sourceTree = "<group>"; };
 		A840F5CE26AF872F009EB7A8 /* SheetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTitle.swift; sourceTree = "<group>"; };
 		A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEditField.swift; sourceTree = "<group>"; };
+		A840F5D226AFA8E3009EB7A8 /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
+		A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsElectricEditField.swift; sourceTree = "<group>"; };
 		A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalMobilityTravelTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMobilityTravelTimeApp.swift; sourceTree = "<group>"; };
 		A8EF715C26ADF34000F0D1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,7 +180,9 @@
 				A8EF718026AE986F00F0D1FD /* SettingsView.swift */,
 				A83E397326AE99DB008F5EFF /* EditingView.swift */,
 				A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */,
+				A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */,
 				A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */,
+				A840F5D226AFA8E3009EB7A8 /* SelectorView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			files = (
 				A81ACB9526AF396700C17F30 /* DeviceIcon.swift in Sources */,
 				A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */,
+				A840F5D326AFA8E3009EB7A8 /* SelectorView.swift in Sources */,
 				A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */,
 				A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */,
 				A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */,
@@ -330,6 +337,7 @@
 				A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */,
 				A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */,
 				A81ACB9126AF31B600C17F30 /* GeolocationOnboardingView.swift in Sources */,
+				A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */,
 				A8EF717126AE819A00F0D1FD /* CalculatorTabModel.swift in Sources */,
 				A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */,
 				A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */,

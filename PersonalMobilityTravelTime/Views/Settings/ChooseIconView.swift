@@ -65,5 +65,6 @@ struct ChooseIconView_Previews: PreviewProvider {
     @State static var shown = true
     static var previews: some View {
         ChooseIconView(selectedIcon: $s, changeApproved: $a, isSheetShown: $shown)
+            .previewLayout(.sizeThatFits)
     }
 }
