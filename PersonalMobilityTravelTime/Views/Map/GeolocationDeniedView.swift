@@ -1,26 +1,23 @@
 //
-//  GeolocationOnboardingView.swift
+//  GeolocationDeniedView.swift
 //  PersonalMobilityTravelTime
 //
-//  Created by Anthony Boutinov on 26.07.2021.
+//  Created by Anthony Boutinov on 28.07.2021.
 //
 
 import SwiftUI
 
-struct GeolocationOnboardingView: View {
-    
-    @EnvironmentObject var map: MapTabModel
-    
+struct GeolocationDeniedView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(systemName: "location.circle")
+            Image(systemName: "location.slash.fill")
                 .resizable()
                 .frame(width:75, height: 75, alignment: .center)
                 .foregroundColor(Constants.Colors.graphite)
                 .padding(.bottom, 18)
             
-            Text("Please allow geolocation tracking to use map features.")
+            Text("Location tracking denied. Enable it in Settings to continue.")
                 .font(.title2)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -28,10 +25,10 @@ struct GeolocationOnboardingView: View {
             Spacer()
             
             Button(action: {
-                // Request for geolocation permission
-                map.requestGeolocationPermission()
+                // open the app permission in Settings app
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
             }, label: {
-                Text("Allow Location Services")
+                Text("Open Settings")
             })
             .buttonStyle(PlainLikeButtonStyle(.primary))
         }
@@ -40,8 +37,8 @@ struct GeolocationOnboardingView: View {
     }
 }
 
-struct GeolocationOnboardingView_Previews: PreviewProvider {
+struct GeolocationDeniedView_Previews: PreviewProvider {
     static var previews: some View {
-        GeolocationOnboardingView().environmentObject(ContentModel())
+        GeolocationDeniedView()
     }
 }

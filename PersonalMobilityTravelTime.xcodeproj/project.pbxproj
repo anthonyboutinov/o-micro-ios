@@ -35,13 +35,15 @@
 		A8A9944A26B0DCEB00192203 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944926B0DCEB00192203 /* CalculatorModel.swift */; };
 		A8A9944C26B10A2B00192203 /* removeZerosFromEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944B26B10A2B00192203 /* removeZerosFromEnd.swift */; };
 		A8A9944E26B1140800192203 /* endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944D26B1140800192203 /* endEditing.swift */; };
+		A8A9945026B1260000192203 /* GeolocationDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944F26B1260000192203 /* GeolocationDeniedView.swift */; };
+		A8A9945326B12D8500192203 /* DirectionsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9945226B12D8400192203 /* DirectionsMap.swift */; };
+		A8A9945526B12E4100192203 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9945426B12E4100192203 /* Location.swift */; };
 		A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */; };
 		A8EF715D26ADF34000F0D1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715C26ADF34000F0D1FD /* Assets.xcassets */; };
 		A8EF716026ADF34000F0D1FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715F26ADF34000F0D1FD /* Preview Assets.xcassets */; };
 		A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF716926AE7D7500F0D1FD /* MobilityDevice.swift */; };
 		A8EF716D26AE7F4A00F0D1FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF716C26AE7F4A00F0D1FD /* Constants.swift */; };
 		A8EF716F26AE808C00F0D1FD /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF716E26AE808C00F0D1FD /* ContentModel.swift */; };
-		A8EF717126AE819A00F0D1FD /* CalculatorTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF717026AE819A00F0D1FD /* CalculatorTabModel.swift */; };
 		A8EF717326AE81EF00F0D1FD /* MapTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF717226AE81EF00F0D1FD /* MapTabModel.swift */; };
 		A8EF717D26AE931B00F0D1FD /* DeviceMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF717C26AE931B00F0D1FD /* DeviceMenuItem.swift */; };
 		A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF717E26AE970C00F0D1FD /* MenuLikeButtonStyle.swift */; };
@@ -76,6 +78,9 @@
 		A8A9944926B0DCEB00192203 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		A8A9944B26B10A2B00192203 /* removeZerosFromEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeZerosFromEnd.swift; sourceTree = "<group>"; };
 		A8A9944D26B1140800192203 /* endEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endEditing.swift; sourceTree = "<group>"; };
+		A8A9944F26B1260000192203 /* GeolocationDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationDeniedView.swift; sourceTree = "<group>"; };
+		A8A9945226B12D8400192203 /* DirectionsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMap.swift; sourceTree = "<group>"; };
+		A8A9945426B12E4100192203 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalMobilityTravelTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMobilityTravelTimeApp.swift; sourceTree = "<group>"; };
 		A8EF715C26ADF34000F0D1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +89,6 @@
 		A8EF716926AE7D7500F0D1FD /* MobilityDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityDevice.swift; sourceTree = "<group>"; };
 		A8EF716C26AE7F4A00F0D1FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8EF716E26AE808C00F0D1FD /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
-		A8EF717026AE819A00F0D1FD /* CalculatorTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTabModel.swift; sourceTree = "<group>"; };
 		A8EF717226AE81EF00F0D1FD /* MapTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabModel.swift; sourceTree = "<group>"; };
 		A8EF717C26AE931B00F0D1FD /* DeviceMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceMenuItem.swift; sourceTree = "<group>"; };
 		A8EF717E26AE970C00F0D1FD /* MenuLikeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLikeButtonStyle.swift; sourceTree = "<group>"; };
@@ -134,6 +138,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		A8A9945126B12D7900192203 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A8A9945226B12D8400192203 /* DirectionsMap.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		A8EF714C26ADF33C00F0D1FD = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A8EF716926AE7D7500F0D1FD /* MobilityDevice.swift */,
+				A8A9945426B12E4100192203 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				A8EF716E26AE808C00F0D1FD /* ContentModel.swift */,
-				A8EF717026AE819A00F0D1FD /* CalculatorTabModel.swift */,
 				A8EF717226AE81EF00F0D1FD /* MapTabModel.swift */,
 				A8A9944926B0DCEB00192203 /* CalculatorModel.swift */,
 			);
@@ -237,9 +249,11 @@
 		A8EF717726AE92A600F0D1FD /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				A8A9945126B12D7900192203 /* Components */,
 				A81ACB8826AF2F4500C17F30 /* MapView.swift */,
 				A81ACB9226AF365700C17F30 /* MapViewContent.swift */,
 				A81ACB9026AF31B600C17F30 /* GeolocationOnboardingView.swift */,
+				A8A9944F26B1260000192203 /* GeolocationDeniedView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -366,6 +380,7 @@
 				A840F5D326AFA8E3009EB7A8 /* SelectorView.swift in Sources */,
 				A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */,
 				A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */,
+				A8A9945326B12D8500192203 /* DirectionsMap.swift in Sources */,
 				A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */,
 				A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */,
 				A83E397926AEA4A9008F5EFF /* CenteredMenuItem.swift in Sources */,
@@ -373,6 +388,7 @@
 				A8EF717D26AE931B00F0D1FD /* DeviceMenuItem.swift in Sources */,
 				A8EF717326AE81EF00F0D1FD /* MapTabModel.swift in Sources */,
 				A8A9944226B0BEDC00192203 /* DeviceSelector.swift in Sources */,
+				A8A9945526B12E4100192203 /* Location.swift in Sources */,
 				A8EF716F26AE808C00F0D1FD /* ContentModel.swift in Sources */,
 				A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */,
 				A8EF718126AE986F00F0D1FD /* SettingsView.swift in Sources */,
@@ -382,12 +398,12 @@
 				A8A9944C26B10A2B00192203 /* removeZerosFromEnd.swift in Sources */,
 				A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */,
 				A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */,
-				A8EF717126AE819A00F0D1FD /* CalculatorTabModel.swift in Sources */,
 				A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */,
 				A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */,
 				A840F5D126AF8EAB009EB7A8 /* IconEditField.swift in Sources */,
 				A8A9944826B0DB6600192203 /* CalculatorViewBody.swift in Sources */,
 				A840F5CF26AF872F009EB7A8 /* TextExtensions.swift in Sources */,
+				A8A9945026B1260000192203 /* GeolocationDeniedView.swift in Sources */,
 				A840F5D726AFB321009EB7A8 /* AverageSpeedEditField.swift in Sources */,
 				A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */,
 				A840F5CD26AF6683009EB7A8 /* ChooseIconView.swift in Sources */,

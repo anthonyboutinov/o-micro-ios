@@ -19,13 +19,16 @@ struct SettingsView: View {
                         Text("My Devices")
                             .foregroundColor(.gray)
                             .font(.title2)
-                        Spacer()
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Reorder")
-                        })
-                        .buttonStyle(DefaultButtonStyle())
+                        
+                        if model.devices.count > 1 {
+                            Spacer()
+                            Button(action: {
+                                
+                            }, label: {
+                                Text("Reorder")
+                            })
+                            .buttonStyle(DefaultButtonStyle())
+                        }
                     }
                     ForEach(model.devices) { device in
                         NavigationLink(destination: EditingView(deviceToEdit: device)) {

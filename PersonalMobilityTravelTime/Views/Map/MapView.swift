@@ -9,28 +9,20 @@ import SwiftUI
 
 struct MapView: View {
     
-    @EnvironmentObject var model: ContentModel
+    @EnvironmentObject var map: MapTabModel
     
     var body: some View {
         // Detect auth status for geolocating
-        if model.map.authorizationState == .notDetermined {
+        if map.authorizationState == .notDetermined {
             // If undetermined, show onboarding
             GeolocationOnboardingView()
         }
-        
-        else if model.map.authorizationState == .authorizedAlways || model.map.authorizationState == .authorizedWhenInUse {
+        else if map.authorizationState == .authorizedAlways || map.authorizationState == .authorizedWhenInUse {
             // If approved
             MapViewContent()
         } else {
             // If denied
-//            DeniedView()
-            GeolocationOnboardingView()
+            GeolocationDeniedView()
         }
-    }
-}
-
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
     }
 }

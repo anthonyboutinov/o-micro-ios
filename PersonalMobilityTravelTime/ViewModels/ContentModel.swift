@@ -18,7 +18,7 @@ class ContentModel: ObservableObject {
 //            }
 //        }
 //    }
-    @Published var setUpProcess = SetUpProcess.firstLaunch
+    @Published var setUpProcess = SetUpProcess.firstDeviceAddedSoComplete
         
     enum SetUpProcess {
         case firstLaunch
@@ -40,7 +40,7 @@ class ContentModel: ObservableObject {
     
     //    @Published var calculatorTab: CalculatorTabModel
     @Published var calculator: RouteStat?
-    @Published var map: MapTabModel
+//    @Published var map: MapTabModel
     
     @Published var currentTab: Tabs {
         didSet {
@@ -56,7 +56,7 @@ class ContentModel: ObservableObject {
     init() {
         
         //        calculatorTab = CalculatorTabModel()
-        map = MapTabModel()
+//        map = MapTabModel()
         currentTab = Tabs.calculator
         
         populateDevices()
@@ -73,8 +73,8 @@ class ContentModel: ObservableObject {
     }
     
     func populateDevices() {
-        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
-        devices.append(MobilityDevice(id: UUID(), index: 0, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.3, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.carRoads, Constants.WhereCanBeRidden.pedestrianPaths]))
+        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
+        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.carRoads, Constants.WhereCanBeRidden.pedestrianPaths]))
     }
     
     func calculate(distanceKm: Double?) {

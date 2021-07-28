@@ -30,6 +30,7 @@ struct LaunchView: View {
                         Image(systemName: "map.fill")
                         Text("Map")
                     }.tag(1)
+                    .environmentObject(MapTabModel())
                 }
             }
             .addPartialSheet()
