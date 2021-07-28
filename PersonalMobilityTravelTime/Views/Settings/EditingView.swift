@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-import PartialSheet
+//import PartialSheet
 
 struct EditingView: View {
     
     @EnvironmentObject var model: ContentModel
-    @EnvironmentObject var partialSheetManager: PartialSheetManager
+//    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject var deviceToEdit: MobilityDevice
     
@@ -31,6 +31,12 @@ struct EditingView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
+                if isNew {
+                    Text(deviceToEdit.title == "" ? "New Device" : deviceToEdit.title)
+                        .font(.largeTitle)
+                        .bold()
+                }
+                
                 VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                     Text("General Properties")
                         .font(.title3)
@@ -123,6 +129,6 @@ struct EditingView_Previews: PreviewProvider {
     static var previews: some View {
         EditingView(deviceToEdit: nil)
             .environmentObject(ContentModel())
-            .environmentObject(PartialSheetManager())
+//            .environmentObject(PartialSheetManager())
     }
 }

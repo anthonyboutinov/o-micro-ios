@@ -46,11 +46,11 @@ struct OnboardingView: View {
             Button(action: {
                 // TODO: needs more logic
                 
-                if model.devices.count == 0 {
+//                if model.devices.count == 0 {
                     model.setUpProcess = .noDevices
-                } else {
-                    model.setUpProcess = .firstDeviceAddedSoComplete
-                }
+//                } else {
+//                    model.setUpProcess = .firstDeviceAddedSoComplete
+//                }
             }, label: {
                 Text("Let's Go!")
             })
