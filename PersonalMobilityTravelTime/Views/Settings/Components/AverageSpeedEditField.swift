@@ -33,7 +33,7 @@ struct AverageSpeedEditField: View {
                     .multilineTextAlignment(.trailing)
                     .font(Font.system(size: 14, weight: .semibold))
                 
-                Text("km")
+                Text("km/h")
                     .foregroundColor(Constants.Colors.graphite)
                     .fontWeight(.regular)
                     .frame(minWidth: 34, alignment: .trailing)

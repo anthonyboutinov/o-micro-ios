@@ -13,18 +13,11 @@ struct EditingView: View {
     @EnvironmentObject var model: ContentModel
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
-    @ObservedObject var deviceToEdit: MobilityDevice // = MobilityDevice(index: nil)
+    @ObservedObject var deviceToEdit: MobilityDevice
     
-    @State var isNew: Bool = false
-    
-//    var addingNewDevice = false
+    var isNew: Bool = false
     
     private var lengthFormatter = LengthFormatter()
-        
-//    init(deviceToEdit: MobilityDevice?) {
-//        self.isNew = deviceToEdit == nil
-// //        self.deviceToEdit = deviceToEdit ?? MobilityDevice(index: nil)
-//    }
     
     init(deviceToEdit: MobilityDevice?) {
         if let deviceToEdit = deviceToEdit  {
@@ -48,7 +41,11 @@ struct EditingView: View {
                         Text("Title")
                         TextField("", text: $deviceToEdit.title) { isEditing in
                             
-                        } onCommit: {}
+                        } onCommit: {
+                            if !isNew && ContentModel.isValid(deviceToEdit) {
+                                model.updateDevice(deviceToEdit)
+                            }
+                        }
                         .multilineTextAlignment(.trailing)
                         .font(Font.system(size: 14, weight: .semibold))
                     }
@@ -82,7 +79,7 @@ struct EditingView: View {
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 50)
                             
-                            Text("km/h")
+                            Text("km")
                                 .foregroundColor(Constants.Colors.graphite)
                                 .fontWeight(.regular)
                                 .frame(minWidth: 34, alignment: .trailing)
@@ -107,6 +104,7 @@ struct EditingView: View {
                         Text("Done")
                     })
                     .buttonStyle(PlainLikeButtonStyle(.primary))
+                    .disabled(!ContentModel.isValid(deviceToEdit))
                 } else {
                     DeleteButton(deviceToEdit: deviceToEdit)
                 }
@@ -117,6 +115,7 @@ struct EditingView: View {
         .onDisappear(perform: {
             model.updateDevice(deviceToEdit)
         })
+        .navigationTitle("\(deviceToEdit.title == "" ? (isNew ? "New Device" : "Unnamed") : deviceToEdit.title)")
     }
 }
 

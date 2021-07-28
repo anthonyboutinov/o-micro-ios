@@ -20,17 +20,19 @@ struct LaunchView: View {
             EditingView(deviceToEdit: nil)
                 .addPartialSheet()
         } else if model.setUpProcess == .firstDeviceAddedSoComplete {
-            TabView(selection: $model.selectedTabIndex) {
-                CalculatorView().tabItem {
-                    Image(systemName: "slider.horizontal.below.rectangle")
-                    Text("Calculator")
-                }.tag(0)
-                MapView().tabItem {
-                    Image(systemName: "map.fill")
-                    Text("Map")
-                }.tag(1)
+            NavigationView() {
+                TabView(selection: $model.selectedTabIndex) {
+                    CalculatorView().tabItem {
+                        Image(systemName: "slider.horizontal.below.rectangle")
+                        Text("Calculator")
+                    }.tag(0)
+                    MapView().tabItem {
+                        Image(systemName: "map.fill")
+                        Text("Map")
+                    }.tag(1)
+                }
+                .addPartialSheet()
             }
-            .addPartialSheet()
         }
     }
 }

@@ -84,7 +84,14 @@ class ContentModel: ObservableObject {
         calculate(distanceKm: nil)
     }
     
+    static func isValid(_ device: MobilityDevice) -> Bool {
+        return device.iconName != "" && device.title != "" && device.averageSpeedKmh > 0
+    }
+    
     func addDevice(_ device: MobilityDevice) {
+        guard Self.isValid(device) else {
+            return
+        }
         if devices.count > 0 {
             device.index = devices.last!.index + 1
         } else {
@@ -92,21 +99,22 @@ class ContentModel: ObservableObject {
         }
         devices.append(device)
         
+        self.selectedDevice = device
+        
         if self.setUpProcess == .addFirstDevice {
             self.setUpProcess = .firstDeviceAddedSoComplete
         }
     }
     
     func updateDevice(_ device: MobilityDevice) {
+        guard Self.isValid(device) else {
+            return
+        }
         if let index = self.devices.firstIndex(where: { d in
             d.id == device.id
         }) {
             self.devices[index] = device
         }
-        
-//        if selectedDevice?.id == device.id {
-//            selectedDevice = device
-//        }
     }
     
     func deleteDevice(_ device: MobilityDevice) {
@@ -114,6 +122,10 @@ class ContentModel: ObservableObject {
             d.id == device.id
         }) {
             devices.remove(at: index)
+        }
+        
+        if self.devices.count == 0 {
+            self.setUpProcess = .noDevices
         }
     }
     

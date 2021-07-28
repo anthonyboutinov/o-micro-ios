@@ -74,9 +74,6 @@ struct SettingsView: View {
             .buttonStyle(MenuLikeButtonStyle())
         }
         .navigationTitle("Settings")
-//        .navigationBarItems(leading: Button(action: {}, label: {
-//            Text("Back")
-//        }))
     }
 }
 

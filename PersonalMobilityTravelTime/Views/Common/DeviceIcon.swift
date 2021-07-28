@@ -27,7 +27,7 @@ struct DeviceIcon: View {
     }
     
     var body: some View {
-        Image(named)
+        Image(named != "" ? named : "031-jetpack")
             .renderingMode(.template)
             .resizable()
             .frame(width: Constants.UI.deviceIconSize * scaleFactor, height: Constants.UI.deviceIconSize * scaleFactor, alignment: .center)
