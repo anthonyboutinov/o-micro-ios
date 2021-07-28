@@ -31,8 +31,8 @@ struct LaunchView: View {
                         Text("Map")
                     }.tag(1)
                 }
-                .addPartialSheet()
             }
+            .addPartialSheet()
         }
     }
 }

@@ -21,6 +21,7 @@ struct IconEditField: View {
     var body: some View {
         
         Button(action: {
+            UIApplication.shared.endEditing()
             self.isSheetShown = true
         }) {
             HStack {
@@ -38,7 +39,7 @@ struct IconEditField: View {
         }
         .onChange(of: self.isSheetShown, perform: { value in
             if value == false {
-                if changeApproved == true {
+                if changeApproved == true && tempValue != "" {
                     iconName = tempValue
                 } else {
                     changeApproved = true // reset changeApproved

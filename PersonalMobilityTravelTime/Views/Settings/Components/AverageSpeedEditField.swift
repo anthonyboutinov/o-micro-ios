@@ -22,6 +22,7 @@ struct AverageSpeedEditField: View {
         
         
         Button(action: {
+            UIApplication.shared.endEditing()
             self.isSheetShown = true
         }) {
             HStack {

@@ -67,6 +67,11 @@ class ContentModel: ObservableObject {
         return self.selectedDevice?.id == id
     }
     
+    func sampleData() -> ContentModel {
+        self.populateDevices()
+        return self
+    }
+    
     func populateDevices() {
         devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
         devices.append(MobilityDevice(id: UUID(), index: 0, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.3, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.carRoads, Constants.WhereCanBeRidden.pedestrianPaths]))

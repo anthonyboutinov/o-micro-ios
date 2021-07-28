@@ -32,7 +32,7 @@ class Constants {
         static var sectionSpacing: CGFloat = 30
         static var compactSpacing: CGFloat = 10
         static var itemSpacing: CGFloat = 8
-        static var horizontalSectionSpacing: CGFloat = 20
+        static var horizontalSectionSpacing: CGFloat = 18
         static var verticalSectionSpacing: CGFloat = 12
         static var sheetBottomPadding: CGFloat = 12
         

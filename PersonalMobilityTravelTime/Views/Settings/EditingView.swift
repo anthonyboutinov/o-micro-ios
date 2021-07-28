@@ -31,10 +31,11 @@ struct EditingView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
-                if isNew {
+                if model.setUpProcess == .addFirstDevice {
                     Text(deviceToEdit.title == "" ? "New Device" : deviceToEdit.title)
                         .font(.largeTitle)
                         .bold()
+                        .autocapitalization(.words)
                 }
                 
                 VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
@@ -54,6 +55,7 @@ struct EditingView: View {
                         }
                         .multilineTextAlignment(.trailing)
                         .font(Font.system(size: 14, weight: .semibold))
+                        .autocapitalization(.words)
                     }
                     .modifier(InputFieldViewModifier())
                     
