@@ -27,7 +27,7 @@ struct MapViewContent: View {
                 }
                 
                 HStack {
-                    Image(systemName: "magnifyingglass")
+                    Image(Constants.SearchbarIcons.magnifyingGlass.rawValue)
                     TextField("Search by Name or Address", text: $searchQueryLabel)
                 }
                 .modifier(InputFieldViewModifier(style: .alternate))
@@ -37,6 +37,7 @@ struct MapViewContent: View {
             .background(Constants.Colors.mist)
             
             DirectionsMap(location: location)
+                .ignoresSafeArea()
         }
         .navigationBarHidden(true)
     }

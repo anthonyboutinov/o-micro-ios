@@ -65,5 +65,12 @@ class Constants {
         "024-hoverboard",
         "031-jetpack"
     ]
+    
+    enum SearchbarIcons: String {
+        case circle = "Circle"
+        case currentLocation = "Current Location"
+        case destination = "Destination"
+        case magnifyingGlass = "Magnifying Glass"
+    }
 }
 
