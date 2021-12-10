@@ -72,5 +72,16 @@ class Constants {
         case destination = "Destination"
         case magnifyingGlass = "Magnifying Glass"
     }
+    
+    struct Time {
+        static let min = "min"
+        static let h = "h"
+    }
+    
+    struct CalculatorUI {
+        static let batteryUsageDangerPercentage = 0.93
+        static let batteryUsageWarningPercentage = 0.46
+        static let maxOptionsForMapView = 3
+    }
 }
 

@@ -23,25 +23,30 @@ class CalculatorModel: ObservableObject {
         self.timeToTravelUnits = values.units
     }
     
+//    func calculateWith(distance d: Double) -> Self {
+//        self.distance = d
+//        update()
+//        return self
+//    }
+//
+    // Returns time in minutes needed to travel a set distance
     private func timeToTravel(_ distance: Double) -> Double {
         return distance / averageSpeedKmh * 60.0
     }
     
     private func formattedTimeToTravel() -> (label: String, units: String) {
-        let minutesLabel = "min"
-        let hoursLabel = "h"
         let timeToTravel = timeToTravel(self.distance)
         let rounded = timeToTravel.rounded()
         if timeToTravel >= 60 {
             let fullHours = floor(rounded / 60)
             let leftoverMinutes = rounded.truncatingRemainder(dividingBy: 60.0)
             if leftoverMinutes < 3 { // if is full hours ±3 min
-                return (label: String(format: "%.0f", fullHours), units: hoursLabel)
+                return (label: String(format: "%.0f", fullHours), units: Constants.Time.h)
             } else {
-                return (label: String(format: "%.0f h %.0f", fullHours, leftoverMinutes), units: minutesLabel)
+                return (label: String(format: "%.0f \(Constants.Time.h) %.0f", fullHours, leftoverMinutes), units: Constants.Time.min)
             }
         } else {
-            return (label: String(format: "%.0f", timeToTravel), units: minutesLabel)
+            return (label: String(format: "%.0f", timeToTravel), units: Constants.Time.min)
         }
     }
     

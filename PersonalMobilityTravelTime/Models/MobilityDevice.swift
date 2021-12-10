@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MobilityDevice: Identifiable, ObservableObject {
+class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     var id: UUID = UUID()
     @Published var index: Int = 0
@@ -41,10 +41,66 @@ class MobilityDevice: Identifiable, ObservableObject {
         return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths])
     }
     
+    /// Stores data for the Average Speed Calculator popup in the device's settings screen
     struct AverageSpeedCalculatorData {
         var distanceKm: Double
         var travelTimeMinutes: Double
     }
+
+    // MARK: - Conforming to Hashable
+    
+    static func == (lhs: MobilityDevice, rhs: MobilityDevice) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        self.id.hash(into: &hasher)
+    }
+    
+    var hashValue: Int {
+        self.id.hashValue
+    }
+    
+    // MARK: - Calculator subclass
+    class Calculator {
+        private static func timeToTravel(_ distance: Double, averageSpeedKmh: Double) -> Double {
+            return distance / averageSpeedKmh * 60.0
+        }
+        
+        /// # Travel Time
+        /// Returns time it would take to travel given distance. Formats the result to make it as short as possible, while remaining uniform in length as much as possible: "31 min", "2 h", "1:40"
+        static func travelTimeFormattedCompactly(distance: Double, averageSpeedKmh: Double, superCompact: Bool = false) -> String {
+            let timeToTravel = timeToTravel(distance, averageSpeedKmh: averageSpeedKmh)
+            let rounded = timeToTravel.rounded()
+            if timeToTravel >= 60 {
+                let fullHours = floor(rounded / 60)
+                let leftoverMinutes = rounded.truncatingRemainder(dividingBy: 60.0)
+                if leftoverMinutes < 3 { // if is full hours ±3 min
+                    return String(format: "%.0f \(Constants.Time.h)", fullHours)
+                } else if (superCompact) {
+                    return String(format: "%.0f:%.02d", fullHours, leftoverMinutes)
+                } else {
+                    return String(format: "%.0f \(Constants.Time.h) %.0f \(Constants.Time.min)", fullHours, leftoverMinutes)
+                }
+            } else {
+                return String(format: "%.0f \(Constants.Time.min)", timeToTravel)
+            }
+        }
+        
+        /// # Battery usage
+        /// Returns the amount of battery charge that would be used for given distance and device battery capacity, value in percentage. Can be more than 1.0
+        static func batteryUsage(distance: Double, capacity: Double) -> Double {
+            return distance / capacity
+        }
+    }
+    
+//    func batteryUsagePercentage(distance: Double) -> Double? {
+//        if let capacity = self.distanceOnFullChargeKm {
+//            return distance / capacity
+//        } else {
+//            return nil
+//        }
+//    }
     
 }
 
