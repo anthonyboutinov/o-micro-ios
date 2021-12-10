@@ -53,7 +53,7 @@ struct RouteTimeResultsView: View {
                             let batteryUsage = MobilityDevice.Calculator.batteryUsage(distance: self.distance!, capacity: device.distanceOnFullChargeKm!)
                             
                             let foregroundColor: Color = batteryUsage >= Constants.CalculatorUI.batteryUsageWarningPercentage && batteryUsage < Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.orange : (batteryUsage >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : (model.selectedDevice == device ? Color.black : Color.gray))
-                            let batteryImagePercentage = batteryUsage < 0.125 ? "100" : (batteryUsage < 0.375 ? "75" : (batteryUsage < 0.625 ? "50" : (batteryUsage < 0.875 ? "75" : "100")))
+                            let batteryImagePercentage = batteryUsage < 0.125 ? "100" : (batteryUsage < 0.375 ? "75" : (batteryUsage < 0.625 ? "50" : (batteryUsage < 0.875 ? "25" : "0")))
                             
                             Text("\(Int(batteryUsage * 100))%")
                                 .bold()
@@ -68,11 +68,11 @@ struct RouteTimeResultsView: View {
                         }
                     }
                     .lineLimit(1)
-                    .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .allowsTightening(true)
                 }
             }
             
-            Spacer()
+//            Spacer()
             
             VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                 ForEach(devicesWhereSelectedGoesFirst) { device in
@@ -80,9 +80,10 @@ struct RouteTimeResultsView: View {
                         .bold()
                         .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
                         .lineLimit(1)
-                        .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                        .allowsTightening(true)
                         .foregroundColor(model.selectedDevice == device ? .black : .gray)
                 }
+                .padding(.leading, 5.0)
             }
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
@@ -92,9 +93,26 @@ struct RouteTimeResultsView: View {
 }
 
 struct RouteTimeResultsView_Previews: PreviewProvider {
-    @State static var d: Double? = 21.2
+    @State static var long:   Double? = 21.23653
+    @State static var medium: Double? = 11.1
+    @State static var short:  Double? = 6
+    @State static var xshort:  Double? = 0.914
+    
     static var previews: some View {
-        RouteTimeResultsView(distance: $d)
+        
+        RouteTimeResultsView(distance: $long)
+            .previewLayout(.sizeThatFits)
+            .environmentObject(ContentModel())
+        
+        RouteTimeResultsView(distance: $medium)
+            .previewLayout(.sizeThatFits)
+            .environmentObject(ContentModel())
+        
+        RouteTimeResultsView(distance: $short)
+            .previewLayout(.sizeThatFits)
+            .environmentObject(ContentModel())
+        
+        RouteTimeResultsView(distance: $xshort)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
     }

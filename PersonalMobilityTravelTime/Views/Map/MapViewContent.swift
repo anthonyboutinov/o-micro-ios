@@ -48,10 +48,11 @@ struct MapViewContent: View {
                 
                 DeviceSelectAndSettingsView(distance: self.$distance)
                 
+                // - MARK: Search Field Origin Location
                 if (self.state == .destinationEntered) {
                     HStack {
                         Image(self.originPointState == .currentLocation ? Constants.SearchbarIcons.currentLocation.rawValue : Constants.SearchbarIcons.circle.rawValue)
-                        TextField("Search by Name or Address", text: $originLabel)
+                        TextField(Constants.Text.searchPlaceholder, text: $originLabel)
                             .focused($focusedField, equals: .origin)
                     }
                     .modifier(InputFieldViewModifier(style: .alternate))
@@ -61,9 +62,10 @@ struct MapViewContent: View {
                     }
                 }
                 
+                // - MARK: Search Field Destination Location
                 HStack {
                     Image(self.state != .destinationEntered ? Constants.SearchbarIcons.magnifyingGlass.rawValue : Constants.SearchbarIcons.destination.rawValue)
-                    TextField("Search by Name or Address", text: $destinationLabel)
+                    TextField(Constants.Text.searchPlaceholder, text: $destinationLabel)
                         .focused($focusedField, equals: .destination)
                 }
                 .modifier(InputFieldViewModifier(style: .alternate))

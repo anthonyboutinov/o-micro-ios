@@ -17,6 +17,10 @@ class Constants {
         static var pedestrianPaths = "Pedestrian"
         static var carRoads = "Car Roads"
     }
+    
+    class Text {
+        static var searchPlaceholder = "Search by Name or Address"
+    }
 
     
     class UI {
