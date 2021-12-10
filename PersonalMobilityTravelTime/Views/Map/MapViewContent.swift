@@ -17,7 +17,7 @@ struct MapViewContent: View {
     @State var destinationLabel: String = ""
     @State var originLabel: String = "Current Location"
     
-    @State var distance: Double = 19.3
+    @State var distance: Double? = 19.3
     
     enum ViewState: Hashable {
         case initial
@@ -46,14 +46,7 @@ struct MapViewContent: View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                 
-                HStack {
-                    let batteryUsage: Double? = model.selectedDevice?.distanceOnFullChargeKm != nil && model.selectedDevice?.isElectric != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distance, capacity: model.selectedDevice!.distanceOnFullChargeKm!) : nil
-                    DeviceSelector()
-                        .accentColor(batteryUsage != nil && batteryUsage! >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : Color.accentColor)
-                    
-                    NavigationLink("Settings", destination: SettingsView())
-                        .padding(.vertical, Constants.UI.verticalButtonSpacing)
-                }
+                DeviceSelectAndSettingsView(distance: self.$distance)
                 
                 if (self.state == .destinationEntered) {
                     HStack {
@@ -83,80 +76,8 @@ struct MapViewContent: View {
             .background(Constants.Colors.mist)
             
             DirectionsMap(location: location)
-//                .ignoresSafeArea()
             
-            HStack(alignment: .center, spacing: Constants.UI.itemSpacing / 2) {
-                /// First item in the sorted list is the selected device, then the rest go according to their speed, in decreasing order, while removing any electric devices that are unable to make such a journey, and display only the first few options so that the list at the bottom of the screen is not too big
-                let devicesWhereSelectedGoesFirst = model.devices
-                    .sorted(by: { lhs, rhs in
-                    return lhs == model.selectedDevice ? true : (lhs.averageSpeedKmh > rhs.averageSpeedKmh && rhs != model.selectedDevice)
-                })
-                    .filter { e in
-                        model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distance, capacity: e.distanceOnFullChargeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
-                    }
-                    .prefix(Constants.CalculatorUI.maxOptionsForMapView)
-                
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                ForEach(devicesWhereSelectedGoesFirst) { device in
-                    Text(device.title)
-                        .fontWeight(model.selectedDevice == device ? .medium : .regular)
-                        .foregroundColor(model.selectedDevice == device ? .black : .gray)
-                        .multilineTextAlignment(.leading)
-                        .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                        .lineLimit(1)
-                        .allowsTightening(true)
-                    }
-                }
-                
-                Spacer()
-                
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                    ForEach(devicesWhereSelectedGoesFirst) { device in
-                    
-                    HStack(alignment: .center, spacing: 0) {
-                        let travelTimeFormatted = MobilityDevice.Calculator.travelTimeFormattedCompactly(distance: self.distance, averageSpeedKmh: device.averageSpeedKmh, superCompact: device.isElectric)
-                        
-                        Text("\(travelTimeFormatted)\(device.isElectric ? " (" : "")").bold().dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                            .foregroundColor(model.selectedDevice == device ? .black : .gray)
-                        if (device.isElectric && device.distanceOnFullChargeKm != nil) {
-                            
-                            let batteryUsage = MobilityDevice.Calculator.batteryUsage(distance: self.distance, capacity: device.distanceOnFullChargeKm!)
-                            
-                            let foregroundColor: Color = batteryUsage >= Constants.CalculatorUI.batteryUsageWarningPercentage && batteryUsage < Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.orange : (batteryUsage >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : (model.selectedDevice == device ? Color.black : Color.gray))
-                            let batteryImagePercentage = batteryUsage < 0.125 ? "100" : (batteryUsage < 0.375 ? "75" : (batteryUsage < 0.625 ? "50" : (batteryUsage < 0.875 ? "75" : "100")))
-                            
-                            Text("\(Int(batteryUsage * 100))%")
-                                .bold()
-                                .foregroundColor(foregroundColor)
-                                .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                            Image(systemName: "battery.\(batteryImagePercentage)")
-                                .foregroundColor(foregroundColor)
-                            Text(")")
-                                .bold()
-                                .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                                .foregroundColor(model.selectedDevice == device ? .black : .gray)
-                            }
-                        }
-                    .lineLimit(1)
-                    .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    }
-                }
-                
-                Spacer()
-                
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                ForEach(devicesWhereSelectedGoesFirst) { device in
-                    Text(String(format: "%.1f \(model.units.description)", self.distance.inCurrentUnits(model.units)))
-                            .bold()
-                            .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                            .lineLimit(1)
-                            .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                            .foregroundColor(model.selectedDevice == device ? .black : .gray)
-                    }
-                }
-            }
-            .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
-            .padding(.vertical, Constants.UI.verticalButtonSpacing)
+            RouteTimeResultsView(distance: self.$distance)
         }
         .navigationBarHidden(true)
     }

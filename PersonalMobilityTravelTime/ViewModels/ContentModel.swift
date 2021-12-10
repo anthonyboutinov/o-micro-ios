@@ -139,8 +139,11 @@ class ContentModel: ObservableObject {
         devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
         devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.carRoads, Constants.WhereCanBeRidden.pedestrianPaths]))
         devices.append(MobilityDevice(id: UUID(), index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
-        
-        
+    }
+    
+    func selectDevice(atIndex index: Int) -> Self {
+        self.selectedDevice = self.devices[index]
+        return self
     }
     
     // MARK: - General Enums

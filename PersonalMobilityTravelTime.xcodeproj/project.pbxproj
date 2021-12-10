@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A815C94127640C02009ECEDF /* RouteTimeResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */; };
+		A815C94327640F12009ECEDF /* DeviceSelectAndSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */; };
 		A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8826AF2F4500C17F30 /* MapView.swift */; };
 		A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */; };
 		A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8C26AF308300C17F30 /* OnboardingView.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTimeResultsView.swift; sourceTree = "<group>"; };
+		A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSelectAndSettingsView.swift; sourceTree = "<group>"; };
 		A81ACB8826AF2F4500C17F30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		A81ACB8C26AF308300C17F30 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				A8A9945226B12D8400192203 /* DirectionsMap.swift */,
+				A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */,
+				A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */,
 				A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */,
 				A8A9945326B12D8500192203 /* DirectionsMap.swift in Sources */,
+				A815C94327640F12009ECEDF /* DeviceSelectAndSettingsView.swift in Sources */,
 				A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */,
 				A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */,
 				A83E397926AEA4A9008F5EFF /* CenteredMenuItem.swift in Sources */,
@@ -409,6 +416,7 @@
 				A8A9945026B1260000192203 /* GeolocationDeniedView.swift in Sources */,
 				A840F5D726AFB321009EB7A8 /* AverageSpeedEditField.swift in Sources */,
 				A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */,
+				A815C94127640C02009ECEDF /* RouteTimeResultsView.swift in Sources */,
 				A840F5CD26AF6683009EB7A8 /* ChooseIconView.swift in Sources */,
 				A8A9944426B0C48700192203 /* DeleteButton.swift in Sources */,
 				A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */,
