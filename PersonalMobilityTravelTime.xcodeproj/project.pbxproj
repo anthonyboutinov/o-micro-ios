@@ -29,11 +29,12 @@
 		A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */; };
 		A840F5D726AFB321009EB7A8 /* AverageSpeedEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D626AFB321009EB7A8 /* AverageSpeedEditField.swift */; };
 		A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */; };
+		A84900C62762D8AE001954E1 /* UnitsOfMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */; };
 		A8A9944226B0BEDC00192203 /* DeviceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944126B0BEDC00192203 /* DeviceSelector.swift */; };
 		A8A9944426B0C48700192203 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944326B0C48700192203 /* DeleteButton.swift */; };
 		A8A9944826B0DB6600192203 /* CalculatorViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944726B0DB6600192203 /* CalculatorViewBody.swift */; };
 		A8A9944A26B0DCEB00192203 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944926B0DCEB00192203 /* CalculatorModel.swift */; };
-		A8A9944C26B10A2B00192203 /* removeZerosFromEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944B26B10A2B00192203 /* removeZerosFromEnd.swift */; };
+		A8A9944C26B10A2B00192203 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944B26B10A2B00192203 /* DoubleExtension.swift */; };
 		A8A9944E26B1140800192203 /* endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944D26B1140800192203 /* endEditing.swift */; };
 		A8A9945026B1260000192203 /* GeolocationDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944F26B1260000192203 /* GeolocationDeniedView.swift */; };
 		A8A9945326B12D8500192203 /* DirectionsMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9945226B12D8400192203 /* DirectionsMap.swift */; };
@@ -72,11 +73,12 @@
 		A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsElectricEditField.swift; sourceTree = "<group>"; };
 		A840F5D626AFB321009EB7A8 /* AverageSpeedEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageSpeedEditField.swift; sourceTree = "<group>"; };
 		A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageSpeedCalculatorView.swift; sourceTree = "<group>"; };
+		A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsOfMeasureView.swift; sourceTree = "<group>"; };
 		A8A9944126B0BEDC00192203 /* DeviceSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSelector.swift; sourceTree = "<group>"; };
 		A8A9944326B0C48700192203 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A8A9944726B0DB6600192203 /* CalculatorViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewBody.swift; sourceTree = "<group>"; };
 		A8A9944926B0DCEB00192203 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
-		A8A9944B26B10A2B00192203 /* removeZerosFromEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeZerosFromEnd.swift; sourceTree = "<group>"; };
+		A8A9944B26B10A2B00192203 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		A8A9944D26B1140800192203 /* endEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endEditing.swift; sourceTree = "<group>"; };
 		A8A9944F26B1260000192203 /* GeolocationDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationDeniedView.swift; sourceTree = "<group>"; };
 		A8A9945226B12D8400192203 /* DirectionsMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMap.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				A8EF716C26AE7F4A00F0D1FD /* Constants.swift */,
-				A8A9944B26B10A2B00192203 /* removeZerosFromEnd.swift */,
+				A8A9944B26B10A2B00192203 /* DoubleExtension.swift */,
 				A8A9944D26B1140800192203 /* endEditing.swift */,
 			);
 			path = Helpers;
@@ -232,6 +234,7 @@
 			children = (
 				A8A9944526B0C84B00192203 /* Components */,
 				A8EF718026AE986F00F0D1FD /* SettingsView.swift */,
+				A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */,
 				A83E397326AE99DB008F5EFF /* EditingView.swift */,
 			);
 			path = Settings;
@@ -395,7 +398,7 @@
 				A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */,
 				A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */,
 				A81ACB9126AF31B600C17F30 /* GeolocationOnboardingView.swift in Sources */,
-				A8A9944C26B10A2B00192203 /* removeZerosFromEnd.swift in Sources */,
+				A8A9944C26B10A2B00192203 /* DoubleExtension.swift in Sources */,
 				A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */,
 				A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */,
 				A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */,
@@ -410,6 +413,7 @@
 				A8A9944426B0C48700192203 /* DeleteButton.swift in Sources */,
 				A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */,
 				A8EF716D26AE7F4A00F0D1FD /* Constants.swift in Sources */,
+				A84900C62762D8AE001954E1 /* UnitsOfMeasureView.swift in Sources */,
 				A8A9944E26B1140800192203 /* endEditing.swift in Sources */,
 				A840F5C426AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift in Sources */,
 			);
@@ -469,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -524,7 +528,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -544,7 +548,7 @@
 				DEVELOPMENT_TEAM = HT298DTQAV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PersonalMobilityTravelTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +556,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = website.boutinov.PersonalMobilityTravelTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -566,7 +570,7 @@
 				DEVELOPMENT_TEAM = HT298DTQAV;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PersonalMobilityTravelTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -574,7 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = website.boutinov.PersonalMobilityTravelTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

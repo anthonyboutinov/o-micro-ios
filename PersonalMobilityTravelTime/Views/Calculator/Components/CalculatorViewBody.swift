@@ -13,6 +13,31 @@ struct CalculatorViewBody: View {
     
     @ObservedObject var calculator = CalculatorModel()
     
+    @State var distanceInCurrentUnits = 0.0
+    
+    var distanceProxy: Binding<String> {
+        Binding<String>(
+            get: {
+                String(Double(self.distanceInCurrentUnits).removeZerosFromEnd(leaveFirst: 2))
+            },
+            set: {
+                if !($0.last == "." || $0.last == ",") {
+                    if let valueInCurrentUnits = NumberFormatter.byDefault(from: $0) {
+                        self.distanceInCurrentUnits = valueInCurrentUnits.doubleValue
+                        calculator.distance = valueInCurrentUnits.doubleValue.inKilometers(model.units)
+                        self.update()
+                    }
+                }
+            }
+            )
+    }
+    
+    enum FocusField: Hashable {
+        case distance
+    }
+    
+    @FocusState private var focusedField: FocusField?
+    
     private func update() {
         calculator.averageSpeedKmh = model.selectedDevice!.averageSpeedKmh
         calculator.update()
@@ -33,17 +58,21 @@ struct CalculatorViewBody: View {
                         
                         Spacer()
                         
-                        TextField("", text: calculator.distanceProxy)
+                        TextField("", text: distanceProxy)
                         .multilineTextAlignment(.trailing)
                         .font(Font.system(size: 14, weight: .semibold))
                         .keyboardType(.decimalPad)
+                        .focused($focusedField, equals: .distance)
                         
-                        Text("km")
+                        Text(model.units.description)
                             .foregroundColor(Constants.Colors.graphite)
                             .fontWeight(.regular)
                             .frame(minWidth: 34, alignment: .trailing)
                     }
                     .modifier(InputFieldViewModifier())
+                    .onTapGesture {
+                        self.focusedField = .distance
+                    }
                 }
                 
                 // MARK: - Calculated Values

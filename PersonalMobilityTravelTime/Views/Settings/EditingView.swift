@@ -28,6 +28,30 @@ struct EditingView: View {
         }
     }
     
+    @State var distanceOnFullChargeInCurrentUnits: Double = 0.0 // is set on init
+    
+    enum FocusField: Hashable {
+        case title
+    }
+    
+    @FocusState private var focusedField: FocusField?
+    
+    var distanceOnFullChargeProxy: Binding<String> {
+        Binding<String>(
+            get: {
+                String(Double(self.distanceOnFullChargeInCurrentUnits).removeZerosFromEnd(leaveFirst: 2))
+            },
+            set: {
+                if !($0.last == "." || $0.last == ",") {
+                    if let valueInCurrentUnits = NumberFormatter.byDefault(from: $0) {
+                        self.distanceOnFullChargeInCurrentUnits = valueInCurrentUnits.doubleValue
+                        deviceToEdit.distanceOnFullChargeKm = valueInCurrentUnits.doubleValue.inKilometers(model.units)
+                    }
+                }
+            }
+        )
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
@@ -56,8 +80,17 @@ struct EditingView: View {
                         .multilineTextAlignment(.trailing)
                         .font(Font.system(size: 14, weight: .semibold))
                         .autocapitalization(.words)
+                        .focused($focusedField, equals: .title)
+                        .onAppear {
+                            if deviceToEdit.title == "" {
+                                self.focusedField = .title
+                            }
+                        }
                     }
                     .modifier(InputFieldViewModifier())
+                    .onTapGesture {
+                        self.focusedField = .title
+                    }
                     
                     IconEditField(iconName: self.$deviceToEdit.iconName)
                     
@@ -80,14 +113,13 @@ struct EditingView: View {
                             
                             Spacer()
                             
-                            TextField("", value: $deviceToEdit.distanceOnFullChargeKm, formatter: lengthFormatter) { isEditing in
-                            } onCommit: {}
+                            TextField("", text: distanceOnFullChargeProxy)
                             .multilineTextAlignment(.trailing)
                             .font(Font.system(size: 14, weight: .semibold))
                             .keyboardType(.decimalPad)
                             .frame(maxWidth: 50)
                             
-                            Text("km")
+                            Text(model.units.description)
                                 .foregroundColor(Constants.Colors.graphite)
                                 .fontWeight(.regular)
                                 .frame(minWidth: 34, alignment: .trailing)
@@ -124,6 +156,9 @@ struct EditingView: View {
             model.updateDevice(deviceToEdit)
         })
         .navigationTitle("\(deviceToEdit.title == "" ? (isNew ? "New Device" : "Unnamed") : deviceToEdit.title)")
+        .onAppear(perform: {
+            self.distanceOnFullChargeInCurrentUnits = deviceToEdit.distanceOnFullChargeKm?.inCurrentUnits(model.units) ?? MobilityDevice.suggestedDefaultDistanceOnFullChargeKm.inCurrentUnits(model.units).rounded()
+        })
     }
 }
 

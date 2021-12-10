@@ -22,6 +22,7 @@ struct CalculatorView: View {
             
             if model.selectedDevice != nil {
                 CalculatorViewBody()
+                    .frame(maxHeight: .infinity)
             } else {
                 Spacer()
             }
@@ -30,6 +31,7 @@ struct CalculatorView: View {
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)
         .navigationBarHidden(true)
+        .frame(maxHeight: .infinity)
     }
 }
 

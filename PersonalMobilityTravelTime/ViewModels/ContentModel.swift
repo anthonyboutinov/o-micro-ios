@@ -27,7 +27,7 @@ class ContentModel: ObservableObject {
         case firstDeviceAddedSoComplete
     }
     
-    // MARK: - General
+    // MARK: - General Properties
     
     @Published var units = Units.metric
     
@@ -53,6 +53,8 @@ class ContentModel: ObservableObject {
         }
     }
     
+    // MARK: - General Methods
+    
     init() {
         
         //        calculatorTab = CalculatorTabModel()
@@ -65,16 +67,6 @@ class ContentModel: ObservableObject {
     
     func isSelectedDevice(id: UUID) -> Bool {
         return self.selectedDevice?.id == id
-    }
-    
-    func sampleData() -> ContentModel {
-        self.populateDevices()
-        return self
-    }
-    
-    func populateDevices() {
-        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.carRoads, Constants.WhereCanBeRidden.pedestrianPaths]))
     }
     
     func calculate(distanceKm: Double?) {
@@ -134,13 +126,54 @@ class ContentModel: ObservableObject {
         }
     }
     
+    // MARK: - Testing
+    
+    static let PreviewInImperialUnits: ContentModel = {
+        let a = ContentModel()
+        a.units = .imperial
+        return a
+    }()
+    
+    func sampleData() -> ContentModel {
+        self.populateDevices()
+        return self
+    }
+    
+    func populateDevices() {
+        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths]))
+        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, distanceOnFullChargeKm: nil, whereCanBeRidden: [Constants.WhereCanBeRidden.carRoads, Constants.WhereCanBeRidden.pedestrianPaths]))
+    }
+    
+    // MARK: - General Enums
+    
     enum Tabs {
         case calculator
         case map
     }
     
-    enum Units {
+    enum Units: CustomStringConvertible {
         case metric
         case imperial
+        
+        var description: String {
+            switch self {
+            case .metric: return "km"
+            case .imperial: return "miles"
+            }
+        }
+        
+        var fullDescription: String {
+            switch self {
+            case .metric: return "Kilometers"
+            case .imperial: return "Miles"
+            }
+        }
+        
+        var perHour: String {
+            switch self {
+            case .metric: return "km/h"
+            case .imperial: return "mph"
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ import PartialSheet
 
 struct AverageSpeedEditField: View {
     
+    @EnvironmentObject var model: ContentModel
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject var device: MobilityDevice
@@ -30,11 +31,11 @@ struct AverageSpeedEditField: View {
                 
                 Spacer()
                 
-                Text(String(format: "%.2f", device.averageSpeedKmh))
+                Text(String(format: "%.2f", device.averageSpeedKmh.inCurrentUnits(model.units)))
                     .multilineTextAlignment(.trailing)
                     .font(Font.system(size: 14, weight: .semibold))
                 
-                Text("km/h")
+                Text(model.units.perHour)
                     .foregroundColor(Constants.Colors.graphite)
                     .fontWeight(.regular)
                     .frame(minWidth: 34, alignment: .trailing)
@@ -69,5 +70,6 @@ struct AverageSpeedEditField_Previews: PreviewProvider {
     @StateObject static var d = MobilityDevice(index: 0)
     static var previews: some View {
         AverageSpeedEditField(device: d)
+            .environmentObject(ContentModel())
     }
 }

@@ -20,6 +20,8 @@ class MobilityDevice: Identifiable, ObservableObject {
     @Published var distanceOnFullChargeKm: Double?
     @Published var whereCanBeRidden = [String]()
     
+    static let suggestedDefaultDistanceOnFullChargeKm: Double = 10.0
+    
     init(index: Int?) {
         self.index = index ?? 0
     }

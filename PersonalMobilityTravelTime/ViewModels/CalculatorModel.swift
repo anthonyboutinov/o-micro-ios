@@ -10,35 +10,9 @@ import SwiftUI
 
 class CalculatorModel: ObservableObject {
     
-    @Published var distance: Double = 5
+    @Published var distance: Double = 5.0
     
-    var distanceProxy: Binding<String> {
-        Binding<String>(
-            get: {
-                String(Double(self.distance).removeZerosFromEnd(leaveFirst: 2))
-            },
-            set: {
-                if !($0.last == "." || $0.last == ",") {
-                    if let value = self.numberFomatter.number(from: $0) {
-                        self.distance = value.doubleValue
-                        self.update()
-                    }
-                }
-            }
-        )
-    }
-    
-    private var numberFomatter: NumberFormatter = {
-        let f = NumberFormatter()
-        f.isLenient = true
-        f.numberStyle = .none
-        f.maximumFractionDigits = 1
-        f.minimumFractionDigits = 0
-        f.alwaysShowsDecimalSeparator = false
-        return f
-    }()
-    
-    var averageSpeedKmh: Double = 10
+    var averageSpeedKmh: Double = 10.0
     
     @Published var timeToTravelLabel: String = ""
     @Published var timeToTravelUnits: String = ""

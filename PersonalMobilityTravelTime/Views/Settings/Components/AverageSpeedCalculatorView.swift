@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AverageSpeedCalculatorView: View {
+    
+    @EnvironmentObject var model: ContentModel
+    
     @Binding var distance: Double
     @Binding var time: Double
     @Binding var speed: Double
@@ -26,9 +29,17 @@ struct AverageSpeedCalculatorView: View {
     private func setSpeedLabel() {
         let speed = getSpeed()
         if speed > 0 {
-            self.speedLabel = String(format: "%.2f", speed)
+            self.speedLabel = String(format: "%.2f", speed.inCurrentUnits(model.units))
         }
     }
+    
+    enum FocusField: Hashable {
+        case distance
+        case travelTime
+        case averageSpeed
+    }
+    
+    @FocusState private var focusedField: FocusField?
     
     var body: some View {
         VStack(alignment: .leading, spacing: Constants.UI.compactSpacing) {
@@ -52,13 +63,20 @@ struct AverageSpeedCalculatorView: View {
                     .multilineTextAlignment(.trailing)
                     .font(Font.system(size: 14, weight: .semibold))
                     .keyboardType(.decimalPad)
+                    .focused($focusedField, equals: .distance)
+                    .onAppear {
+                        self.focusedField = .distance
+                    }
                     
-                    Text("km")
+                    Text(model.units.description)
                         .foregroundColor(Constants.Colors.graphite)
                         .fontWeight(.regular)
                         .frame(minWidth: 34, alignment: .trailing)
                 }
                 .modifier(InputFieldViewModifier())
+                .onTapGesture {
+                    self.focusedField = .distance
+                }
                 
                 HStack {
                     Text("Travel Time")
@@ -71,6 +89,7 @@ struct AverageSpeedCalculatorView: View {
                     .multilineTextAlignment(.trailing)
                     .font(Font.system(size: 14, weight: .semibold))
                     .keyboardType(.numberPad)
+                    .focused($focusedField, equals: .travelTime)
                     
                     Text("min")
                         .foregroundColor(Constants.Colors.graphite)
@@ -78,6 +97,9 @@ struct AverageSpeedCalculatorView: View {
                         .frame(minWidth: 34, alignment: .trailing)
                 }
                 .modifier(InputFieldViewModifier())
+                .onTapGesture {
+                    self.focusedField = .travelTime
+                }
                 
                 HStack {
                     Text("Average Speed")
@@ -90,14 +112,18 @@ struct AverageSpeedCalculatorView: View {
                     .multilineTextAlignment(.trailing)
                     .font(Font.system(size: 14, weight: .semibold))
                     .keyboardType(.decimalPad)
+                    .focused($focusedField, equals: .averageSpeed)
                     
-                    Text("km/h")
+                    Text(model.units.perHour)
                         .foregroundColor(Constants.Colors.graphite)
                         .fontWeight(.regular)
                         .frame(minWidth: 34, alignment: .trailing)
                 }
                 .modifier(InputFieldViewModifier())
                 .padding(.top, 25.0)
+                .onTapGesture {
+                    self.focusedField = .averageSpeed
+                }
                 
             }
 //            .padding(.bottom, Constants.UI.sectionSpacing)
@@ -128,13 +154,13 @@ struct AverageSpeedCalculatorView: View {
         .padding(.bottom, Constants.UI.sheetBottomPadding)
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .onAppear(perform: {
-            distanceLabel = distance > 0 ? String(format: "%.2f", distance) : ""
+            distanceLabel = distance > 0 ? String(format: "%.2f", distance.inCurrentUnits(model.units)) : ""
             timeLabel = time > 0 ? String(format: "%.0f", time) : ""
-            speedLabel = speed > 0 ? String(format: "%.2f", speed) : ""
+            speedLabel = speed > 0 ? String(format: "%.2f", speed.inCurrentUnits(model.units)) : ""
         })
         .onChange(of: distanceLabel, perform: { value in
-            if let double = Double(value) {
-                distance = double
+            if let distanceInCurrentUnits = Double(value) {
+                distance = distanceInCurrentUnits.inKilometers(model.units)
             }
             setSpeedLabel()
         })
@@ -145,8 +171,8 @@ struct AverageSpeedCalculatorView: View {
             setSpeedLabel()
         })
         .onChange(of: speedLabel, perform: { value in
-            if let double = Double(value) {
-                speed = double
+            if let speedInCurrentUnits = Double(value) {
+                speed = speedInCurrentUnits.inKilometers(model.units)
             }
         })
     }
@@ -156,5 +182,6 @@ struct AverageSpeedCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         AverageSpeedCalculatorView(distance: .constant(20.1854159), time: .constant(45), speed: .constant(15.1045141), changeApproved: .constant(true), isSheetShown: .constant(true))
             .previewLayout(.sizeThatFits)
+            .environmentObject(ContentModel.PreviewInImperialUnits)
     }
 }

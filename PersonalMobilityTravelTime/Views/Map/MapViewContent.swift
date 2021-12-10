@@ -37,7 +37,7 @@ struct MapViewContent: View {
             .background(Constants.Colors.mist)
             
             DirectionsMap(location: location)
-                .ignoresSafeArea()
+//                .ignoresSafeArea()
         }
         .navigationBarHidden(true)
     }

@@ -45,7 +45,7 @@ struct SettingsView: View {
                     Text("Preferences")
                         .foregroundColor(.gray)
                         .font(.title2)
-                    NavigationLink(destination: Text("Not Set")) {
+                    NavigationLink(destination: UnitsOfMeasureView()) {
                         NormalMenuItem(icon: "ruler", label: "Units of Measure")
                     }
                 }
