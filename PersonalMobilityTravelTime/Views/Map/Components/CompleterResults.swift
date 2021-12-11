@@ -10,14 +10,14 @@ import MapKit
 
 struct CompleterResults: View {
     
-    @Binding var completerResults: [MKLocalSearchCompletion]
+    @EnvironmentObject var map: MapTabModel
     
 //    @Binding var selectedDestination: MKLocalSearchCompletion?
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 6) {
-                ForEach(self.completerResults, id: \.self) { suggestion in
+            VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                ForEach(self.map.completerResults, id: \.self) { suggestion in
                     VStack(alignment: .leading, spacing: 0) {
                         Text(self.createHighlightedString(text: suggestion.title, rangeValues: suggestion.titleHighlightRanges))
                         Text(self.createHighlightedString(text: suggestion.subtitle, rangeValues: suggestion.subtitleHighlightRanges))

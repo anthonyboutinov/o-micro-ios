@@ -179,3 +179,24 @@ class ContentModel: ObservableObject {
         }
     }
 }
+
+
+// MARK: - RouteStat
+struct RouteStat {
+    weak var device: MobilityDevice?
+
+    var distanceKm: Double
+
+    var timeH: Double? {
+        if let device = device {
+            return distanceKm / device.averageSpeedKmh
+        }
+        return nil
+    }
+    var batteryPercentage: Double? {
+        if let distanceOnFullChargeKm = device?.distanceOnFullChargeKm {
+            return distanceKm / distanceOnFullChargeKm
+        }
+        return nil
+    }
+}

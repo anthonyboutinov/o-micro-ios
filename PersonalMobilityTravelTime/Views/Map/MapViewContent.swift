@@ -11,6 +11,7 @@ import MapKit
 struct MapViewContent: View {
     
     @EnvironmentObject var model: ContentModel
+    @EnvironmentObject var map: MapTabModel
     
     @State var location: Location?
     
@@ -44,13 +45,6 @@ struct MapViewContent: View {
     
     @FocusState private var focusedField: FocusField?
     
-    // MARK: Suggestions
-    
-    @StateObject var searchCompleterDelegate = SearchCompleterDelegate()
-    var searchCompleter = MKLocalSearchCompleter()
-    var searchRegion = MKCoordinateRegion(MKMapRect.world)
-    var currentPlacemark: CLPlacemark?
-    
     // MARK: - body
         
     var body: some View {
@@ -78,10 +72,10 @@ struct MapViewContent: View {
                 HStack {
                     Image(self.state != .destinationSet ? Constants.SearchbarIcons.magnifyingGlass.rawValue : Constants.SearchbarIcons.destination.rawValue)
                     TextField(Constants.Text.searchPlaceholder, text: $destinationLabel.didSet({ newValue in
-                        self.searchCompleter.queryFragment = newValue
+                        self.map.searchCompleter.queryFragment = newValue
                         self.state = .enteringDestination
                     }), onEditingChanged: { changed in
-                        self.searchCompleter.queryFragment = self.destinationLabel
+                        self.map.searchCompleter.queryFragment = self.destinationLabel
                     })
                         .focused($focusedField, equals: .destination)
                 }
@@ -91,8 +85,8 @@ struct MapViewContent: View {
                     self.state = .focusedOnEnteringDestination
                 }
                 
-                if searchCompleterDelegate.completerResults.count != 0 {
-                    CompleterResults(completerResults: self.$searchCompleterDelegate.completerResults)
+                if self.map.completerResults.count != 0 {
+                    CompleterResults()
                 }
             }
             .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
@@ -111,20 +105,6 @@ struct MapViewContent: View {
         .navigationBarTitle("") //this must be empty
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        .onAppear {
-            self.startProvidingCompletions()
-        }
-    }
-    
-    private func startProvidingCompletions() {
-        searchCompleter.delegate = self.searchCompleterDelegate
-        searchCompleter.resultTypes = [.address, .pointOfInterest]
-        searchCompleter.region = searchRegion
-    }
-    
-    mutating func updatePlacemark(_ placemark: CLPlacemark?, boundingRegion: MKCoordinateRegion) {
-        currentPlacemark = placemark
-        searchCompleter.region = searchRegion
     }
 }
 
@@ -132,5 +112,6 @@ struct MapViewContent_Previews: PreviewProvider {
     static var previews: some View {
         MapViewContent()
             .environmentObject(ContentModel())
+            .environmentObject(MapTabModel())
     }
 }

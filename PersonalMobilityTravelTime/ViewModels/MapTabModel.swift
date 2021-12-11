@@ -9,10 +9,10 @@ import Foundation
 import MapKit
 import CoreLocation
 
-class MapTabModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+class MapTabModel: NSObject, ObservableObject {
     
     @Published var waypoints = [Waypoint]()
-    @Published var routeStats = [RouteStat]()
+//    @Published var routeStats = [RouteStat]()
     
     // MARK: - Geolocation tracking
     
@@ -25,8 +25,10 @@ class MapTabModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         
-        // set content model as a delegate of the location manager
+        // set this view model as a delegate of the location manager
         locationManager.delegate = self
+        
+        setUpSearchCompleter()
     }
     
     func requestGeolocationPermission() {
@@ -34,7 +36,29 @@ class MapTabModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    // MARK: - LocationManagerDelegate methods
+    // MARK: Suggestions
+    
+    var searchCompleter = MKLocalSearchCompleter()
+    var searchRegion = MKCoordinateRegion(MKMapRect.world)
+    var currentPlacemark: CLPlacemark?
+    
+    @Published var completerResults: [MKLocalSearchCompletion] = [MKLocalSearchCompletion]()
+    
+    private func setUpSearchCompleter() {
+        searchCompleter.delegate = self
+        searchCompleter.resultTypes = [.address, .pointOfInterest]
+        searchCompleter.region = searchRegion
+    }
+    
+    func updatePlacemark(_ placemark: CLPlacemark?, boundingRegion: MKCoordinateRegion) {
+        currentPlacemark = placemark
+        searchCompleter.region = searchRegion
+    }
+    
+}
+
+// MARK: - LocationManagerDelegate methods
+extension MapTabModel: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
@@ -55,7 +79,7 @@ class MapTabModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    // Gives us the location of the user
+    /// Gives us the location of the user
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations.first ?? "no location")
         
@@ -81,6 +105,27 @@ class MapTabModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 }
 
+// MARK: - SearchCompleterDelegate methods
+extension MapTabModel: MKLocalSearchCompleterDelegate {
+    
+    /// - Tag: QueryResults
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+//        print("completerDidUpdateResults with results: \(completer.results)")
+        // As the user types, new completion suggestions are continuously returned to this method.
+        // Overwrite the existing results, and then refresh the UI with the new results (@Published does that)
+        completerResults = completer.results
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        // Handle any errors returned from MKLocalSearchCompleter.
+        if let error = error as NSError? {
+            print("MKLocalSearchCompleter encountered an error: \(error.localizedDescription). The query fragment is: \"\(completer.queryFragment)\"")
+        }
+    }
+}
+
+
+
 struct Waypoint {
     var kind: Waypoint.Kind
     var label: String?
@@ -88,27 +133,8 @@ struct Waypoint {
     var address: [String] = [String]()
     
     enum Kind {
-        case myLocation
+        case currentLocation
         case normal
         case destination
-    }
-}
-
-struct RouteStat {
-    weak var device: MobilityDevice?
-    
-    var distanceKm: Double
-    
-    var timeH: Double? {
-        if let device = device {
-            return distanceKm / device.averageSpeedKmh
-        }
-        return nil
-    }
-    var batteryPercentage: Double? {
-        if let distanceOnFullChargeKm = device?.distanceOnFullChargeKm {
-            return distanceKm / distanceOnFullChargeKm
-        }
-        return nil
     }
 }
