@@ -30,8 +30,9 @@ struct CalculatorView: View {
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)
+        .navigationBarTitle("") //this must be empty
         .navigationBarHidden(true)
-        .frame(maxHeight: .infinity)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
