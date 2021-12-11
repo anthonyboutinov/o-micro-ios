@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A815C94127640C02009ECEDF /* RouteTimeResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */; };
 		A815C94327640F12009ECEDF /* DeviceSelectAndSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */; };
+		A815C9452764235B009ECEDF /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C9442764235B009ECEDF /* TextExtension.swift */; };
+		A815C94927644193009ECEDF /* CompleterResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94827644193009ECEDF /* CompleterResults.swift */; };
+		A815C94B276450E8009ECEDF /* SearchCompleterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94A276450E8009ECEDF /* SearchCompleterDelegate.swift */; };
+		A815C94D276458E7009ECEDF /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A815C94C276458E7009ECEDF /* BindingExtension.swift */; };
 		A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8826AF2F4500C17F30 /* MapView.swift */; };
 		A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */; };
 		A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB8C26AF308300C17F30 /* OnboardingView.swift */; };
@@ -56,6 +60,10 @@
 /* Begin PBXFileReference section */
 		A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTimeResultsView.swift; sourceTree = "<group>"; };
 		A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSelectAndSettingsView.swift; sourceTree = "<group>"; };
+		A815C9442764235B009ECEDF /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
+		A815C94827644193009ECEDF /* CompleterResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleterResults.swift; sourceTree = "<group>"; };
+		A815C94A276450E8009ECEDF /* SearchCompleterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCompleterDelegate.swift; sourceTree = "<group>"; };
+		A815C94C276458E7009ECEDF /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		A81ACB8826AF2F4500C17F30 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		A81ACB8A26AF2F4F00C17F30 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		A81ACB8C26AF308300C17F30 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -150,6 +158,7 @@
 				A8A9945226B12D8400192203 /* DirectionsMap.swift */,
 				A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */,
 				A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */,
+				A815C94827644193009ECEDF /* CompleterResults.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -206,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				A8EF716E26AE808C00F0D1FD /* ContentModel.swift */,
+				A815C94A276450E8009ECEDF /* SearchCompleterDelegate.swift */,
 				A8EF717226AE81EF00F0D1FD /* MapTabModel.swift */,
 				A8A9944926B0DCEB00192203 /* CalculatorModel.swift */,
 			);
@@ -216,7 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				A8EF716C26AE7F4A00F0D1FD /* Constants.swift */,
+				A815C9442764235B009ECEDF /* TextExtension.swift */,
 				A8A9944B26B10A2B00192203 /* DoubleExtension.swift */,
+				A815C94C276458E7009ECEDF /* BindingExtension.swift */,
 				A8A9944D26B1140800192203 /* endEditing.swift */,
 			);
 			path = Helpers;
@@ -387,20 +399,24 @@
 				A8A9944A26B0DCEB00192203 /* CalculatorModel.swift in Sources */,
 				A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */,
 				A840F5D326AFA8E3009EB7A8 /* SelectorView.swift in Sources */,
+				A815C94927644193009ECEDF /* CompleterResults.swift in Sources */,
 				A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */,
 				A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */,
 				A8A9945326B12D8500192203 /* DirectionsMap.swift in Sources */,
 				A815C94327640F12009ECEDF /* DeviceSelectAndSettingsView.swift in Sources */,
 				A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */,
 				A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */,
+				A815C9452764235B009ECEDF /* TextExtension.swift in Sources */,
 				A83E397926AEA4A9008F5EFF /* CenteredMenuItem.swift in Sources */,
 				A81ACB8F26AF310F00C17F30 /* LaunchView.swift in Sources */,
 				A8EF717D26AE931B00F0D1FD /* DeviceMenuItem.swift in Sources */,
+				A815C94D276458E7009ECEDF /* BindingExtension.swift in Sources */,
 				A8EF717326AE81EF00F0D1FD /* MapTabModel.swift in Sources */,
 				A8A9944226B0BEDC00192203 /* DeviceSelector.swift in Sources */,
 				A8A9945526B12E4100192203 /* Location.swift in Sources */,
 				A8EF716F26AE808C00F0D1FD /* ContentModel.swift in Sources */,
 				A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */,
+				A815C94B276450E8009ECEDF /* SearchCompleterDelegate.swift in Sources */,
 				A8EF718126AE986F00F0D1FD /* SettingsView.swift in Sources */,
 				A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */,
 				A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */,

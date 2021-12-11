@@ -20,6 +20,7 @@ class Constants {
     
     class Text {
         static var searchPlaceholder = "Search by Name or Address"
+        static var currentLocationLabel = "Current Location"
     }
 
     
