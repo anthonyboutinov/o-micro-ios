@@ -11,6 +11,8 @@ struct LaunchView: View {
     
     @EnvironmentObject var model: ContentModel
     
+    let mapTabModel = MapTabModel()
+    
     var body: some View {
         if model.setUpProcess == .firstLaunch {
             OnboardingView()
@@ -30,16 +32,10 @@ struct LaunchView: View {
                         Image(systemName: "map.fill")
                         Text("Map")
                     }.tag(1)
-                    .environmentObject(MapTabModel())
+                        .environmentObject(mapTabModel)
                 }
             }
             .addPartialSheet()
         }
     }
 }
-
-//struct LaunchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LaunchView()
-//    }
-//}
