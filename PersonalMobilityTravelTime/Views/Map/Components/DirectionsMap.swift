@@ -13,8 +13,6 @@ struct DirectionsMap: UIViewRepresentable {
     @EnvironmentObject var map: MapTabModel
     @EnvironmentObject var model: ContentModel
     
-//    var location: Location?
-    
     var start: CLLocationCoordinate2D {
         return map.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
     }
@@ -35,6 +33,11 @@ struct DirectionsMap: UIViewRepresentable {
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .followWithHeading
         
+        //Zoom to user location
+        let noLocation = CLLocationCoordinate2D()
+        let viewRegion = MKCoordinateRegion(center: noLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+        mapView.setRegion(viewRegion, animated: false)
+        
         getRouteAndPlaceItOnTheMap(mapView)
         
         return mapView
@@ -42,6 +45,11 @@ struct DirectionsMap: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
         // We already have all the data we need, so we don't need to manipulate anything here
+        
+        if (self.map.state == .initial) {
+            Self.dismantleUIView(uiView, coordinator: ())
+            print("updateUIView: mapView dismantled")
+        }
     }
     
     func getRouteAndPlaceItOnTheMap(_ mapView: MKMapView) {
