@@ -19,7 +19,13 @@ class MapTabModel: NSObject, ObservableObject {
         case destinationSet
     }
     
-    @Published var state = ViewState.initial
+    @Published var state = ViewState.initial {
+        didSet {
+            if state == .initial {
+                reset()
+            }
+        }
+    }
     
     @Published var destinationLabel: String = ""
     
@@ -32,6 +38,18 @@ class MapTabModel: NSObject, ObservableObject {
     }
     @Published var originPointState = OriginPointState.currentLocation
     @Published var originLabel: String = Constants.Text.currentLocationLabel
+    
+    @Published var routeDistance: Double?
+    
+    private func reset() {
+        destinationLabel = ""
+        originPointState = OriginPointState.currentLocation
+        originLabel = Constants.Text.currentLocationLabel
+        routeDistance = nil
+        completerResults = nil
+        localSearch = nil // sets places to nil as well
+        location = nil
+    }
     
     // MARK: - Geolocation tracking
     

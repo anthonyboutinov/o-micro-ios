@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
@@ -18,7 +19,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     @Published var averageSpeedCalculatorData: AverageSpeedCalculatorData?
     @Published var averageSpeedKmh: Double = 14
     @Published var distanceOnFullChargeKm: Double?
-    @Published var whereCanBeRidden = [String]()
+    @Published var transportType: TransportType = .automobile
     
     static let suggestedDefaultDistanceOnFullChargeKm: Double = 10.0
     
@@ -26,7 +27,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         self.index = index ?? 0
     }
     
-    init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, distanceOnFullChargeKm: Double?, whereCanBeRidden: [String]) {
+    init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, distanceOnFullChargeKm: Double?, transportType: TransportType) {
         self.id = id
         self.index = index
         self.title = title
@@ -34,11 +35,11 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         self.isElectric = isElectric
         self.averageSpeedKmh = averageSpeedKmh
         self.distanceOnFullChargeKm = distanceOnFullChargeKm
-        self.whereCanBeRidden = whereCanBeRidden
+        self.transportType = transportType
     }
     
     static func sample() -> MobilityDevice {
-        return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, whereCanBeRidden: [Constants.WhereCanBeRidden.pedestrianPaths])
+        return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, transportType: .pedestrian)
     }
     
     /// Stores data for the Average Speed Calculator popup in the device's settings screen
@@ -101,6 +102,21 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
 //            return nil
 //        }
 //    }
+    
+    enum TransportType {
+        case pedestrian
+        case automobile
+        
+        /// Converts to MKDirectionsTransportType
+        var mapKit: MKDirectionsTransportType {
+            get {
+                switch self {
+                case .pedestrian: return MKDirectionsTransportType.walking
+                case .automobile: return MKDirectionsTransportType.automobile
+                }
+            }
+        }
+    }
     
 }
 

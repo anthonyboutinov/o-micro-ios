@@ -9,18 +9,13 @@ import Foundation
 import SwiftUI
 
 class Constants {
-//    static var whereCanBeRidden = WhereCanBeRidden.self
-    
-//    static var ui = UI.self
-    
-    class WhereCanBeRidden {
-        static var pedestrianPaths = "Pedestrian"
-        static var carRoads = "Car Roads"
-    }
     
     class Text {
         static var searchPlaceholder = "Search by Name or Address"
         static var currentLocationLabel = "Current Location"
+        
+        static var settingsLabel = "Settings"
+        static var cancelLabel = "Cancel"
     }
 
     
@@ -40,6 +35,9 @@ class Constants {
         static var horizontalSectionSpacing: CGFloat = 18
         static var verticalSectionSpacing: CGFloat = 12
         static var sheetBottomPadding: CGFloat = 12
+        
+        static var mapEdgeInsetsVertical: CGFloat = 80
+        static var mapEdgeInsetsHorizontal: CGFloat = 30
         
     }
     

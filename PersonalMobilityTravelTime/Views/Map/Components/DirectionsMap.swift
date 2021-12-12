@@ -11,6 +11,7 @@ import MapKit
 struct DirectionsMap: UIViewRepresentable {
     
     @EnvironmentObject var map: MapTabModel
+    @EnvironmentObject var model: ContentModel
     
 //    var location: Location?
     
@@ -50,6 +51,7 @@ struct DirectionsMap: UIViewRepresentable {
             let request = MKDirections.Request()
             request.source = MKMapItem(placemark: MKPlacemark(coordinate: start))
             request.destination = MKMapItem(placemark: MKPlacemark(coordinate: end))
+            request.transportType = self.model.selectedDevice?.transportType.mapKit ?? .automobile
             
             // Create directions object
             let directions = MKDirections(request: request)
@@ -57,13 +59,18 @@ struct DirectionsMap: UIViewRepresentable {
             // Calculate route
             directions.calculate { response, error in
                 if error == nil && response != nil {
+                    var totalDistance: Double = 0.0
                     // Plot the route on the map
                     for route in response!.routes {
                         mapView.addOverlay(route.polyline)
                         // Zoom into the region
-                        mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50), animated: true)
+                        mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: Constants.UI.mapEdgeInsetsVertical, left: Constants.UI.mapEdgeInsetsHorizontal, bottom: Constants.UI.mapEdgeInsetsVertical, right: Constants.UI.mapEdgeInsetsHorizontal), animated: false)
+                        totalDistance += route.distance
                     }
                     
+                    // convert meters to kilometers
+                    totalDistance /= 1000
+                    self.map.routeDistance = totalDistance
                 }
             }
             

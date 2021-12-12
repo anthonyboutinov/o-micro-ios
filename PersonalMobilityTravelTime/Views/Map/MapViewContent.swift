@@ -12,13 +12,7 @@ struct MapViewContent: View {
     
     @EnvironmentObject var model: ContentModel
     @EnvironmentObject var map: MapTabModel
-    
-//    @State var location: Location?
-    
-    @State var distance: Double? = nil
-    
-    // MARK: UI
-        
+
     enum FocusField: Hashable {
         case destination
         case origin
@@ -33,7 +27,7 @@ struct MapViewContent: View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                 
-                DeviceSelectAndSettingsView(distance: self.$distance)
+                DeviceSelectAndSettingsView(distance: self.$map.routeDistance, state: self.$map.state)
                 
                 SearchFieldOriginLocation(focusedField: $focusedField)
                 
@@ -50,14 +44,13 @@ struct MapViewContent: View {
             
             if self.map.state == .initial || self.map.state == .destinationSet {
                 DirectionsMap()
-                    .frame(maxHeight: .infinity)
-            } else if self.map.state == .sentSearchRequest {
-                Text("Working on it...")
             } else {
                 Spacer()
             }
             
-            RouteTimeResultsView(distance: self.$distance)
+            if self.map.state == .destinationSet && self.map.routeDistance != nil {
+                RouteTimeResultsView(distance: self.$map.routeDistance)
+            }
         }
         .navigationBarTitle("") //this must be empty
         .navigationBarHidden(true)

@@ -12,6 +12,7 @@ struct DeviceSelectAndSettingsView: View {
     @EnvironmentObject var model: ContentModel
     
     @Binding var distance: Double?
+    @Binding var state: MapTabModel.ViewState
     
     var body: some View {
         HStack {
@@ -19,20 +20,29 @@ struct DeviceSelectAndSettingsView: View {
             DeviceSelector()
                 .accentColor(batteryUsage != nil && batteryUsage! >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : Color.accentColor)
             
-            NavigationLink("Settings", destination: SettingsView())
-                .padding(.vertical, Constants.UI.verticalButtonSpacing)
+            if state == .initial {
+                NavigationLink("Settings", destination: SettingsView())
+                    .padding(.vertical, Constants.UI.verticalButtonSpacing)
+            } else {
+                Text(Constants.Text.cancelLabel)
+                    .padding(.vertical, Constants.UI.verticalButtonSpacing)
+                    .onTapGesture {
+                        state = .initial
+                    }
+            }
         }
     }
 }
 
 struct DeviceSelectAndSettingsView_Previews: PreviewProvider {
     @State static var d: Double? = 21.2
+    @State static var state: MapTabModel.ViewState = .destinationSet
     static var previews: some View {
-        DeviceSelectAndSettingsView(distance: $d)
+        DeviceSelectAndSettingsView(distance: $d, state: $state)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        DeviceSelectAndSettingsView(distance: $d)
+        DeviceSelectAndSettingsView(distance: $d, state: $state)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel().selectDevice(atIndex: 1))
     }

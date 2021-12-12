@@ -55,7 +55,8 @@ struct RouteTimeResultsView: View {
                             let foregroundColor: Color = batteryUsage >= Constants.CalculatorUI.batteryUsageWarningPercentage && batteryUsage < Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.orange : (batteryUsage >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : (model.selectedDevice == device ? Color.black : Color.gray))
                             let batteryImagePercentage = batteryUsage < 0.125 ? "100" : (batteryUsage < 0.375 ? "75" : (batteryUsage < 0.625 ? "50" : (batteryUsage < 0.875 ? "25" : "0")))
                             
-                            Text("\(Int(batteryUsage * 100))%")
+                            let batteryUsagePercentageNumber = Int(batteryUsage * 100)
+                            Text("\(batteryUsagePercentageNumber > 200 ? "☠️" : String(batteryUsagePercentageNumber))%")
                                 .bold()
                                 .foregroundColor(foregroundColor)
                                 .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
