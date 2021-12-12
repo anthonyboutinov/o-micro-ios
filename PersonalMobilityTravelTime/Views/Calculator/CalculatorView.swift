@@ -16,7 +16,7 @@ struct CalculatorView: View {
             HStack {
                 DeviceSelector()
                 
-                NavigationLink("Settings", destination: SettingsView())
+                NavigationLink(Constants.Text.settingsLabel, destination: SettingsView())
                     .padding(.vertical, Constants.UI.verticalButtonSpacing)
             }
             
@@ -30,7 +30,7 @@ struct CalculatorView: View {
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)
-        .navigationBarTitle("") //this must be empty
+        .navigationBarTitle("Calculator") //this must be empty or set to something
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }

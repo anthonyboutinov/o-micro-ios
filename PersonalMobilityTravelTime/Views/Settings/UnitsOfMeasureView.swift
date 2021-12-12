@@ -14,10 +14,6 @@ struct UnitsOfMeasureView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
-//                Text("Units of Measure")
-//                    .font(.largeTitle)
-//                    .bold()
-                
                 HStack {
                     Text("Units")
                     Spacer()

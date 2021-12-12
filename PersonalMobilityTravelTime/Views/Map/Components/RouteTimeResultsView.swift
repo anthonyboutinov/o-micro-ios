@@ -12,17 +12,22 @@ struct RouteTimeResultsView: View {
     @EnvironmentObject var model: ContentModel
     
     @Binding var distance: Double?
+    @Binding var isExpanded: Bool
     
     /// First item in the sorted list is the selected device, then the rest go according to their speed, in decreasing order, while removing any electric devices that are unable to make such a journey, and display only the first few options so that the list at the bottom of the screen is not too big
     private func deviceList() -> ArraySlice<MobilityDevice> {
-        return model.devices
+        let list = model.devices
             .sorted(by: { lhs, rhs in
                 return lhs == model.selectedDevice ? true : (lhs.averageSpeedKmh > rhs.averageSpeedKmh && rhs != model.selectedDevice)
             })
             .filter { e in
                 model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distance!, capacity: e.distanceOnFullChargeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
             }
-            .prefix(Constants.CalculatorUI.maxOptionsForMapView)
+        if isExpanded {
+            return list.prefix(Int.max)
+        } else {
+            return list.prefix(Constants.CalculatorUI.maxOptionsForMapView)
+        }
     }
     
     var body: some View {
@@ -92,6 +97,9 @@ struct RouteTimeResultsView: View {
         .allowsTightening(true)
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalButtonSpacing)
+        .onTapGesture {
+            isExpanded.toggle()
+        }
     }
     }
     
@@ -125,25 +133,28 @@ struct RouteTimeResultsView_Previews: PreviewProvider {
     @State static var short:  Double? = 6
     @State static var xshort: Double? = 0.914
     
+    @State static var expanded = true
+    @State static var compact = false
+    
     static var previews: some View {
         
-        RouteTimeResultsView(distance: $long)
+        RouteTimeResultsView(distance: $long, isExpanded: $expanded)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $medium)
+        RouteTimeResultsView(distance: $medium, isExpanded: $compact)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $short)
+        RouteTimeResultsView(distance: $short, isExpanded: $compact)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $xshort)
+        RouteTimeResultsView(distance: $xshort, isExpanded: $compact)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $xlong)
+        RouteTimeResultsView(distance: $xlong, isExpanded: $expanded)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
     }

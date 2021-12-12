@@ -31,7 +31,7 @@ struct DirectionsMap: UIViewRepresentable {
         
         // Show the user location
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .followWithHeading
+        mapView.userTrackingMode = .follow
         
         //Zoom to user location
         let noLocation = CLLocationCoordinate2D()

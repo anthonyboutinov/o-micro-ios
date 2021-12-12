@@ -40,6 +40,7 @@ class MapTabModel: NSObject, ObservableObject {
     @Published var originLabel: String = Constants.Text.currentLocationLabel
     
     @Published var routeDistance: Double?
+    @Published var routeTimeResultsAreExpanded = false
     
     private func reset() {
         destinationLabel = ""
@@ -49,6 +50,7 @@ class MapTabModel: NSObject, ObservableObject {
         completerResults = nil
         localSearch = nil // sets places to nil as well
         location = nil
+        routeTimeResultsAreExpanded = false
     }
     
     // MARK: - Geolocation tracking

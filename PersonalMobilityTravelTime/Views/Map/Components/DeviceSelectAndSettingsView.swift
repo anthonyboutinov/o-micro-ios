@@ -36,13 +36,14 @@ struct DeviceSelectAndSettingsView: View {
 
 struct DeviceSelectAndSettingsView_Previews: PreviewProvider {
     @State static var d: Double? = 21.2
-    @State static var state: MapTabModel.ViewState = .destinationSet
+    @State static var stateA: MapTabModel.ViewState = .destinationSet
+    @State static var stateB: MapTabModel.ViewState = .initial
     static var previews: some View {
-        DeviceSelectAndSettingsView(distance: $d, state: $state)
+        DeviceSelectAndSettingsView(distance: $d, state: $stateA)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        DeviceSelectAndSettingsView(distance: $d, state: $state)
+        DeviceSelectAndSettingsView(distance: $d, state: $stateB)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel().selectDevice(atIndex: 1))
     }

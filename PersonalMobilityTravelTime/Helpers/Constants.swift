@@ -22,6 +22,7 @@ class Constants {
     class UI {
         static var deviceIconSize: CGFloat = 28.0
         static var deviceIconSizeLarge: CGFloat = 46.0
+        static var deviceSelectorItemSpacing: CGFloat = 15
         
         static var cornerRadius: CGFloat = 5.0
         

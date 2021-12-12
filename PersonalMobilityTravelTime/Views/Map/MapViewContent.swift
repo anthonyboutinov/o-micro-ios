@@ -49,10 +49,10 @@ struct MapViewContent: View {
             }
             
             if self.map.state == .destinationSet && self.map.routeDistance != nil {
-                RouteTimeResultsView(distance: self.$map.routeDistance)
+                RouteTimeResultsView(distance: self.$map.routeDistance, isExpanded: self.$map.routeTimeResultsAreExpanded)
             }
         }
-        .navigationBarTitle("") //this must be empty
+        .navigationBarTitle("Map") //this must be empty or set to something
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
     }

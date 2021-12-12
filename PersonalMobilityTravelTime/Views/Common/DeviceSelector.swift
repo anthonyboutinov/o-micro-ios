@@ -13,7 +13,7 @@ struct DeviceSelector: View {
     
     var body: some View {
         ScrollView(Axis.Set.horizontal, showsIndicators: false) {
-            HStack(alignment: .bottom, spacing: 15) {
+            HStack(alignment: .bottom, spacing: Constants.UI.deviceSelectorItemSpacing) {
                 ForEach(model.devices) { device in
                     Button(action: {
                         model.selectedDevice = device
