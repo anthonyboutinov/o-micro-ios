@@ -12,14 +12,14 @@ struct DirectionsMap: UIViewRepresentable {
     
     @EnvironmentObject var map: MapTabModel
     
-    var location: Location?
+//    var location: Location?
     
     var start: CLLocationCoordinate2D {
         return map.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
     }
     
     var end: CLLocationCoordinate2D {
-        if let lat = location?.coordinates?.latitude, let long = location?.coordinates?.longitude {
+        if let lat = map.location?.coordinates?.latitude, let long = map.location?.coordinates?.longitude {
             return CLLocationCoordinate2D(latitude: lat, longitude: long)
         } else {
             return CLLocationCoordinate2D()
@@ -44,7 +44,7 @@ struct DirectionsMap: UIViewRepresentable {
     }
     
     func getRouteAndPlaceItOnTheMap(_ mapView: MKMapView) {
-        if location != nil {
+        if map.location != nil {
             
             // Create directions request
             let request = MKDirections.Request()
@@ -70,7 +70,7 @@ struct DirectionsMap: UIViewRepresentable {
             // Place annotation for the end point
             let annotation = MKPointAnnotation()
             annotation.coordinate = end
-            annotation.title = location?.name ?? ""
+            annotation.title = map.location?.name ?? ""
             mapView.addAnnotation(annotation)
             
         }

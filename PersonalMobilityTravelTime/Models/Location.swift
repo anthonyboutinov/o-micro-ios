@@ -5,7 +5,7 @@
 //  Created by Anthony Boutinov on 28.07.2021.
 //
 
-import Foundation
+import MapKit
 
 class Location {
     var name: String?
@@ -14,5 +14,10 @@ class Location {
     struct Coordinate: Decodable {
         var latitude: Double?
         var longitude: Double?
+    }
+    
+    init(_ mapItem: MKMapItem) {
+        self.name = mapItem.name
+        self.coordinates = Coordinate(latitude: mapItem.placemark.coordinate.latitude, longitude: mapItem.placemark.coordinate.longitude)
     }
 }

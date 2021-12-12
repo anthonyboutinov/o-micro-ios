@@ -11,14 +11,33 @@ import CoreLocation
 
 class MapTabModel: NSObject, ObservableObject {
     
+    enum ViewState: Hashable {
+        case initial
+        case focusedOnEnteringDestination
+        case enteringDestination
+        case sentSearchRequest
+        case destinationSet
+    }
+    
+    @Published var state = ViewState.initial
+    
+    @Published var destinationLabel: String = ""
+    
     @Published var waypoints = [Waypoint]()
 //    @Published var routeStats = [RouteStat]()
+    
+    enum OriginPointState: Hashable {
+        case currentLocation
+        case otherLocation
+    }
+    @Published var originPointState = OriginPointState.currentLocation
+    @Published var originLabel: String = Constants.Text.currentLocationLabel
     
     // MARK: - Geolocation tracking
     
     @Published var authorizationState = CLAuthorizationStatus.notDetermined
     
-    @Published var placemark: CLPlacemark?
+    @Published var currentPlacemark: CLPlacemark?
     
     var locationManager = CLLocationManager()
     
@@ -39,10 +58,9 @@ class MapTabModel: NSObject, ObservableObject {
     // MARK: Suggestions
     
     var searchCompleter = MKLocalSearchCompleter()
-    var searchRegion = MKCoordinateRegion(MKMapRect.world)
-    var currentPlacemark: CLPlacemark?
+    private var searchRegion = MKCoordinateRegion(MKMapRect.world)
     
-    @Published var completerResults: [MKLocalSearchCompletion] = [MKLocalSearchCompletion]()
+    @Published var completerResults: [MKLocalSearchCompletion]?
     
     private func setUpSearchCompleter() {
         searchCompleter.delegate = self
@@ -50,9 +68,89 @@ class MapTabModel: NSObject, ObservableObject {
         searchCompleter.region = searchRegion
     }
     
-    func updatePlacemark(_ placemark: CLPlacemark?, boundingRegion: MKCoordinateRegion) {
-        currentPlacemark = placemark
-        searchCompleter.region = searchRegion
+//    func updatePlacemark(_ placemark: CLPlacemark?, boundingRegion: MKCoordinateRegion) {
+//        currentPlacemark = placemark
+//        searchCompleter.region = searchRegion
+//    }
+    
+    // MARK: - Search Requests
+    
+    @Published var places: [MKMapItem]? {
+        didSet {
+            self.completerResults = nil
+            if let place = self.places?.first {
+                self.location = Location(place)
+                
+            }
+        }
+    }
+    
+    @Published var location: Location? {
+        didSet {
+            if let location = location {
+                self.state = .destinationSet
+                self.destinationLabel = location.name ?? "[no name]"
+            }
+        }
+    }
+    
+    private var boundingRegion: MKCoordinateRegion = MKCoordinateRegion(MKMapRect.world) {
+        didSet {
+            searchCompleter.region = boundingRegion
+        }
+    }
+    private var localSearch: MKLocalSearch? {
+        willSet {
+            // Clear the results and cancel the currently running local search before starting a new search.
+            places = nil
+            localSearch?.cancel()
+        }
+    }
+    
+    /// - Parameter suggestedCompletion: A search completion provided by `MKLocalSearchCompleter` when tapping on a search completion table row
+    func search(for suggestedCompletion: MKLocalSearchCompletion) {
+        let searchRequest = MKLocalSearch.Request(completion: suggestedCompletion)
+        search(using: searchRequest)
+    }
+    
+    /// - Parameter queryString: A search string from the text the user entered
+    func search(for queryString: String?) {
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = queryString
+        search(using: searchRequest)
+    }
+    
+    /// Search for places. Updates self.places with [MKMapItem]
+    /// - Tag: SearchRequest
+    private func search(using searchRequest: MKLocalSearch.Request) {
+        // Confine the map search area to an area around the user's current location.
+        searchRequest.region = boundingRegion
+        
+        searchRequest.resultTypes = [.pointOfInterest, .address]
+        
+        localSearch = MKLocalSearch(request: searchRequest)
+        localSearch?.start { [unowned self] (response, error) in
+            guard error == nil else {
+                self.displaySearchError(error)
+                return
+            }
+            
+            self.places = response?.mapItems
+            
+            // Used when setting the map's region in `prepareForSegue`. // ???
+            if let updatedRegion = response?.boundingRegion {
+                self.boundingRegion = updatedRegion
+            }
+        }
+    }
+    
+    private func displaySearchError(_ error: Error?) {
+        print("displaySearchError with error \(error.debugDescription)")
+//        if let error = error as NSError?, let errorString = error.userInfo[NSLocalizedDescriptionKey] as? String {
+//            let alertController = UIAlertController(title: "Could not find any places.", message: errorString, preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//            present(alertController, animated: true, completion: nil)
+//        }
     }
     
 }
@@ -94,7 +192,8 @@ extension MapTabModel: CLLocationManagerDelegate {
                 print(error ?? "no error")
                 if error == nil {
                     // Take the first placemark
-                    self.placemark = placemarks?.first
+                    self.currentPlacemark = placemarks?.first
+                    self.boundingRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 12_000, longitudinalMeters: 12_000)
                 }
             }
             

@@ -36,6 +36,8 @@
 		A840F5D726AFB321009EB7A8 /* AverageSpeedEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D626AFB321009EB7A8 /* AverageSpeedEditField.swift */; };
 		A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */; };
 		A84900C62762D8AE001954E1 /* UnitsOfMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */; };
+		A8A753D82765A33B002A2871 /* SearchFieldDestinationLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A753D72765A33B002A2871 /* SearchFieldDestinationLocation.swift */; };
+		A8A753DA2765A372002A2871 /* SearchFieldOriginLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A753D92765A372002A2871 /* SearchFieldOriginLocation.swift */; };
 		A8A9944226B0BEDC00192203 /* DeviceSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944126B0BEDC00192203 /* DeviceSelector.swift */; };
 		A8A9944426B0C48700192203 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944326B0C48700192203 /* DeleteButton.swift */; };
 		A8A9944826B0DB6600192203 /* CalculatorViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9944726B0DB6600192203 /* CalculatorViewBody.swift */; };
@@ -86,6 +88,8 @@
 		A840F5D626AFB321009EB7A8 /* AverageSpeedEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageSpeedEditField.swift; sourceTree = "<group>"; };
 		A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageSpeedCalculatorView.swift; sourceTree = "<group>"; };
 		A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsOfMeasureView.swift; sourceTree = "<group>"; };
+		A8A753D72765A33B002A2871 /* SearchFieldDestinationLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldDestinationLocation.swift; sourceTree = "<group>"; };
+		A8A753D92765A372002A2871 /* SearchFieldOriginLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldOriginLocation.swift; sourceTree = "<group>"; };
 		A8A9944126B0BEDC00192203 /* DeviceSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSelector.swift; sourceTree = "<group>"; };
 		A8A9944326B0C48700192203 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A8A9944726B0DB6600192203 /* CalculatorViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewBody.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				A8A9945226B12D8400192203 /* DirectionsMap.swift */,
 				A815C94027640C02009ECEDF /* RouteTimeResultsView.swift */,
 				A815C94227640F12009ECEDF /* DeviceSelectAndSettingsView.swift */,
+				A8A753D92765A372002A2871 /* SearchFieldOriginLocation.swift */,
+				A8A753D72765A33B002A2871 /* SearchFieldDestinationLocation.swift */,
 				A815C94827644193009ECEDF /* CompleterResults.swift */,
 			);
 			path = Components;
@@ -404,6 +410,7 @@
 				A8EF716A26AE7D7500F0D1FD /* MobilityDevice.swift in Sources */,
 				A8A9945326B12D8500192203 /* DirectionsMap.swift in Sources */,
 				A815C94327640F12009ECEDF /* DeviceSelectAndSettingsView.swift in Sources */,
+				A8A753DA2765A372002A2871 /* SearchFieldOriginLocation.swift in Sources */,
 				A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */,
 				A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */,
 				A815C9452764235B009ECEDF /* TextExtension.swift in Sources */,
@@ -417,6 +424,7 @@
 				A8EF716F26AE808C00F0D1FD /* ContentModel.swift in Sources */,
 				A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */,
 				A815C94B276450E8009ECEDF /* SearchCompleterDelegate.swift in Sources */,
+				A8A753D82765A33B002A2871 /* SearchFieldDestinationLocation.swift in Sources */,
 				A8EF718126AE986F00F0D1FD /* SettingsView.swift in Sources */,
 				A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */,
 				A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */,

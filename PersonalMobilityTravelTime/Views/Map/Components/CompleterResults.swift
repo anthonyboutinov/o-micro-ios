@@ -15,22 +15,33 @@ struct CompleterResults: View {
 //    @Binding var selectedDestination: MKLocalSearchCompletion?
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                ForEach(self.map.completerResults, id: \.self) { suggestion in
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text(self.createHighlightedString(text: suggestion.title, rangeValues: suggestion.titleHighlightRanges))
-                        Text(self.createHighlightedString(text: suggestion.subtitle, rangeValues: suggestion.subtitleHighlightRanges))
-                            .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                            .foregroundColor(Color.gray)
+        if let suggestions = self.map.completerResults {
+            ScrollView {
+                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                    ForEach(suggestions, id: \.self) { suggestion in
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(self.createHighlightedString(text: suggestion.title, rangeValues: suggestion.titleHighlightRanges))
+                            Text(self.createHighlightedString(text: suggestion.subtitle, rangeValues: suggestion.subtitleHighlightRanges))
+                                .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
+                                .foregroundColor(Color.gray)
+                        }
+                            .onTapGesture {
+                                map.search(for: suggestion)
+                                if map.originLabel == "" {
+                                    map.originLabel = Constants.Text.currentLocationLabel
+                                    // TODO: more needs to be done here, or this might need to be moved to the view model
+                                }
+                                map.state = .sentSearchRequest
+                                UIApplication.shared.endEditing()
+                            }
                     }
-//                        .onTapGesture {
-//                            selectedDestination = suggestion
-//                        }
                 }
+                .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
+                .padding(.vertical, Constants.UI.verticalSectionSpacing)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(0)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private func createHighlightedString(text: String, rangeValues: [NSValue]) -> NSAttributedString {
