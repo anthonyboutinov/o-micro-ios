@@ -75,11 +75,11 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
             let rounded = timeToTravel.rounded()
             if timeToTravel >= 60 {
                 let fullHours = floor(rounded / 60)
-                let leftoverMinutes = rounded.truncatingRemainder(dividingBy: 60.0)
+                let leftoverMinutes = Int(rounded.truncatingRemainder(dividingBy: 60.0))
                 if leftoverMinutes < 3 { // if is full hours ±3 min
                     return String(format: "%.0f \(Constants.Time.h)", fullHours)
                 } else if (superCompact) {
-                    return String(format: "%.0f:%.02d", fullHours, leftoverMinutes)
+                    return String(format: "%.0f:%02d", fullHours, leftoverMinutes)
                 } else {
                     return String(format: "%.0f \(Constants.Time.h) %.0f \(Constants.Time.min)", fullHours, leftoverMinutes)
                 }

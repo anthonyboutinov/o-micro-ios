@@ -18,7 +18,7 @@ struct CalculatorViewBody: View {
     var distanceProxy: Binding<String> {
         Binding<String>(
             get: {
-                String(Double(self.distanceInCurrentUnits).removeZerosFromEnd(leaveFirst: 2))
+                Double(self.distanceInCurrentUnits).removeZerosFromEnd(leaveFirst: 2)
             },
             set: {
                 if !($0.last == "." || $0.last == ",") {
