@@ -16,7 +16,7 @@ class SearchCompleterDelegate: NSObject, ObservableObject, MKLocalSearchComplete
             print("CompleterDelegate.completerResults didSet to \(self.completerResults)")
         }
     }
-        
+    
     /// - Tag: QueryResults
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         print("completerDidUpdateResults with results: \(completer.results)")

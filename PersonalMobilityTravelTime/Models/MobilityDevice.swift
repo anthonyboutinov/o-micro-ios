@@ -47,7 +47,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         var distanceKm: Double
         var travelTimeMinutes: Double
     }
-
+    
     // MARK: - Conforming to Hashable
     
     static func == (lhs: MobilityDevice, rhs: MobilityDevice) -> Bool {

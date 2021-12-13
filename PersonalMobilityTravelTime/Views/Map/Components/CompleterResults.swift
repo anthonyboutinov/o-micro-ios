@@ -12,7 +12,7 @@ struct CompleterResults: View {
     
     @EnvironmentObject var map: MapTabModel
     
-//    @Binding var selectedDestination: MKLocalSearchCompletion?
+    //    @Binding var selectedDestination: MKLocalSearchCompletion?
     
     var body: some View {
         if let suggestions = self.map.completerResults {
@@ -25,15 +25,15 @@ struct CompleterResults: View {
                                 .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
                                 .foregroundColor(Color.gray)
                         }
-                            .onTapGesture {
-                                map.search(for: suggestion)
-                                if map.originLabel == "" {
-                                    map.originLabel = Constants.Text.currentLocationLabel
-                                    // TODO: more needs to be done here, or this might need to be moved to the view model
-                                }
-                                map.state = .sentSearchRequest
-                                UIApplication.shared.endEditing()
+                        .onTapGesture {
+                            map.search(for: suggestion)
+                            if map.originLabel == "" {
+                                map.originLabel = Constants.Text.currentLocationLabel
+                                // TODO: more needs to be done here, or this might need to be moved to the view model
                             }
+                            map.state = .sentSearchRequest
+                            UIApplication.shared.endEditing()
+                        }
                     }
                 }
                 .padding(.horizontal, Constants.UI.horizontalSectionSpacing)

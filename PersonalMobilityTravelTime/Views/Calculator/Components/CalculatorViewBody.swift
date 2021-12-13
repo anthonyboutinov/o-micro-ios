@@ -29,7 +29,7 @@ struct CalculatorViewBody: View {
                     }
                 }
             }
-            )
+        )
     }
     
     enum FocusField: Hashable {
@@ -46,7 +46,7 @@ struct CalculatorViewBody: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
-                                
+                
                 // MARK: - Enter Your Trip Details
                 VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                     Text("Enter Your Trip Details")
@@ -59,10 +59,10 @@ struct CalculatorViewBody: View {
                         Spacer()
                         
                         TextField("", text: distanceProxy)
-                        .multilineTextAlignment(.trailing)
-                        .font(Font.system(size: 14, weight: .semibold))
-                        .keyboardType(.decimalPad)
-                        .focused($focusedField, equals: .distance)
+                            .multilineTextAlignment(.trailing)
+                            .font(Font.system(size: 14, weight: .semibold))
+                            .keyboardType(.decimalPad)
+                            .focused($focusedField, equals: .distance)
                         
                         Text(model.units.description)
                             .foregroundColor(Constants.Colors.graphite)

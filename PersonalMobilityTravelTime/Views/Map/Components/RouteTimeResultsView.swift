@@ -34,75 +34,75 @@ struct RouteTimeResultsView: View {
         if self.distances.count == Set(self.model.devices.compactMap({ d in
             d.transportType
         })).count {
-        HStack(alignment: .center, spacing: Constants.UI.itemSpacing / 2) {
-            
-            let devices = deviceList()
-            
-            VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                ForEach(devices) { device in
-                    Text(device.title)
-                        .fontWeight(model.selectedDevice == device ? .medium : .regular)
-                        .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
+            HStack(alignment: .center, spacing: Constants.UI.itemSpacing / 2) {
+                
+                let devices = deviceList()
+                
+                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                    ForEach(devices) { device in
+                        Text(device.title)
+                            .fontWeight(model.selectedDevice == device ? .medium : .regular)
+                            .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
+                    }
                 }
-            }
-            
-            Spacer()
-            
-            VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                ForEach(devices) { device in
-                    
-                    HStack(alignment: .center, spacing: 0) {
-                        let travelTimeFormatted = MobilityDevice.Calculator.travelTimeFormattedCompactly(distance: self.distances[device.transportType]!, averageSpeedKmh: device.averageSpeedKmh, superCompact: device.isElectric)
+                
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                    ForEach(devices) { device in
                         
-                        
-                        let batteryUsage: Double? = device.isElectric && device.distanceOnFullChargeKm != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distances[device.transportType]!, capacity: device.distanceOnFullChargeKm!) : nil;
-                        
-                        // These have values if batteryUsage is not nil
-                        let warningColor: Color? = warningColor(batteryUsage, device: device)
-                        let batterySymbolPercentage: String = batteryImagePercentage(batteryUsage)
-                        
-                        if batteryUsage != nil && batteryUsage! > 2.0 {
-                            // if it would be impossible to travel by this electric device, display custom info
-                            Text("☠️")
-                            batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
-                        } else {
-                        
-                            Text("\(travelTimeFormatted)\(batteryUsage != nil ? " (" : "")")
-                                .bold()
-                                .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
-                                
-                            if (batteryUsage != nil) {
-                                Text("\(Int(batteryUsage! * 100))%")
-                                    .bold()
-                                    .foregroundColor(warningColor!)
+                        HStack(alignment: .center, spacing: 0) {
+                            let travelTimeFormatted = MobilityDevice.Calculator.travelTimeFormattedCompactly(distance: self.distances[device.transportType]!, averageSpeedKmh: device.averageSpeedKmh, superCompact: device.isElectric)
+                            
+                            
+                            let batteryUsage: Double? = device.isElectric && device.distanceOnFullChargeKm != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distances[device.transportType]!, capacity: device.distanceOnFullChargeKm!) : nil;
+                            
+                            // These have values if batteryUsage is not nil
+                            let warningColor: Color? = warningColor(batteryUsage, device: device)
+                            let batterySymbolPercentage: String = batteryImagePercentage(batteryUsage)
+                            
+                            if batteryUsage != nil && batteryUsage! > 2.0 {
+                                // if it would be impossible to travel by this electric device, display custom info
+                                Text("☠️")
                                 batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
-                                Text(")")
+                            } else {
+                                
+                                Text("\(travelTimeFormatted)\(batteryUsage != nil ? " (" : "")")
                                     .bold()
                                     .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
+                                
+                                if (batteryUsage != nil) {
+                                    Text("\(Int(batteryUsage! * 100))%")
+                                        .bold()
+                                        .foregroundColor(warningColor!)
+                                    batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
+                                    Text(")")
+                                        .bold()
+                                        .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
+                                }
                             }
                         }
                     }
                 }
-            }
-            
-            VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                ForEach(devices) { device in
-                    Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
-                        .bold()
-                        .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
+                
+                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                    ForEach(devices) { device in
+                        Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
+                            .bold()
+                            .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
+                    }
+                    .padding(.leading, 5.0)
                 }
-                .padding(.leading, 5.0)
+            }
+            .lineLimit(1)
+            .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
+            .allowsTightening(true)
+            .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
+            .padding(.vertical, Constants.UI.verticalButtonSpacing)
+            .onTapGesture {
+                isExpanded.toggle()
             }
         }
-        .lineLimit(1)
-        .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-        .allowsTightening(true)
-        .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
-        .padding(.vertical, Constants.UI.verticalButtonSpacing)
-        .onTapGesture {
-            isExpanded.toggle()
-        }
-    }
     }
     
     private func batteryImagePercentage(_ batteryUsage: Double?) -> String {
@@ -129,11 +129,11 @@ struct RouteTimeResultsView: View {
 }
 
 struct RouteTimeResultsView_Previews: PreviewProvider {
-//    @State static var xlong:  Double? = 400
-//    @State static var long:   Double? = 24.23653
-//    @State static var medium: Double? = 11.1
-//    @State static var short:  Double? = 6
-//    @State static var xshort: Double? = 0.914
+    //    @State static var xlong:  Double? = 400
+    //    @State static var long:   Double? = 24.23653
+    //    @State static var medium: Double? = 11.1
+    //    @State static var short:  Double? = 6
+    //    @State static var xshort: Double? = 0.914
     
     @State static var xlong: [MobilityDevice.TransportType: Double] = [
         MobilityDevice.TransportType.automobile: 400,

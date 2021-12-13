@@ -12,7 +12,7 @@ struct MapViewContent: View {
     
     @EnvironmentObject var model: ContentModel
     @EnvironmentObject var map: MapTabModel
-
+    
     enum FocusField: Hashable {
         case destination
         case origin
@@ -21,7 +21,7 @@ struct MapViewContent: View {
     @FocusState private var focusedField: FocusField?
     
     // MARK: - body
-        
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 0) {

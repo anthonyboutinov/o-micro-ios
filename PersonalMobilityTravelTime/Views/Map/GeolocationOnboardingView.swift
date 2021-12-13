@@ -33,7 +33,7 @@ struct GeolocationOnboardingView: View {
             }, label: {
                 Text("Allow Location Services")
             })
-            .buttonStyle(PlainLikeButtonStyle(.primary))
+                .buttonStyle(PlainLikeButtonStyle(.primary))
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)

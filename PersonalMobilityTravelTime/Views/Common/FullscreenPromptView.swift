@@ -44,7 +44,7 @@ struct FullscreenPromptView: View {
             Button(action: buttonAction, label: {
                 Text(buttonLabel)
             })
-            .buttonStyle(PlainLikeButtonStyle(.primary))
+                .buttonStyle(PlainLikeButtonStyle(.primary))
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)

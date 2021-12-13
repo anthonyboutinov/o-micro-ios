@@ -12,7 +12,7 @@ struct DirectionsMap: UIViewRepresentable {
     
     @EnvironmentObject var map: MapTabModel
     @EnvironmentObject var model: ContentModel
-        
+    
     var start: CLLocationCoordinate2D {
         return map.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
     }

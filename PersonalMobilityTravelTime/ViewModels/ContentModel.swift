@@ -10,7 +10,7 @@ import Foundation
 class ContentModel: ObservableObject {
     
     // MARK: - First Launch
-//
+    //
 //    @Published var isFirstLaunch: Bool {
 //        didSet {
 //            if oldValue == true {
@@ -19,7 +19,7 @@ class ContentModel: ObservableObject {
 //        }
 //    }
     @Published var setUpProcess = SetUpProcess.firstDeviceAddedSoComplete // SetUpProcess.firstLaunch
-        
+    
     enum SetUpProcess {
         case firstLaunch
         case noDevices
@@ -40,7 +40,7 @@ class ContentModel: ObservableObject {
     
     //    @Published var calculatorTab: CalculatorTabModel
     @Published var calculator: RouteStat?
-//    @Published var map: MapTabModel
+    //    @Published var map: MapTabModel
     
     @Published var currentTab: Tabs {
         didSet {
@@ -56,9 +56,6 @@ class ContentModel: ObservableObject {
     // MARK: - General Methods
     
     init() {
-        
-        //        calculatorTab = CalculatorTabModel()
-//        map = MapTabModel()
         currentTab = Tabs.calculator
         
         populateDevices()
@@ -184,9 +181,9 @@ class ContentModel: ObservableObject {
 // MARK: - RouteStat
 struct RouteStat {
     weak var device: MobilityDevice?
-
+    
     var distanceKm: Double
-
+    
     var timeH: Double? {
         if let device = device {
             return distanceKm / device.averageSpeedKmh

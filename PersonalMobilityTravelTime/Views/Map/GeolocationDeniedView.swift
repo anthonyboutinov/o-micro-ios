@@ -30,7 +30,7 @@ struct GeolocationDeniedView: View {
             }, label: {
                 Text("Open Settings")
             })
-            .buttonStyle(PlainLikeButtonStyle(.primary))
+                .buttonStyle(PlainLikeButtonStyle(.primary))
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)
