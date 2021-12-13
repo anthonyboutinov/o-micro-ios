@@ -150,9 +150,15 @@ class ContentModel: ObservableObject {
         case map
     }
     
-    enum Units: CustomStringConvertible {
+    enum Units: CustomStringConvertible, Identifiable {
+        var id: Self { self }
+        
         case metric
         case imperial
+        
+        static var all: [Units] {
+            return [.metric, .imperial]
+        }
         
         var description: String {
             switch self {

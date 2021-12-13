@@ -12,23 +12,10 @@ struct UnitsOfMeasureView: View {
     @EnvironmentObject var model: ContentModel
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
-                HStack {
-                    Text("Units")
-                    Spacer()
-                    Picker(selection: $model.units, label: Text("Picker"), content: {
-                        Text(ContentModel.Units.imperial.fullDescription).tag(ContentModel.Units.imperial)
-                        Text(ContentModel.Units.metric.fullDescription).tag(ContentModel.Units.metric)
-                    })
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.vertical, -10)
-                        .padding(.trailing, -12)
-                }
-                .modifier(InputFieldViewModifier())
+        List {
+            ForEach(ContentModel.Units.all) {unit in
+                UnitOption(unit: unit)
             }
-            .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
-            .padding(.vertical, Constants.UI.verticalSectionSpacing)
         }
         .navigationTitle("Units of Measure")
     }
