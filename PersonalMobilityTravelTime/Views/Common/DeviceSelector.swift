@@ -24,7 +24,7 @@ struct DeviceSelector: View {
                                 .font(.caption2)
                         }
                     }
-                    .foregroundColor(model.selectedDevice == device ? .accentColor : .black)
+                    .foregroundColor(model.selectedDevice == device ? .accentColor : Constants.Colors.text)
                 }
             }
         }

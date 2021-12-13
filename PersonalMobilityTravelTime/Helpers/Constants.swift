@@ -43,9 +43,15 @@ class Constants {
     }
     
     class Colors {
-        static var quartz = Color(red:0.965, green:0.965, blue:0.965) // Color(.displayP3, red: 173/255, green: 173/255, blue: 173.255, opacity: 0.1)
-        static var graphite = Color(red:0.427, green:0.447, blue:0.471)
-        static var mist = Color(red:0.957, green:0.957, blue:0.957)
+        static var quartz = Color("QuartzColor")
+        static var graphite = Color("GraphiteColor")
+        static var mist = Color("MistColor")
+        static var text = Color("TextColor")
+        static var textInverse = Color("TextInverseColor")
+        static var transparent = Color("TransparentColor")
+        static var red = Color("RedColor")
+        static var orange = Color("OrangeColor")
+        static var route = UIColor(Color("RouteColor"))
     }
     
     static let allIcons = [

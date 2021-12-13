@@ -18,7 +18,7 @@ struct DeviceSelectAndSettingsView: View {
         HStack {
             let batteryUsage: Double? = self.distance != nil ? (model.selectedDevice?.distanceOnFullChargeKm != nil && model.selectedDevice?.isElectric != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distance!, capacity: model.selectedDevice!.distanceOnFullChargeKm!) : nil) : nil
             DeviceSelector()
-                .accentColor(batteryUsage != nil && batteryUsage! >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : Color.accentColor)
+                .accentColor(batteryUsage != nil && batteryUsage! >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Constants.Colors.red : Color.accentColor)
             
             if state == .initial {
                 NavigationLink("Settings", destination: SettingsView())

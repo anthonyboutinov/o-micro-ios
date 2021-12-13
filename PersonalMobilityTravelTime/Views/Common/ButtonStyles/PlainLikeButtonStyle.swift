@@ -13,9 +13,9 @@ struct PlainLikeButtonStyle: ButtonStyle {
     private func foregroundColor() -> Color {
         switch style {
         case .primary:
-            return Color.white
+            return Constants.Colors.textInverse
         case .destructive:
-            return Color.red
+            return Constants.Colors.red
         case .cancel:
             return Constants.Colors.graphite
         default:
@@ -28,7 +28,7 @@ struct PlainLikeButtonStyle: ButtonStyle {
         case .primary:
             return Color.accentColor
         default:
-            return Color.white
+            return Constants.Colors.transparent
         }
     }
     

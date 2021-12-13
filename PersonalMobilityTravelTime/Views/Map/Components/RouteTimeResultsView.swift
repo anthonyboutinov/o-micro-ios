@@ -42,7 +42,7 @@ struct RouteTimeResultsView: View {
                 ForEach(devices) { device in
                     Text(device.title)
                         .fontWeight(model.selectedDevice == device ? .medium : .regular)
-                        .foregroundColor(model.selectedDevice == device ? .black : .gray)
+                        .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
                 }
             }
             
@@ -69,7 +69,7 @@ struct RouteTimeResultsView: View {
                         
                             Text("\(travelTimeFormatted)\(batteryUsage != nil ? " (" : "")")
                                 .bold()
-                                .foregroundColor(model.selectedDevice == device ? .black : .gray)
+                                .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
                                 
                             if (batteryUsage != nil) {
                                 Text("\(Int(batteryUsage! * 100))%")
@@ -78,7 +78,7 @@ struct RouteTimeResultsView: View {
                                 batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
                                 Text(")")
                                     .bold()
-                                    .foregroundColor(model.selectedDevice == device ? .black : .gray)
+                                    .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
                             }
                         }
                     }
@@ -89,7 +89,7 @@ struct RouteTimeResultsView: View {
                 ForEach(devices) { device in
                     Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
                         .bold()
-                        .foregroundColor(model.selectedDevice == device ? .black : .gray)
+                        .foregroundColor(model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite)
                 }
                 .padding(.leading, 5.0)
             }
@@ -116,7 +116,7 @@ struct RouteTimeResultsView: View {
     
     private func warningColor(_ batteryUsage: Double?, device: MobilityDevice) -> Color? {
         if let batteryUsage = batteryUsage {
-            return batteryUsage >= Constants.CalculatorUI.batteryUsageWarningPercentage && batteryUsage < Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.orange : (batteryUsage >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Color.red : (model.selectedDevice == device ? Color.black : Color.gray))
+            return batteryUsage >= Constants.CalculatorUI.batteryUsageWarningPercentage && batteryUsage < Constants.CalculatorUI.batteryUsageDangerPercentage ? Constants.Colors.orange : (batteryUsage >= Constants.CalculatorUI.batteryUsageDangerPercentage ? Constants.Colors.red : (model.selectedDevice == device ? Constants.Colors.text : Constants.Colors.graphite))
         } else {
             return nil
         }

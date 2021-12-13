@@ -27,7 +27,7 @@ struct ChooseIconView: View {
                         selectedIcon = icon
                     }, label: {
                         DeviceIcon(named: icon, scale: .large)
-                            .foregroundColor(icon == selectedIcon ? .accentColor : .black)
+                            .foregroundColor(icon == selectedIcon ? .accentColor : Constants.Colors.text)
                     })
                     
                 }

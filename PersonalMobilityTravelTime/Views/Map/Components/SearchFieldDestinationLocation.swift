@@ -17,6 +17,8 @@ struct SearchFieldDestinationLocation: View {
         // MARK: Search Field Destination Location
         HStack {
             Image(self.map.state != .destinationSet ? Constants.SearchbarIcons.magnifyingGlass.rawValue : Constants.SearchbarIcons.destination.rawValue)
+                .renderingMode(.template)
+                .foregroundColor(Constants.Colors.text)
             TextField(Constants.Text.searchPlaceholder, text: self.$map.destinationLabel.didSet({ newValue in
                 if self.map.state == .enteringDestination || self.map.state == .focusedOnEnteringDestination {
                     self.map.searchCompleter.queryFragment = newValue
