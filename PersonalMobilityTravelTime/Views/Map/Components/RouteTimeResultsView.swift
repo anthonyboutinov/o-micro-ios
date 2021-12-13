@@ -11,7 +11,7 @@ struct RouteTimeResultsView: View {
     
     @EnvironmentObject var model: ContentModel
     
-    @Binding var distance: Double?
+    @Binding var distances: [MobilityDevice.TransportType: Double]
     @Binding var isExpanded: Bool
     
     /// First item in the sorted list is the selected device, then the rest go according to their speed, in decreasing order, while removing any electric devices that are unable to make such a journey, and display only the first few options so that the list at the bottom of the screen is not too big
@@ -21,7 +21,7 @@ struct RouteTimeResultsView: View {
                 return lhs == model.selectedDevice ? true : (lhs.averageSpeedKmh > rhs.averageSpeedKmh && rhs != model.selectedDevice)
             })
             .filter { e in
-                model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distance!, capacity: e.distanceOnFullChargeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
+                model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distances[e.transportType]!, capacity: e.distanceOnFullChargeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
             }
         if isExpanded {
             return list.prefix(Int.max)
@@ -31,7 +31,9 @@ struct RouteTimeResultsView: View {
     }
     
     var body: some View {
-        if self.distance != nil {
+        if self.distances.count == Set(self.model.devices.compactMap({ d in
+            d.transportType
+        })).count {
         HStack(alignment: .center, spacing: Constants.UI.itemSpacing / 2) {
             
             let devices = deviceList()
@@ -50,10 +52,10 @@ struct RouteTimeResultsView: View {
                 ForEach(devices) { device in
                     
                     HStack(alignment: .center, spacing: 0) {
-                        let travelTimeFormatted = MobilityDevice.Calculator.travelTimeFormattedCompactly(distance: self.distance!, averageSpeedKmh: device.averageSpeedKmh, superCompact: device.isElectric)
+                        let travelTimeFormatted = MobilityDevice.Calculator.travelTimeFormattedCompactly(distance: self.distances[device.transportType]!, averageSpeedKmh: device.averageSpeedKmh, superCompact: device.isElectric)
                         
                         
-                        let batteryUsage: Double? = device.isElectric && device.distanceOnFullChargeKm != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distance!, capacity: device.distanceOnFullChargeKm!) : nil;
+                        let batteryUsage: Double? = device.isElectric && device.distanceOnFullChargeKm != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distances[device.transportType]!, capacity: device.distanceOnFullChargeKm!) : nil;
                         
                         // These have values if batteryUsage is not nil
                         let warningColor: Color? = warningColor(batteryUsage, device: device)
@@ -85,7 +87,7 @@ struct RouteTimeResultsView: View {
             
             VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                 ForEach(devices) { device in
-                    Text(String("\(self.distance!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
+                    Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
                         .bold()
                         .foregroundColor(model.selectedDevice == device ? .black : .gray)
                 }
@@ -127,34 +129,55 @@ struct RouteTimeResultsView: View {
 }
 
 struct RouteTimeResultsView_Previews: PreviewProvider {
-    @State static var xlong:  Double? = 400
-    @State static var long:   Double? = 24.23653
-    @State static var medium: Double? = 11.1
-    @State static var short:  Double? = 6
-    @State static var xshort: Double? = 0.914
+//    @State static var xlong:  Double? = 400
+//    @State static var long:   Double? = 24.23653
+//    @State static var medium: Double? = 11.1
+//    @State static var short:  Double? = 6
+//    @State static var xshort: Double? = 0.914
+    
+    @State static var xlong: [MobilityDevice.TransportType: Double] = [
+        MobilityDevice.TransportType.automobile: 400,
+        MobilityDevice.TransportType.pedestrian: 399.8
+    ]
+    @State static var long: [MobilityDevice.TransportType: Double] = [
+        MobilityDevice.TransportType.automobile: 24.23,
+        MobilityDevice.TransportType.pedestrian: 22
+    ]
+    @State static var medium: [MobilityDevice.TransportType: Double] = [
+        MobilityDevice.TransportType.automobile: 14,
+        MobilityDevice.TransportType.pedestrian: 11.1
+    ]
+    @State static var short: [MobilityDevice.TransportType: Double] = [
+        MobilityDevice.TransportType.automobile: 6,
+        MobilityDevice.TransportType.pedestrian: 3.2
+    ]
+    @State static var xshort: [MobilityDevice.TransportType: Double] = [
+        MobilityDevice.TransportType.automobile: 0.914,
+        MobilityDevice.TransportType.pedestrian: 0.85
+    ]
     
     @State static var expanded = true
     @State static var compact = false
     
     static var previews: some View {
         
-        RouteTimeResultsView(distance: $long, isExpanded: $expanded)
+        RouteTimeResultsView(distances: $long, isExpanded: $expanded)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $medium, isExpanded: $compact)
+        RouteTimeResultsView(distances: $medium, isExpanded: $compact)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $short, isExpanded: $compact)
+        RouteTimeResultsView(distances: $short, isExpanded: $compact)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $xshort, isExpanded: $compact)
+        RouteTimeResultsView(distances: $xshort, isExpanded: $compact)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distance: $xlong, isExpanded: $expanded)
+        RouteTimeResultsView(distances: $xlong, isExpanded: $expanded)
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
     }

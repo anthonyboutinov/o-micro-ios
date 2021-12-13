@@ -27,7 +27,7 @@ struct MapViewContent: View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                 
-                DeviceSelectAndSettingsView(distance: self.$map.routeDistance, state: self.$map.state)
+                DeviceSelectAndSettingsView(distance: self.$map.routeDistances[self.model.selectedDevice!.transportType], state: self.$map.state)
                 
                 SearchFieldOriginLocation(focusedField: $focusedField)
                 
@@ -48,8 +48,8 @@ struct MapViewContent: View {
                 Spacer()
             }
             
-            if self.map.state == .destinationSet && self.map.routeDistance != nil {
-                RouteTimeResultsView(distance: self.$map.routeDistance, isExpanded: self.$map.routeTimeResultsAreExpanded)
+            if self.map.state == .destinationSet && !self.map.routeDistances.isEmpty {
+                RouteTimeResultsView(distances: self.$map.routeDistances, isExpanded: self.$map.routeTimeResultsAreExpanded)
             }
         }
         .navigationBarTitle("Map") //this must be empty or set to something

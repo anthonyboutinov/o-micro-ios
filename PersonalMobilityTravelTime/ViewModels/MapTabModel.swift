@@ -30,7 +30,6 @@ class MapTabModel: NSObject, ObservableObject {
     @Published var destinationLabel: String = ""
     
     @Published var waypoints = [Waypoint]()
-//    @Published var routeStats = [RouteStat]()
     
     enum OriginPointState: Hashable {
         case currentLocation
@@ -39,18 +38,29 @@ class MapTabModel: NSObject, ObservableObject {
     @Published var originPointState = OriginPointState.currentLocation
     @Published var originLabel: String = Constants.Text.currentLocationLabel
     
-    @Published var routeDistance: Double?
+    /// For each type of TransportType that the user's devices have stores route distance in kilometers
+    @Published var routeDistances = [MobilityDevice.TransportType: Double]()
+    
+    /// A boolean flag for toggling between compact view (limited to ~3 devices) and full view for RouteTimeResultsView
     @Published var routeTimeResultsAreExpanded = false
+    
+    /// Allows the map view to register when transportationType to draw changes, so it can clear it's content and recalculate routes
+    @Published var displayingRouteForTransportType: MobilityDevice.TransportType? {
+        didSet {
+            print("displayingRouteForTransportType didSet to \(self.displayingRouteForTransportType.debugDescription)")
+        }
+    }
     
     private func reset() {
         destinationLabel = ""
         originPointState = OriginPointState.currentLocation
         originLabel = Constants.Text.currentLocationLabel
-        routeDistance = nil
+        routeDistances.removeAll()
         completerResults = nil
         localSearch = nil // sets places to nil as well
         location = nil
         routeTimeResultsAreExpanded = false
+        displayingRouteForTransportType = nil
     }
     
     // MARK: - Geolocation tracking
