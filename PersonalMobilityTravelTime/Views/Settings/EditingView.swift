@@ -11,9 +11,11 @@ import SwiftUI
 struct EditingView: View {
     
     @EnvironmentObject var model: ContentModel
-//    @EnvironmentObject var partialSheetManager: PartialSheetManager
+    //    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject var deviceToEdit: MobilityDevice
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var isNew: Bool = false
     
@@ -114,10 +116,10 @@ struct EditingView: View {
                             Spacer()
                             
                             TextField("", text: distanceOnFullChargeProxy)
-                            .multilineTextAlignment(.trailing)
-                            .font(Font.system(size: 14, weight: .semibold))
-                            .keyboardType(.decimalPad)
-                            .frame(maxWidth: 50)
+                                .multilineTextAlignment(.trailing)
+                                .font(Font.system(size: 14, weight: .semibold))
+                                .keyboardType(.decimalPad)
+                                .frame(maxWidth: 50)
                             
                             Text(model.units.description)
                                 .foregroundColor(Constants.Colors.graphite)
@@ -140,11 +142,12 @@ struct EditingView: View {
                 if isNew == true {
                     Button(action: {
                         model.addDevice(deviceToEdit)
+                        presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Done")
                     })
-                    .buttonStyle(PlainLikeButtonStyle(.primary))
-                    .disabled(!ContentModel.isValid(deviceToEdit))
+                        .buttonStyle(PlainLikeButtonStyle(.primary))
+                        .disabled(!ContentModel.isValid(deviceToEdit))
                 } else {
                     DeleteButton(deviceToEdit: deviceToEdit)
                 }
@@ -166,6 +169,6 @@ struct EditingView_Previews: PreviewProvider {
     static var previews: some View {
         EditingView(deviceToEdit: nil)
             .environmentObject(ContentModel())
-//            .environmentObject(PartialSheetManager())
+        //            .environmentObject(PartialSheetManager())
     }
 }

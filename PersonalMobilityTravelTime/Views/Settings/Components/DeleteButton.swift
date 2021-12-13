@@ -15,6 +15,8 @@ struct DeleteButton: View {
     
     @State private var showAlert = false
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         Button(action: {
             showAlert = true
@@ -33,6 +35,7 @@ struct DeleteButton: View {
                     Text("Delete"),
                     action: {
                         model.deleteDevice(deviceToEdit)
+                        presentationMode.wrappedValue.dismiss()
                     }
                 )
             )

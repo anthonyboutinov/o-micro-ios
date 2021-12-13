@@ -28,11 +28,17 @@ struct LaunchView: View {
                         Image(systemName: "slider.horizontal.below.rectangle")
                         Text("Calculator")
                     }.tag(0)
+                        .navigationBarTitle("Calculator") //this must be empty or set to something
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
                     MapView().tabItem {
                         Image(systemName: "map.fill")
                         Text("Map")
                     }.tag(1)
                         .environmentObject(mapTabModel)
+                        .navigationBarTitle("Map") //this must be empty or set to something
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
                 }
             }
             .addPartialSheet()

@@ -30,9 +30,6 @@ struct CalculatorView: View {
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)
-        .navigationBarTitle("Calculator") //this must be empty or set to something
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

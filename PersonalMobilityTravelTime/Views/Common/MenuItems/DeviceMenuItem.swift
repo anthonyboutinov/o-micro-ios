@@ -20,10 +20,7 @@ struct DeviceMenuItem: View {
                 .frame(width: Constants.UI.deviceIconSize, height: Constants.UI.deviceIconSize, alignment: .center)
                 .foregroundColor(Constants.Colors.text)
             Text(label)
-                .fontWeight(.medium)
                 .multilineTextAlignment(.leading)
-            Spacer()
-            Image(systemName: "chevron.right")
         }
     }
 }

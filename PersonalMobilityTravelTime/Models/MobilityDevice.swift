@@ -119,5 +119,3 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
 }
-
-

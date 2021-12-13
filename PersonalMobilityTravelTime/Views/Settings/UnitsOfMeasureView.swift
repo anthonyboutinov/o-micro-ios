@@ -21,9 +21,9 @@ struct UnitsOfMeasureView: View {
                         Text(ContentModel.Units.imperial.fullDescription).tag(ContentModel.Units.imperial)
                         Text(ContentModel.Units.metric.fullDescription).tag(ContentModel.Units.metric)
                     })
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.vertical, -10)
-                    .padding(.trailing, -12)
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.vertical, -10)
+                        .padding(.trailing, -12)
                 }
                 .modifier(InputFieldViewModifier())
             }

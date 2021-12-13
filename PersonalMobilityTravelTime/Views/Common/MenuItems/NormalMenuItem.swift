@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct NormalMenuItem: View {
-    var icon: String
+    var icon: String?
     var label: String
+    var currentValue: String?
     
     var body: some View {
         HStack(spacing: Constants.UI.horizontalButtonSpacing) {
-            Image(systemName: icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: Constants.UI.deviceIconSize, height: Constants.UI.deviceIconSize, alignment: .center)
+            if let icon = icon {
+                Image(systemName: icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: Constants.UI.deviceIconSize, height: Constants.UI.deviceIconSize, alignment: .center)
+            }
             Text(label)
-                .fontWeight(.medium)
                 .multilineTextAlignment(.leading)
-            Spacer()
-            Image(systemName: "chevron.right")
+            
+            if let currentValue = currentValue {
+                Spacer()
+                Text(currentValue)
+                    .foregroundColor(Constants.Colors.graphite)
+            }
         }
     }
 }

@@ -10,74 +10,67 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var model: ContentModel
     
+    @State var reorderingItems = false
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
-                
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                    HStack {
-                        Text("My Devices")
-                            .foregroundColor(.gray)
-                            .font(.title2)
-                        
-                        if model.devices.count > 1 {
-                            Spacer()
-                            Button(action: {
-                                
-                            }, label: {
-                                Text("Reorder")
-                            })
-                            .buttonStyle(DefaultButtonStyle())
-                        }
-                    }
-                    ForEach(model.devices) { device in
-                        NavigationLink(destination: EditingView(deviceToEdit: device)) {
-                            DeviceMenuItem(imageName: device.iconName, label: device.title)
-                        }
-                    }
-                    NavigationLink(destination: EditingView(deviceToEdit: nil)) {
-                        CenteredMenuItem(icon: "plus.circle", label: "Add Device")
-                    }
-                    .buttonStyle(PlainLikeButtonStyle())
-                }
-                
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                    Text("Preferences")
-                        .foregroundColor(.gray)
-                        .font(.title2)
-                    NavigationLink(destination: UnitsOfMeasureView()) {
-                        NormalMenuItem(icon: "ruler", label: "Units of Measure")
+        List {
+            Section(header: HStack {
+                Text("My Devices")
+            }) {
+                ForEach(model.devices) { device in
+                    NavigationLink(destination: EditingView(deviceToEdit: device)) {
+                        DeviceMenuItem(imageName: device.iconName, label: device.title)
                     }
                 }
-                
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                    Text("Other")
-                        .foregroundColor(.gray)
-                        .font(.title2)
-                    NavigationLink(destination: Text("Not Set")) {
-                        NormalMenuItem(icon: "app", label: "Would You Like to Develop an App?")
-                    }
-                    NavigationLink(destination: Text("Not Set")) {
-                        NormalMenuItem(icon: "lifepreserver", label: "Support")
-                    }
-                    NavigationLink(destination: Text("Not Set")) {
-                        NormalMenuItem(icon: "checkmark.shield", label: "Privacy Policy")
-                    }
-                    NavigationLink(destination: Text("Not Set")) {
-                        NormalMenuItem(icon: "doc.text", label: "Terms of Use")
-                    }
-                }
-                
-                
-                Spacer()
-                
+                .environment(\.editMode, self.reorderingItems ? .constant(.active) : .constant(.inactive))
             }
-            .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
-            .padding(.vertical, Constants.UI.verticalSectionSpacing)
-            .buttonStyle(MenuLikeButtonStyle())
+            
+            NavigationLink(destination: EditingView(deviceToEdit: nil)) {
+                NormalMenuItem(label: "Add Device...")
+            }
+            
+            Section(header: Text("Preferences")
+            ) {
+                NavigationLink(destination: UnitsOfMeasureView()) {
+                    NormalMenuItem(icon: "ruler", label: "Units of Measure"/*, currentValue: self.model.units.fullDescription*/)
+                }
+            }
+            
+            //                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+            //            Section(header: Text("Other")
+            ////                        .foregroundColor(Constants.Colors.graphite)
+            ////                        .font(.title2)
+            //            ) {
+            
+            //                    NavigationLink(destination: Text("Not Set")) {
+            //                        NormalMenuItem(/*icon: "app", */label: "Would You Like to Develop an App?")
+            //                    }
+            //                    NavigationLink(destination: Text("Not Set")) {
+            //                        NormalMenuItem(/*icon: "lifepreserver",  */label: "Support")
+            //                    }
+            //                    NavigationLink(destination: Text("Not Set")) {
+            //                        NormalMenuItem(icon: "checkmark.shield", label: "Privacy Policy")
+            //                    }
+            //                    NavigationLink(destination: Text("Not Set")) {
+            //                        NormalMenuItem(icon: "doc.text", label: "Terms of Use")
+            //                    }
+            //                }
+            
+            //            }
+            
+        }
+        .toolbar {
+            if model.devices.count > 1 {
+                Button("Reorder") {
+                    //...
+                }
+                .buttonStyle(DefaultButtonStyle())
+            }
         }
         .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
     }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
