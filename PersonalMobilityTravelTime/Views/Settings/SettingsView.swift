@@ -26,13 +26,13 @@ struct SettingsView: View {
             }
             
             NavigationLink(destination: EditingView(deviceToEdit: nil)) {
-                NormalMenuItem(label: "Add Device...")
+                NormalMenuItem(label: "Add device...")
             }
             
             Section(header: Text("Preferences")
             ) {
                 NavigationLink(destination: UnitsOfMeasureView()) {
-                    NormalMenuItem(icon: "ruler", label: "Units of Measure"/*, currentValue: self.model.units.fullDescription*/)
+                    NormalMenuItem(icon: "ruler", label: "Distance units"/*, currentValue: self.model.units.fullDescription*/)
                 }
             }
             

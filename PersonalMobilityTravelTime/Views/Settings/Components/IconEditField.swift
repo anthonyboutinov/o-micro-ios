@@ -32,8 +32,9 @@ struct IconEditField: View {
                         .padding(.vertical, Constants.UI.deviceIconVerticalPaddingInButtons)
                 }
             }
-            .modifier(InputFieldViewModifier())
+//            .modifier(InputFieldViewModifier())
         }
+        .foregroundColor(Color.primary)
         .partialSheet(isPresented: $isSheetShown) {
             ChooseIconView(selectedIcon: self.$tempValue, changeApproved: $changeApproved, isSheetShown: $isSheetShown)
         }

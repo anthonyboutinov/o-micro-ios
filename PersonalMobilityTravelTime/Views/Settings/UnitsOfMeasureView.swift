@@ -17,7 +17,7 @@ struct UnitsOfMeasureView: View {
                 UnitOption(unit: unit)
             }
         }
-        .navigationTitle("Units of Measure")
+        .navigationTitle("Distance units")
     }
 }
 

@@ -40,6 +40,9 @@ class Constants {
         static var mapEdgeInsetsVertical: CGFloat = 80
         static var mapEdgeInsetsHorizontal: CGFloat = 30
         
+        static var unitsMinWidth: CGFloat = 41
+        static var systemFontDefaultSize: CGFloat = 18
+        
     }
     
     class Colors {

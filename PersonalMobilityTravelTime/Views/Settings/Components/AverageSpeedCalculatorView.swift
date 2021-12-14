@@ -11,16 +11,17 @@ struct AverageSpeedCalculatorView: View {
     
     @EnvironmentObject var model: ContentModel
     
-    @Binding var distance: Double
-    @Binding var time: Double
-    @Binding var speed: Double
+    @ObservedObject var device: MobilityDevice
+    
+    @State private var distance: Double = 0
+    @State private var time: Double = 0
+    @State private var speed: Double = 0
     
     @State private var distanceLabel: String = ""
     @State private var timeLabel: String = ""
     @State private var speedLabel: String = ""
     
-    @Binding var changeApproved: Bool
-    @Binding var isSheetShown: Bool
+    @State private var changeApproved: Bool = true
     
     private func getSpeed() -> Double {
         return time > 0 ? distance / time * 60.0 : 0
@@ -33,7 +34,7 @@ struct AverageSpeedCalculatorView: View {
         }
     }
     
-    enum FocusField: Hashable {
+    private enum FocusField: Hashable {
         case distance
         case travelTime
         case averageSpeed
@@ -42,118 +43,34 @@ struct AverageSpeedCalculatorView: View {
     @FocusState private var focusedField: FocusField?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Constants.UI.compactSpacing) {
-            Text("Average Speed Calculator")
-                .modifierSheetTitle()
-            
-            VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                
-                Text("Record your routine commute using any other app and enter how long it takes you to travel some distance. Alternatively, you can enter average speed manually.")
-                    .modifierBodyText()
-                    
-                
-                HStack {
-                    Text("Distance")
-                    
-                    Spacer()
-                    
-                    TextField("", text: $distanceLabel) { isEditing in
-                        
-                    } onCommit: {}
-                    .multilineTextAlignment(.trailing)
-                    .font(Font.system(size: 14, weight: .semibold))
-                    .keyboardType(.decimalPad)
-                    .focused($focusedField, equals: .distance)
-                    .onAppear {
-                        self.focusedField = .distance
-                    }
-                    
-                    Text(model.units.description)
-                        .foregroundColor(Constants.Colors.graphite)
-                        .fontWeight(.regular)
-                        .frame(minWidth: 34, alignment: .trailing)
-                }
-                .modifier(InputFieldViewModifier())
-                .onTapGesture {
-                    self.focusedField = .distance
-                }
-                
-                HStack {
-                    Text("Travel Time")
-                    
-                    Spacer()
-                    
-                    TextField("", text: $timeLabel) { isEditing in
-                        
-                    } onCommit: {}
-                    .multilineTextAlignment(.trailing)
-                    .font(Font.system(size: 14, weight: .semibold))
-                    .keyboardType(.numberPad)
-                    .focused($focusedField, equals: .travelTime)
-                    
-                    Text("min")
-                        .foregroundColor(Constants.Colors.graphite)
-                        .fontWeight(.regular)
-                        .frame(minWidth: 34, alignment: .trailing)
-                }
-                .modifier(InputFieldViewModifier())
-                .onTapGesture {
-                    self.focusedField = .travelTime
-                }
-                
-                HStack {
-                    Text("Average Speed")
-                    
-                    Spacer()
-                    
-                    TextField("", text: $speedLabel) { isEditing in
-                        
-                    } onCommit: {}
-                    .multilineTextAlignment(.trailing)
-                    .font(Font.system(size: 14, weight: .semibold))
-                    .keyboardType(.decimalPad)
-                    .focused($focusedField, equals: .averageSpeed)
-                    
-                    Text(model.units.perHour)
-                        .foregroundColor(Constants.Colors.graphite)
-                        .fontWeight(.regular)
-                        .frame(minWidth: 34, alignment: .trailing)
-                }
-                .modifier(InputFieldViewModifier())
-                .padding(.top, 25.0)
-                .onTapGesture {
-                    self.focusedField = .averageSpeed
-                }
-                
+        
+        List {
+            Section {
+                distanceInputField()
+                travelTimeInputField()
+            } header: {
+                Text("Average Speed Calculator")
+            } footer: {
+                Text("Record your routine commute using any other app and enter how long it takes you to travel some distance. Alternatively, you can enter the average speed manually.")
             }
-//            .padding(.bottom, Constants.UI.sectionSpacing)
             
-            // #MARK: - Completion Buttons
+            Section {
+                averageSpeedInputField()
+            }
             
-            HStack(alignment: .center, spacing: Constants.UI.itemSpacing, content: {
-                
-                Button(action: {
-                    changeApproved = false
-                    isSheetShown = false
-                }, label: {
-                    Text("Cancel")
-                })
-                .buttonStyle(PlainLikeButtonStyle(.cancel))
-                
-                Button(action: {
-                    // change approved by default, no need to set it to true
-                    isSheetShown = false
-                }, label: {
-                    Text("Done")
-                })
-                .buttonStyle(PlainLikeButtonStyle(.white))
-                
-            })
-            
+            Section {
+                DismissButton(action: nil)
+            }
         }
-        .padding(.bottom, Constants.UI.sheetBottomPadding)
-        .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
+        .toolbar {
+            cancelButton()
+        }
+        .navigationTitle("Average Speed")
         .onAppear(perform: {
+            distance = device.averageSpeedCalculatorData?.distanceKm ?? 0
+            time = device.averageSpeedCalculatorData?.travelTimeMinutes ?? 0
+            speed = device.averageSpeedKmh
+            
             distanceLabel = distance > 0 ? String(format: "%.2f", distance.inCurrentUnits(model.units)) : ""
             timeLabel = time > 0 ? String(format: "%.0f", time) : ""
             speedLabel = speed > 0 ? String(format: "%.2f", speed.inCurrentUnits(model.units)) : ""
@@ -175,12 +92,108 @@ struct AverageSpeedCalculatorView: View {
                 speed = speedInCurrentUnits.inKilometers(model.units)
             }
         })
+        .onDisappear {
+            if changeApproved {
+                device.averageSpeedKmh = speed
+                device.averageSpeedCalculatorData = MobilityDevice.AverageSpeedCalculatorData(distanceKm: distance, travelTimeMinutes: time)
+            }
+        }
     }
+    
+    // MARK: - distanceInputField
+    private func distanceInputField() -> some View {
+        return HStack {
+            Text("Distance")
+            
+            TextField("0", text: $distanceLabel) { isEditing in } onCommit: {
+                self.focusedField = .travelTime
+            }
+            .multilineTextAlignment(.trailing)
+            .keyboardType(.decimalPad)
+            .focused($focusedField, equals: .distance)
+            .font(Font.system(size: Constants.UI.systemFontDefaultSize,weight: .semibold))
+            .onAppear {
+                self.focusedField = .distance
+            }
+            
+            Text(model.units.description)
+                .foregroundColor(Constants.Colors.graphite)
+                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
+        }
+        .onTapGesture {
+            self.focusedField = .distance
+        }
+    }
+    
+    // MARK: - travelTimeInputField
+    private func travelTimeInputField() -> some View {
+        return HStack {
+            Text("Travel Time")
+            
+            TextField("0", text: $timeLabel) { isEditing in } onCommit: {
+                if distance == 0 {
+                    focusedField = .distance
+                }
+            }
+            .multilineTextAlignment(.trailing)
+            .keyboardType(.numberPad)
+            .focused($focusedField, equals: .travelTime)
+            .font(Font.system(size: Constants.UI.systemFontDefaultSize,weight: .semibold))
+            
+            Text("min")
+                .foregroundColor(Constants.Colors.graphite)
+                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
+        }
+        .onTapGesture {
+            self.focusedField = .travelTime
+        }
+    }
+    
+    // MARK: - averageSpeedInputField
+    private func averageSpeedInputField() -> some View {
+        return HStack {
+            Text("Average Speed")
+            
+            TextField("0", text: $speedLabel) { isEditing in } onCommit: {}
+            .multilineTextAlignment(.trailing)
+            .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
+            .keyboardType(.decimalPad)
+            .focused($focusedField, equals: .averageSpeed)
+            .onTapGesture {
+                time = 0
+                timeLabel = ""
+                distance = 0
+                distanceLabel = ""
+            }
+            
+            Text(model.units.perHour)
+                .foregroundColor(Constants.Colors.graphite)
+                .fontWeight(.regular)
+                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
+        }
+        .onTapGesture {
+            self.focusedField = .averageSpeed
+        }
+    }
+    
+    // MARK: - Cancel
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    private func cancelButton() -> some View {
+        return Button {
+            self.changeApproved = false
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Cancel")
+        }
+    }
+    
 }
 
 struct AverageSpeedCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        AverageSpeedCalculatorView(distance: .constant(20.1854159), time: .constant(45), speed: .constant(15.1045141), changeApproved: .constant(true), isSheetShown: .constant(true))
+        AverageSpeedCalculatorView(device: MobilityDevice.sample())
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel.PreviewInImperialUnits)
     }

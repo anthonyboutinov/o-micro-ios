@@ -38,6 +38,10 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         self.transportType = transportType
     }
     
+    func isValid() -> Bool {
+        return self.iconName != "" && self.title != "" && self.averageSpeedKmh > 0
+    }
+    
     static func sample() -> MobilityDevice {
         return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, transportType: .pedestrian)
     }

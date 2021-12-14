@@ -7,9 +7,53 @@
 
 import SwiftUI
 
+//struct ListRowStyle: ViewModifier {
+//    var style = Styles.white
+//
+//    private func foregroundColor() -> Color {
+//        switch style {
+//        case .primary:
+//            return Constants.Colors.textInverse
+//        case .destructive:
+//            return Constants.Colors.red
+//        case .cancel:
+//            return Constants.Colors.graphite
+//        default:
+//            return Color.accentColor
+//        }
+//    }
+//
+//    private func backgroundColor() -> Color {
+//        switch style {
+//        case .primary:
+//            return Color.accentColor
+//        default:
+//            return Constants.Colors.transparent
+//        }
+//    }
+//
+//    func body(content: Content) -> some View {
+//        content
+//            .listRowBackground(backgroundColor())
+//            .frame(maxWidth: .infinity)
+//            .foregroundColor(foregroundColor())
+//    }
+//
+//    init(_ style: Styles = Styles.white) {
+//        self.style = style
+//    }
+//
+//    enum Styles {
+//        case white
+//        case primary
+//        case destructive
+//        case cancel
+//    }
+//}
+
 struct PlainLikeButtonStyle: ButtonStyle {
     var style = Styles.white
-    
+
     private func foregroundColor() -> Color {
         switch style {
         case .primary:
@@ -22,7 +66,7 @@ struct PlainLikeButtonStyle: ButtonStyle {
             return Color.accentColor
         }
     }
-    
+
     private func backgroundColor() -> Color {
         switch style {
         case .primary:
@@ -31,23 +75,18 @@ struct PlainLikeButtonStyle: ButtonStyle {
             return Constants.Colors.transparent
         }
     }
-    
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-//            .font(Font.system(size: 14))
-            .font(.body)
+            .listRowBackground(backgroundColor())
             .frame(maxWidth: .infinity)
-            .padding(.horizontal, Constants.UI.horizontalButtonSpacing)
-            .padding(.vertical, Constants.UI.verticalButtonSpacing)
             .foregroundColor(foregroundColor())
-            .background(backgroundColor())
-            .cornerRadius(Constants.UI.cornerRadius)
     }
-    
+
     init(_ style: Styles = Styles.white) {
         self.style = style
     }
-    
+
     enum Styles {
         case white
         case primary

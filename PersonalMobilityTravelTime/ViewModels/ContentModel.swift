@@ -74,12 +74,8 @@ class ContentModel: ObservableObject {
         calculate(distanceKm: nil)
     }
     
-    static func isValid(_ device: MobilityDevice) -> Bool {
-        return device.iconName != "" && device.title != "" && device.averageSpeedKmh > 0
-    }
-    
     func addDevice(_ device: MobilityDevice) {
-        guard Self.isValid(device) else {
+        guard device.isValid() else {
             return
         }
         if devices.count > 0 {
@@ -97,7 +93,7 @@ class ContentModel: ObservableObject {
     }
     
     func updateDevice(_ device: MobilityDevice) {
-        guard Self.isValid(device) else {
+        guard device.isValid() else {
             return
         }
         if let index = self.devices.firstIndex(where: { d in
