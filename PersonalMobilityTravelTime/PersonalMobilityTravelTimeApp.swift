@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import PartialSheet
 
 @main
 struct PersonalMobilityTravelTimeApp: App {
     var body: some Scene {
         WindowGroup {
-            LaunchView().environmentObject(ContentModel()).environmentObject(PartialSheetManager())
+            LaunchView().environmentObject(ContentModel())
         }
     }
 }

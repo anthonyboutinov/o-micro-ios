@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,7 +27,6 @@
 		A840F5C426AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5C326AF4031009EB7A8 /* OnboardingAddFirstDeviceView.swift */; };
 		A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5C526AF4467009EB7A8 /* FullscreenPromptView.swift */; };
 		A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5C726AF544E009EB7A8 /* InputFieldViewModifier.swift */; };
-		A840F5CB26AF5961009EB7A8 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = A840F5CA26AF5961009EB7A8 /* PartialSheet */; };
 		A840F5CF26AF872F009EB7A8 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CE26AF872F009EB7A8 /* TextExtensions.swift */; };
 		A840F5D126AF8EAB009EB7A8 /* IconEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */; };
 		A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */; };
@@ -118,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A840F5CB26AF5961009EB7A8 /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +357,6 @@
 			);
 			name = PersonalMobilityTravelTime;
 			packageProductDependencies = (
-				A840F5CA26AF5961009EB7A8 /* PartialSheet */,
 			);
 			productName = PersonalMobilityTravelTime;
 			productReference = A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */;
@@ -389,7 +386,6 @@
 			);
 			mainGroup = A8EF714C26ADF33C00F0D1FD;
 			packageReferences = (
-				A840F5C926AF5961009EB7A8 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = A8EF715626ADF33D00F0D1FD /* Products */;
 			projectDirPath = "";
@@ -652,25 +648,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A840F5C926AF5961009EB7A8 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.12;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A840F5CA26AF5961009EB7A8 /* PartialSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A840F5C926AF5961009EB7A8 /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8EF714D26ADF33C00F0D1FD /* Project object */;
 }
