@@ -13,16 +13,16 @@ struct DismissButton: View {
     
     var action: Optional<() -> ()>
     
-    var style: Style
+    var backgroundColor: Color
     
     enum Style {
         case primary
         case destructive // TODO: I only ever use primary with this view
     }
     
-    init(text: String = "Done", style: Style = .primary, action: Optional<() -> ()> = nil) {
+    init(text: String = Constants.Text.done, backgroundColor: Color = Color.accentColor, action: Optional<() -> ()> = nil) {
         self.text = text
-        self.style = style
+        self.backgroundColor = backgroundColor
         self.action = action
     }
     
@@ -36,15 +36,8 @@ struct DismissButton: View {
             Text(text)
                 .frame(maxWidth: .infinity)
         }
-        .listRowBackground(background)
-        .foregroundColor(Constants.Colors.textInverse)
-    }
-    
-    private var background: Color {
-        switch style {
-        case .primary: return Color.accentColor
-        case .destructive: return Constants.Colors.red
-        }
+        .listRowBackground(backgroundColor)
+        .foregroundColor(Color.white)
     }
 }
 

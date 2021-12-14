@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
     @EnvironmentObject var model: ContentModel
     
-    @State var reorderingItems = false
+    @State var editMode: EditMode = .inactive
     
     var body: some View {
         List {
-            Section(header: HStack {
-                Text("My Devices")
-            }) {
+            Section(header: Text("My Devices")) {
                 ForEach(model.devices) { device in
-                    NavigationLink(destination: EditingView(deviceToEdit: device)) {
+                    if editMode == .inactive {
+                        NavigationLink(destination: EditingView(deviceToEdit: device)) {
+                            DeviceMenuItem(imageName: device.iconName, label: device.title)
+                        }
+                    } else {
                         DeviceMenuItem(imageName: device.iconName, label: device.title)
                     }
                 }
-                .environment(\.editMode, self.reorderingItems ? .constant(.active) : .constant(.inactive))
+                .onMove(perform: move)
+                .onLongPressGesture {
+                    withAnimation {
+                        editMode = .active
+                    }
+                }
             }
             
             NavigationLink(destination: EditingView(deviceToEdit: nil)) {
@@ -35,40 +43,29 @@ struct SettingsView: View {
                     NormalMenuItem(icon: "ruler", label: "Distance units"/*, currentValue: self.model.units.fullDescription*/)
                 }
             }
-            
-            //                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-            //            Section(header: Text("Other")
-            ////                        .foregroundColor(Color.secondary)
-            ////                        .font(.title2)
-            //            ) {
-            
-            //                    NavigationLink(destination: Text("Not Set")) {
-            //                        NormalMenuItem(/*icon: "app", */label: "Would You Like to Develop an App?")
-            //                    }
-            //                    NavigationLink(destination: Text("Not Set")) {
-            //                        NormalMenuItem(/*icon: "lifepreserver",  */label: "Support")
-            //                    }
-            //                    NavigationLink(destination: Text("Not Set")) {
-            //                        NormalMenuItem(icon: "checkmark.shield", label: "Privacy Policy")
-            //                    }
-            //                    NavigationLink(destination: Text("Not Set")) {
-            //                        NormalMenuItem(icon: "doc.text", label: "Terms of Use")
-            //                    }
-            //                }
-            
-            //            }
-            
         }
         .toolbar {
             if model.devices.count > 1 {
-                Button("Reorder") {
-                    //...
+                Button(editMode == .inactive ? Constants.Text.reorder : Constants.Text.done) {
+                    if editMode == .inactive {
+                        editMode = .active
+                    } else {
+                        editMode = .inactive
+                    }
                 }
                 .buttonStyle(DefaultButtonStyle())
             }
         }
-        .navigationTitle("Settings")
+        .environment(\.editMode, $editMode)
+        .navigationTitle(Constants.Text.settings)
         .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
+    }
+    
+    private func move(from source: IndexSet, to destination: Int) {
+        model.devices.move(fromOffsets: source, toOffset: destination)
+        withAnimation {
+            editMode = .active
+        }
     }
     
 }

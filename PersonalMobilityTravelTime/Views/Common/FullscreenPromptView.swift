@@ -45,6 +45,7 @@ struct FullscreenPromptView: View {
                 Text(buttonLabel)
             })
                 .buttonStyle(PlainLikeButtonStyle(.primary))
+                .padding(.bottom, Constants.UI.onboardingButtonsBottomPadding)
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)

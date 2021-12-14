@@ -19,7 +19,7 @@ struct UnitOption: View {
         } label: {
             HStack(alignment: .center, spacing: 0) {
                 Text(unit.fullDescription)
-                    .foregroundColor(Constants.Colors.text)
+                    .foregroundColor(Color.primary)
                 if model.units == unit {
                     Spacer()
                     Text("\(Image(systemName: "checkmark"))")

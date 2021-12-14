@@ -14,8 +14,11 @@ class Constants {
         static var searchPlaceholder = "Search by Name or Address"
         static var currentLocationLabel = "Current Location"
         
-        static var settingsLabel = "Settings"
-        static var cancelLabel = "Cancel"
+        static var settings = "Settings"
+        static var cancel = "Cancel"
+        static var done = "Done"
+        static var delete = "Delete"
+        static var reorder = "Reorder"
     }
 
     
@@ -24,7 +27,7 @@ class Constants {
         static var deviceIconSizeLarge: CGFloat = 46.0
         static var deviceSelectorItemSpacing: CGFloat = 15
         
-        static var cornerRadius: CGFloat = 5.0
+        static var cornerRadius: CGFloat = 12
         
         static var horizontalButtonSpacing: CGFloat = 15
         static var verticalButtonSpacing: CGFloat = 12
@@ -43,16 +46,18 @@ class Constants {
         static var unitsMinWidth: CGFloat = 41
         static var systemFontDefaultSize: CGFloat = 18
         
+        static var onboardingButtonsBottomPadding: CGFloat = 24
+        
     }
     
     class Colors {
         static var quartz = Color("QuartzColor")
         static var mist = Color("MistColor")
-        static var text = Color("TextColor")
-        static var textInverse = Color("TextInverseColor")
         static var transparent = Color("TransparentColor")
         static var red = Color("RedColor")
         static var orange = Color("OrangeColor")
+        static var textFieldAlternateBackgroundColor = Color("textFieldAlternateBackgroundColor")
+        
         static var route = UIColor(Color("RouteColor"))
     }
     

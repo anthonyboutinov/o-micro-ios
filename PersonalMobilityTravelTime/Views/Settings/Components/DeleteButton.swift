@@ -34,11 +34,11 @@ struct DeleteButton: View {
         return Alert(
             title: Text("Delete \(device.title == "" ? "Device" : device.title)?"),
             primaryButton: .default(
-                Text("Cancel"),
+                Text(Constants.Text.cancel),
                 action: {}
             ),
             secondaryButton: .destructive(
-                Text("Delete"),
+                Text(Constants.Text.delete),
                 action: {
                     model.deleteDevice(device)
                     presentationMode.wrappedValue.dismiss()

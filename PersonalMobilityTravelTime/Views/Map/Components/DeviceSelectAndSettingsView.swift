@@ -24,7 +24,7 @@ struct DeviceSelectAndSettingsView: View {
                 NavigationLink("Settings", destination: SettingsView())
                     .padding(.vertical, Constants.UI.verticalButtonSpacing)
             } else {
-                Text(Constants.Text.cancelLabel)
+                Text(Constants.Text.cancel)
                     .padding(.vertical, Constants.UI.verticalButtonSpacing)
                     .onTapGesture {
                         state = .initial

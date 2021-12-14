@@ -19,8 +19,9 @@ struct LaunchView: View {
         } else if model.setUpProcess == .noDevices {
             OnboardingAddFirstDeviceView()
         } else if model.setUpProcess == .addFirstDevice {
-            EditingView(deviceToEdit: nil)
-                .addPartialSheet()
+            NavigationView() {
+                EditingView(deviceToEdit: nil)
+            }
         } else if model.setUpProcess == .firstDeviceAddedSoComplete {
             NavigationView() {
                 TabView(selection: $model.selectedTabIndex) {
@@ -41,7 +42,6 @@ struct LaunchView: View {
                         .navigationBarBackButtonHidden(true)
                 }
             }
-            .addPartialSheet()
         }
     }
 }

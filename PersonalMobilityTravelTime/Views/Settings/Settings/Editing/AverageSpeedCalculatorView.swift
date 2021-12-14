@@ -45,14 +45,17 @@ struct AverageSpeedCalculatorView: View {
     var body: some View {
         
         List {
+            
+            Section(content: {}, footer: {
+                Text("Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually.")
+                    .lineLimit(Int.max)
+            })
+            
             Section {
                 distanceInputField()
                 travelTimeInputField()
             } header: {
                 Text("Average Speed Calculator")
-            } footer: {
-                Text("Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually.")
-                    .lineLimit(Int.max)
             }
             
             Section {
@@ -60,13 +63,14 @@ struct AverageSpeedCalculatorView: View {
             }
             
             Section {
-                DismissButton(action: nil)
+                DismissButton()
             }
         }
         .toolbar {
             cancelButton()
         }
         .navigationTitle("Average Speed")
+        .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
         .onAppear(perform: {
             distance = device.averageSpeedCalculatorData?.distanceKm ?? 0
             time = device.averageSpeedCalculatorData?.travelTimeMinutes ?? 0

@@ -11,7 +11,6 @@ import SwiftUI
 struct EditingView: View {
     
     @EnvironmentObject var model: ContentModel
-    //    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject var deviceToEdit: MobilityDevice
     
@@ -72,7 +71,7 @@ struct EditingView: View {
                     }
                 }
                 
-                IconEditField(iconName: self.$deviceToEdit.iconName)
+                IconEditField(device: deviceToEdit)
             }
             
             Section {

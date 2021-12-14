@@ -18,7 +18,7 @@ struct DeviceMenuItem: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Constants.UI.deviceIconSize, height: Constants.UI.deviceIconSize, alignment: .center)
-                .foregroundColor(Constants.Colors.text)
+                .foregroundColor(Color.primary)
             Text(label)
                 .multilineTextAlignment(.leading)
         }

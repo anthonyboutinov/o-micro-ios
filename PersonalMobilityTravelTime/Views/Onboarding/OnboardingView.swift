@@ -35,7 +35,7 @@ struct OnboardingView: View {
                 })
                 Spacer()
                 
-                Text("With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.")
+                Text("With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.")
                     .font(.callout)
                     .foregroundColor(Color.secondary)
                 
@@ -55,6 +55,7 @@ struct OnboardingView: View {
                 Text("Let's Go!")
             })
             .buttonStyle(PlainLikeButtonStyle(.primary))
+            .padding(.bottom, Constants.UI.onboardingButtonsBottomPadding)
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)

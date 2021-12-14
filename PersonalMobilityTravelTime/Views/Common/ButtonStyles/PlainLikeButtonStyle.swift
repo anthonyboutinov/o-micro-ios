@@ -7,57 +7,13 @@
 
 import SwiftUI
 
-//struct ListRowStyle: ViewModifier {
-//    var style = Styles.white
-//
-//    private func foregroundColor() -> Color {
-//        switch style {
-//        case .primary:
-//            return Constants.Colors.textInverse
-//        case .destructive:
-//            return Constants.Colors.red
-//        case .cancel:
-//            return Color.secondary
-//        default:
-//            return Color.accentColor
-//        }
-//    }
-//
-//    private func backgroundColor() -> Color {
-//        switch style {
-//        case .primary:
-//            return Color.accentColor
-//        default:
-//            return Constants.Colors.transparent
-//        }
-//    }
-//
-//    func body(content: Content) -> some View {
-//        content
-//            .listRowBackground(backgroundColor())
-//            .frame(maxWidth: .infinity)
-//            .foregroundColor(foregroundColor())
-//    }
-//
-//    init(_ style: Styles = Styles.white) {
-//        self.style = style
-//    }
-//
-//    enum Styles {
-//        case white
-//        case primary
-//        case destructive
-//        case cancel
-//    }
-//}
-
 struct PlainLikeButtonStyle: ButtonStyle {
     var style = Styles.white
-
+    
     private func foregroundColor() -> Color {
         switch style {
         case .primary:
-            return Constants.Colors.textInverse
+            return Color.white
         case .destructive:
             return Constants.Colors.red
         case .cancel:
@@ -66,7 +22,7 @@ struct PlainLikeButtonStyle: ButtonStyle {
             return Color.accentColor
         }
     }
-
+    
     private func backgroundColor() -> Color {
         switch style {
         case .primary:
@@ -75,22 +31,64 @@ struct PlainLikeButtonStyle: ButtonStyle {
             return Constants.Colors.transparent
         }
     }
-
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .listRowBackground(backgroundColor())
+            .font(.body)
             .frame(maxWidth: .infinity)
+            .padding(.horizontal, Constants.UI.horizontalButtonSpacing)
+            .padding(.vertical, Constants.UI.verticalButtonSpacing)
             .foregroundColor(foregroundColor())
+            .background(backgroundColor())
+            .cornerRadius(Constants.UI.cornerRadius)
     }
-
+    
     init(_ style: Styles = Styles.white) {
         self.style = style
     }
-
+    
     enum Styles {
         case white
         case primary
         case destructive
         case cancel
+    }
+}
+
+struct PlainLikeButtonStyle_Preview: PreviewProvider {
+    static var previews: some View {
+        
+        VStack {
+            
+            Button {
+                // nothing
+            } label: {
+                Text("Primary")
+            }
+            .buttonStyle(PlainLikeButtonStyle(.primary))
+            
+            Button {
+                // nothing
+            } label: {
+                Text("White")
+            }
+            .buttonStyle(PlainLikeButtonStyle(.white))
+            
+            Button {
+                // nothing
+            } label: {
+                Text("Cancel")
+            }
+            .buttonStyle(PlainLikeButtonStyle(.cancel))
+            
+            Button {
+                // nothing
+            } label: {
+                Text("Destructive")
+            }
+            .buttonStyle(PlainLikeButtonStyle(.destructive))
+            
+        }
+        
     }
 }

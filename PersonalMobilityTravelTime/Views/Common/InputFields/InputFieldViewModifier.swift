@@ -16,8 +16,8 @@ struct InputFieldViewModifier: ViewModifier {
             .font(Font.system(size: 14))
             .padding(.horizontal, Constants.UI.horizontalButtonSpacing)
             .padding(.vertical, Constants.UI.verticalButtonSpacing)
-            .background(style == .normal ? Constants.Colors.quartz : Constants.Colors.textInverse)
-            .foregroundColor(Constants.Colors.text)
+            .background(style == .normal ? Constants.Colors.quartz : Constants.Colors.textFieldAlternateBackgroundColor)
+            .foregroundColor(Color.primary)
             .cornerRadius(Constants.UI.cornerRadius)
             .frame(maxWidth: .infinity)
     }
