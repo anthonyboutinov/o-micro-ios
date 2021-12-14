@@ -30,7 +30,7 @@ struct EditingView: View {
         }
     }
     
-    @State var distanceOnFullChargeInCurrentUnits: Double = 0.0 // is set on init
+    @State var rangeInCurrentUnits: Double = 0.0 // is set on init
     
     enum FocusField: Hashable {
         case title
@@ -38,16 +38,16 @@ struct EditingView: View {
     
     @FocusState private var focusedField: FocusField?
     
-    var distanceOnFullChargeProxy: Binding<String> {
+    var rangeProxy: Binding<String> {
         Binding<String>(
             get: {
-                String(Double(self.distanceOnFullChargeInCurrentUnits).removeZerosFromEnd(leaveFirst: 2))
+                String(Double(self.rangeInCurrentUnits).removeZerosFromEnd(leaveFirst: 2))
             },
             set: {
                 if !($0.last == "." || $0.last == ",") {
                     if let valueInCurrentUnits = NumberFormatter.byDefault(from: $0) {
-                        self.distanceOnFullChargeInCurrentUnits = valueInCurrentUnits.doubleValue
-                        deviceToEdit.distanceOnFullChargeKm = valueInCurrentUnits.doubleValue.inKilometers(model.units)
+                        self.rangeInCurrentUnits = valueInCurrentUnits.doubleValue
+                        deviceToEdit.rangeKm = valueInCurrentUnits.doubleValue.inKilometers(model.units)
                     }
                 }
             }
@@ -87,7 +87,7 @@ struct EditingView: View {
                         
                         Spacer()
                         
-                        TextField("", text: distanceOnFullChargeProxy)
+                        TextField("", text: rangeProxy)
                             .multilineTextAlignment(.trailing)
                             .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
                             .keyboardType(.decimalPad)
@@ -185,7 +185,7 @@ struct EditingView: View {
 //
 //                            Spacer()
 //
-//                            TextField("", text: distanceOnFullChargeProxy)
+//                            TextField("", text: rangeProxy)
 //                                .multilineTextAlignment(.trailing)
 //                                .font(Font.system(size: 14, weight: .semibold))
 //                                .keyboardType(.decimalPad)
@@ -229,7 +229,7 @@ struct EditingView: View {
         })
         .navigationTitle("\(deviceToEdit.title == "" ? (isNew ? "New Device" : "Unnamed") : deviceToEdit.title)")
         .onAppear(perform: {
-            self.distanceOnFullChargeInCurrentUnits = deviceToEdit.distanceOnFullChargeKm?.inCurrentUnits(model.units) ?? MobilityDevice.suggestedDefaultDistanceOnFullChargeKm.inCurrentUnits(model.units).rounded()
+            self.rangeInCurrentUnits = deviceToEdit.rangeKm?.inCurrentUnits(model.units) ?? MobilityDevice.suggestedDefaultRangeKm.inCurrentUnits(model.units).rounded()
         })
     }
     

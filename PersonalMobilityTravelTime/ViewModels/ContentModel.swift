@@ -129,9 +129,9 @@ class ContentModel: ObservableObject {
     }
     
     func populateDevices() {
-        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, distanceOnFullChargeKm: 14.5, transportType: .pedestrian))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, distanceOnFullChargeKm: nil, transportType: .automobile))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, distanceOnFullChargeKm: nil, transportType: .pedestrian))
+        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, rangeKm: 14.5, transportType: .pedestrian))
+        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
+        devices.append(MobilityDevice(id: UUID(), index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
     }
     
     func selectDevice(atIndex index: Int) -> Self {
@@ -193,8 +193,8 @@ struct RouteStat {
         return nil
     }
     var batteryPercentage: Double? {
-        if let distanceOnFullChargeKm = device?.distanceOnFullChargeKm {
-            return distanceKm / distanceOnFullChargeKm
+        if let rangeKm = device?.rangeKm {
+            return distanceKm / rangeKm
         }
         return nil
     }

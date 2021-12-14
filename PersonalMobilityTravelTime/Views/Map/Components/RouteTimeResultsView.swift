@@ -21,7 +21,7 @@ struct RouteTimeResultsView: View {
                 return lhs == model.selectedDevice ? true : (lhs.averageSpeedKmh > rhs.averageSpeedKmh && rhs != model.selectedDevice)
             })
             .filter { e in
-                model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distances[e.transportType]!, capacity: e.distanceOnFullChargeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
+                model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distances[e.transportType]!, capacity: e.rangeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
             }
         if isExpanded {
             return list.prefix(Int.max)
@@ -55,7 +55,7 @@ struct RouteTimeResultsView: View {
                             let travelTimeFormatted = MobilityDevice.Calculator.travelTimeFormattedCompactly(distance: self.distances[device.transportType]!, averageSpeedKmh: device.averageSpeedKmh, superCompact: device.isElectric)
                             
                             
-                            let batteryUsage: Double? = device.isElectric && device.distanceOnFullChargeKm != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distances[device.transportType]!, capacity: device.distanceOnFullChargeKm!) : nil;
+                            let batteryUsage: Double? = device.isElectric && device.rangeKm != nil ? MobilityDevice.Calculator.batteryUsage(distance: self.distances[device.transportType]!, capacity: device.rangeKm!) : nil;
                             
                             // These have values if batteryUsage is not nil
                             let warningColor: Color? = warningColor(batteryUsage, device: device)

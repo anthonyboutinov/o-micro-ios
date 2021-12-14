@@ -18,23 +18,23 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     @Published var isElectric: Bool = false
     @Published var averageSpeedCalculatorData: AverageSpeedCalculatorData?
     @Published var averageSpeedKmh: Double = 14
-    @Published var distanceOnFullChargeKm: Double?
+    @Published var rangeKm: Double?
     @Published var transportType: TransportType = .automobile
     
-    static let suggestedDefaultDistanceOnFullChargeKm: Double = 10.0
+    static let suggestedDefaultRangeKm: Double = 10.0
     
     init(index: Int?) {
         self.index = index ?? 0
     }
     
-    init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, distanceOnFullChargeKm: Double?, transportType: TransportType) {
+    init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, rangeKm: Double?, transportType: TransportType) {
         self.id = id
         self.index = index
         self.title = title
         self.iconName = iconName
         self.isElectric = isElectric
         self.averageSpeedKmh = averageSpeedKmh
-        self.distanceOnFullChargeKm = distanceOnFullChargeKm
+        self.rangeKm = rangeKm
         self.transportType = transportType
     }
     
@@ -43,7 +43,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
     static func sample() -> MobilityDevice {
-        return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, distanceOnFullChargeKm: 14.5, transportType: .pedestrian)
+        return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, rangeKm: 14.5, transportType: .pedestrian)
     }
     
     /// Stores data for the Average Speed Calculator popup in the device's settings screen
@@ -100,7 +100,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
 //    func batteryUsagePercentage(distance: Double) -> Double? {
-//        if let capacity = self.distanceOnFullChargeKm {
+//        if let capacity = self.rangeKm {
 //            return distance / capacity
 //        } else {
 //            return nil
