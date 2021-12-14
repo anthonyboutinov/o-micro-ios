@@ -38,7 +38,7 @@ struct SettingsView: View {
             
             //                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
             //            Section(header: Text("Other")
-            ////                        .foregroundColor(Constants.Colors.graphite)
+            ////                        .foregroundColor(Color.secondary)
             ////                        .font(.title2)
             //            ) {
             

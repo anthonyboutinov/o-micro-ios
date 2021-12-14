@@ -107,7 +107,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
 //        }
 //    }
     
-    enum TransportType {
+    enum TransportType: CustomStringConvertible, Identifiable {
         case pedestrian
         case automobile
         
@@ -120,6 +120,19 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
                 }
             }
         }
+        
+        var description: String {
+            switch self {
+            case .pedestrian: return "Sidewalks"
+            case .automobile: return "Roads"
+            }
+        }
+        
+        static var all: [Self] {
+            return [.pedestrian, .automobile]
+        }
+        
+        var id: Self { self }
     }
     
 }

@@ -22,14 +22,14 @@ struct FullscreenPromptView: View {
                 Image(systemName: iconName)
                     .resizable()
                     .frame(width:75, height: 75, alignment: .center)
-                    .foregroundColor(Constants.Colors.graphite)
+                    .foregroundColor(Color.secondary)
                     .padding(.bottom, 18)
                 
             } else if let imageName = imageName {
                 Image(imageName)
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundColor(Constants.Colors.graphite)
+                    .foregroundColor(Color.secondary)
                     .frame(width:75, height: 75, alignment: .center)
                     .padding(.bottom, 18)
             }

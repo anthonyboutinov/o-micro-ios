@@ -51,7 +51,7 @@ struct CalculatorViewBody: View {
                 VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                     Text("Enter Your Trip Details")
                         .font(.title3)
-                        .foregroundColor(Constants.Colors.graphite)
+                        .foregroundColor(Color.secondary)
                     
                     HStack {
                         Text("Distance")
@@ -65,7 +65,7 @@ struct CalculatorViewBody: View {
                             .focused($focusedField, equals: .distance)
                         
                         Text(model.units.description)
-                            .foregroundColor(Constants.Colors.graphite)
+                            .foregroundColor(Color.secondary)
                             .fontWeight(.regular)
                             .frame(minWidth: 34, alignment: .trailing)
                     }
@@ -79,7 +79,7 @@ struct CalculatorViewBody: View {
                 VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
                     Text("Calculated Values")
                         .font(.title3)
-                        .foregroundColor(Constants.Colors.graphite)
+                        .foregroundColor(Color.secondary)
                     
                     HStack {
                         Text("Time to Travel")
@@ -91,7 +91,7 @@ struct CalculatorViewBody: View {
                             .multilineTextAlignment(.trailing)
                         
                         Text(calculator.timeToTravelUnits)
-                            .foregroundColor(Constants.Colors.graphite)
+                            .foregroundColor(Color.secondary)
                             .fontWeight(.regular)
                             .frame(minWidth: 34, alignment: .trailing)
                     }

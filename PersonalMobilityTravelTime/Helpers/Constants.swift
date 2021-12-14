@@ -47,7 +47,6 @@ class Constants {
     
     class Colors {
         static var quartz = Color("QuartzColor")
-        static var graphite = Color("GraphiteColor")
         static var mist = Color("MistColor")
         static var text = Color("TextColor")
         static var textInverse = Color("TextInverseColor")

@@ -22,7 +22,7 @@ extension Text {
         self
             .font(.caption)
 //            .font(Font.system(size: 14, weight: .regular))
-            .foregroundColor(Constants.Colors.graphite)
+            .foregroundColor(Color.secondary)
             .lineLimit(nil)
             .multilineTextAlignment(.leading)
             .fixedSize(horizontal: false, vertical: true)

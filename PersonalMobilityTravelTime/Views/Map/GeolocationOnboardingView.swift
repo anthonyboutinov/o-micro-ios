@@ -17,7 +17,7 @@ struct GeolocationOnboardingView: View {
             Image(systemName: "location.circle")
                 .resizable()
                 .frame(width:75, height: 75, alignment: .center)
-                .foregroundColor(Constants.Colors.graphite)
+                .foregroundColor(Color.secondary)
                 .padding(.bottom, 18)
             
             Text("Please allow geolocation tracking to use map features.")

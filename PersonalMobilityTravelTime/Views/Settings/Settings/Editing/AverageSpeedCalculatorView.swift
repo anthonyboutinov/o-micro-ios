@@ -51,7 +51,8 @@ struct AverageSpeedCalculatorView: View {
             } header: {
                 Text("Average Speed Calculator")
             } footer: {
-                Text("Record your routine commute using any other app and enter how long it takes you to travel some distance. Alternatively, you can enter the average speed manually.")
+                Text("Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually.")
+                    .lineLimit(Int.max)
             }
             
             Section {
@@ -117,7 +118,7 @@ struct AverageSpeedCalculatorView: View {
             }
             
             Text(model.units.description)
-                .foregroundColor(Constants.Colors.graphite)
+                .foregroundColor(Color.secondary)
                 .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
         }
         .onTapGesture {
@@ -141,7 +142,7 @@ struct AverageSpeedCalculatorView: View {
             .font(Font.system(size: Constants.UI.systemFontDefaultSize,weight: .semibold))
             
             Text("min")
-                .foregroundColor(Constants.Colors.graphite)
+                .foregroundColor(Color.secondary)
                 .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
         }
         .onTapGesture {
@@ -167,7 +168,7 @@ struct AverageSpeedCalculatorView: View {
             }
             
             Text(model.units.perHour)
-                .foregroundColor(Constants.Colors.graphite)
+                .foregroundColor(Color.secondary)
                 .fontWeight(.regular)
                 .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
         }

@@ -17,7 +17,7 @@ import SwiftUI
 //        case .destructive:
 //            return Constants.Colors.red
 //        case .cancel:
-//            return Constants.Colors.graphite
+//            return Color.secondary
 //        default:
 //            return Color.accentColor
 //        }
@@ -61,7 +61,7 @@ struct PlainLikeButtonStyle: ButtonStyle {
         case .destructive:
             return Constants.Colors.red
         case .cancel:
-            return Constants.Colors.graphite
+            return Color.secondary
         default:
             return Color.accentColor
         }

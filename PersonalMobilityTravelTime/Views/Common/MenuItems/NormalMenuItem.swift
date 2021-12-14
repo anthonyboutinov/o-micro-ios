@@ -26,7 +26,7 @@ struct NormalMenuItem: View {
             if let currentValue = currentValue {
                 Spacer()
                 Text(currentValue)
-                    .foregroundColor(Constants.Colors.graphite)
+                    .foregroundColor(Color.secondary)
             }
         }
     }

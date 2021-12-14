@@ -14,7 +14,7 @@ struct GeolocationDeniedView: View {
             Image(systemName: "location.slash.fill")
                 .resizable()
                 .frame(width:75, height: 75, alignment: .center)
-                .foregroundColor(Constants.Colors.graphite)
+                .foregroundColor(Color.secondary)
                 .padding(.bottom, 18)
             
             Text("Location tracking denied. Enable it in Settings to continue.")

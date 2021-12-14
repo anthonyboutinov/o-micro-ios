@@ -22,7 +22,7 @@ struct SearchFieldOriginLocation: View {
                     .focused($focusedField, equals: MapViewContent.FocusField.origin)
             }
             .modifier(InputFieldViewModifier(style: .alternate))
-            .foregroundColor(self.map.originPointState == .currentLocation ? Constants.Colors.graphite : Constants.Colors.text)
+            .foregroundColor(self.map.originPointState == .currentLocation ? Color.secondary : Constants.Colors.text)
             .onTapGesture {
                 self.focusedField = .origin
                 // TODO: Remove "Current Location" text from the text field on tap, leaving the input field blank

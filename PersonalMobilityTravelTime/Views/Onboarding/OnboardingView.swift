@@ -18,7 +18,7 @@ struct OnboardingView: View {
                 
                 Text("Welcome to")
                     .font(.title3)
-                    .foregroundColor(Constants.Colors.graphite)
+                    .foregroundColor(Color.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 5)
                 
@@ -37,7 +37,7 @@ struct OnboardingView: View {
                 
                 Text("With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.")
                     .font(.callout)
-                    .foregroundColor(Constants.Colors.graphite)
+                    .foregroundColor(Color.secondary)
                 
                 Spacer()
             }

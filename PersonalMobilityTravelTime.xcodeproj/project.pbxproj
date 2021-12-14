@@ -30,8 +30,6 @@
 		A840F5CD26AF6683009EB7A8 /* ChooseIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */; };
 		A840F5CF26AF872F009EB7A8 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5CE26AF872F009EB7A8 /* TextExtensions.swift */; };
 		A840F5D126AF8EAB009EB7A8 /* IconEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */; };
-		A840F5D326AFA8E3009EB7A8 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D226AFA8E3009EB7A8 /* SelectorView.swift */; };
-		A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */; };
 		A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */; };
 		A84900C62762D8AE001954E1 /* UnitsOfMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */; };
 		A8A753D82765A33B002A2871 /* SearchFieldDestinationLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A753D72765A33B002A2871 /* SearchFieldDestinationLocation.swift */; };
@@ -47,6 +45,8 @@
 		A8A9945526B12E4100192203 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9945426B12E4100192203 /* Location.swift */; };
 		A8CE106D276767C300FB4486 /* UnitOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CE106C276767C300FB4486 /* UnitOption.swift */; };
 		A8CE106F27681BA900FB4486 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CE106E27681BA900FB4486 /* DismissButton.swift */; };
+		A8CE10712768341A00FB4486 /* LocationOfUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CE10702768341A00FB4486 /* LocationOfUseView.swift */; };
+		A8CE10752768367400FB4486 /* TransportTypeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CE10742768367400FB4486 /* TransportTypeOption.swift */; };
 		A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */; };
 		A8EF715D26ADF34000F0D1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715C26ADF34000F0D1FD /* Assets.xcassets */; };
 		A8EF716026ADF34000F0D1FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8EF715F26ADF34000F0D1FD /* Preview Assets.xcassets */; };
@@ -82,8 +82,6 @@
 		A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseIconView.swift; sourceTree = "<group>"; };
 		A840F5CE26AF872F009EB7A8 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEditField.swift; sourceTree = "<group>"; };
-		A840F5D226AFA8E3009EB7A8 /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
-		A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsElectricEditField.swift; sourceTree = "<group>"; };
 		A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageSpeedCalculatorView.swift; sourceTree = "<group>"; };
 		A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsOfMeasureView.swift; sourceTree = "<group>"; };
 		A8A753D72765A33B002A2871 /* SearchFieldDestinationLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldDestinationLocation.swift; sourceTree = "<group>"; };
@@ -99,6 +97,8 @@
 		A8A9945426B12E4100192203 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A8CE106C276767C300FB4486 /* UnitOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitOption.swift; sourceTree = "<group>"; };
 		A8CE106E27681BA900FB4486 /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
+		A8CE10702768341A00FB4486 /* LocationOfUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationOfUseView.swift; sourceTree = "<group>"; };
+		A8CE10742768367400FB4486 /* TransportTypeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportTypeOption.swift; sourceTree = "<group>"; };
 		A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalMobilityTravelTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalMobilityTravelTimeApp.swift; sourceTree = "<group>"; };
 		A8EF715C26ADF34000F0D1FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,11 +139,9 @@
 			children = (
 				A8A9944326B0C48700192203 /* DeleteButton.swift */,
 				A8CE106C276767C300FB4486 /* UnitOption.swift */,
+				A8CE10742768367400FB4486 /* TransportTypeOption.swift */,
 				A840F5D026AF8EAB009EB7A8 /* IconEditField.swift */,
-				A840F5D426AFAB39009EB7A8 /* IsElectricEditField.swift */,
-				A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */,
 				A840F5CC26AF6683009EB7A8 /* ChooseIconView.swift */,
-				A840F5D226AFA8E3009EB7A8 /* SelectorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -167,6 +165,25 @@
 				A815C94827644193009ECEDF /* CompleterResults.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		A8CE10722768357200FB4486 /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				A840F5D826AFB401009EB7A8 /* AverageSpeedCalculatorView.swift */,
+				A8CE10702768341A00FB4486 /* LocationOfUseView.swift */,
+			);
+			path = Editing;
+			sourceTree = "<group>";
+		};
+		A8CE10732768357C00FB4486 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */,
+				A83E397326AE99DB008F5EFF /* EditingView.swift */,
+				A8CE10722768357200FB4486 /* Editing */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A8EF714C26ADF33C00F0D1FD = {
@@ -258,8 +275,7 @@
 			children = (
 				A8A9944526B0C84B00192203 /* Components */,
 				A8EF718026AE986F00F0D1FD /* SettingsView.swift */,
-				A84900C52762D8AE001954E1 /* UnitsOfMeasureView.swift */,
-				A83E397326AE99DB008F5EFF /* EditingView.swift */,
+				A8CE10732768357C00FB4486 /* Settings */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -404,7 +420,6 @@
 				A81ACB9526AF396700C17F30 /* DeviceIcon.swift in Sources */,
 				A8A9944A26B0DCEB00192203 /* CalculatorModel.swift in Sources */,
 				A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */,
-				A840F5D326AFA8E3009EB7A8 /* SelectorView.swift in Sources */,
 				A815C94927644193009ECEDF /* CompleterResults.swift in Sources */,
 				A81ACB8B26AF2F4F00C17F30 /* CalculatorView.swift in Sources */,
 				A8CE106F27681BA900FB4486 /* DismissButton.swift in Sources */,
@@ -416,6 +431,7 @@
 				A840F5C626AF4467009EB7A8 /* FullscreenPromptView.swift in Sources */,
 				A815C9452764235B009ECEDF /* TextExtension.swift in Sources */,
 				A81ACB8F26AF310F00C17F30 /* LaunchView.swift in Sources */,
+				A8CE10752768367400FB4486 /* TransportTypeOption.swift in Sources */,
 				A8EF717D26AE931B00F0D1FD /* DeviceMenuItem.swift in Sources */,
 				A815C94D276458E7009ECEDF /* BindingExtension.swift in Sources */,
 				A8EF717326AE81EF00F0D1FD /* MapTabModel.swift in Sources */,
@@ -425,12 +441,12 @@
 				A81ACB8926AF2F4500C17F30 /* MapView.swift in Sources */,
 				A815C94B276450E8009ECEDF /* SearchCompleterDelegate.swift in Sources */,
 				A8A753D82765A33B002A2871 /* SearchFieldDestinationLocation.swift in Sources */,
+				A8CE10712768341A00FB4486 /* LocationOfUseView.swift in Sources */,
 				A8EF718126AE986F00F0D1FD /* SettingsView.swift in Sources */,
 				A8EF717F26AE970C00F0D1FD /* MenuLikeButtonStyle.swift in Sources */,
 				A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */,
 				A81ACB9126AF31B600C17F30 /* GeolocationOnboardingView.swift in Sources */,
 				A8A9944C26B10A2B00192203 /* DoubleExtension.swift in Sources */,
-				A840F5D526AFAB39009EB7A8 /* IsElectricEditField.swift in Sources */,
 				A840F5D926AFB401009EB7A8 /* AverageSpeedCalculatorView.swift in Sources */,
 				A840F5C826AF544E009EB7A8 /* InputFieldViewModifier.swift in Sources */,
 				A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */,
