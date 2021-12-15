@@ -25,19 +25,19 @@ struct LaunchView: View {
         } else if model.setUpProcess == .firstDeviceAddedSoComplete {
             NavigationView() {
                 TabView(selection: $model.selectedTabIndex) {
-                    CalculatorView().tabItem {
-                        Image(systemName: "slider.horizontal.below.rectangle")
-                        Text("Calculator")
-                    }.tag(0)
-                        .navigationBarTitle("Calculator") //this must be empty or set to something
-                        .navigationBarHidden(true)
-                        .navigationBarBackButtonHidden(true)
                     MapView().tabItem {
                         Image(systemName: "map.fill")
                         Text("Map")
-                    }.tag(1)
+                    }.tag(0)
                         .environmentObject(mapTabModel)
                         .navigationBarTitle("Map") //this must be empty or set to something
+                        .navigationBarHidden(true)
+                        .navigationBarBackButtonHidden(true)
+                    CalculatorView().tabItem {
+                        Image(systemName: "slider.horizontal.below.rectangle")
+                        Text("Calculator")
+                    }.tag(1)
+                        .navigationBarTitle("Calculator") //this must be empty or set to something
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)
                 }

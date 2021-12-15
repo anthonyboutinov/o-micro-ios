@@ -49,7 +49,7 @@ class ContentModel: ObservableObject {
     }
     @Published var selectedTabIndex = 0 {
         didSet {
-            currentTab = selectedTabIndex == 0 ? .calculator : .map
+            currentTab = selectedTabIndex == 0 ? .map : .calculator
         }
     }
     
