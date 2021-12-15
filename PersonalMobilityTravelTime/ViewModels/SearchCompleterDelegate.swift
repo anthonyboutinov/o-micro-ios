@@ -25,6 +25,7 @@ class SearchCompleterDelegate: NSObject, ObservableObject, MKLocalSearchComplete
         completerResults = completer.results
     }
     
+    /// Handles any errors returned from MKLocalSearchCompleter
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         // Handle any errors returned from MKLocalSearchCompleter.
         if let error = error as NSError? {

@@ -44,10 +44,10 @@ struct DeviceSelectAndSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         DeviceSelectAndSettingsView(distance: $d, state: $stateA, focusedField: $focusedField)
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
         
         DeviceSelectAndSettingsView(distance: $d, state: $stateB, focusedField: $focusedField)
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel().selectDevice(atIndex: 1))
+            .environmentObject(ContentModel.preview().selectDevice(atIndex: 1))
     }
 }

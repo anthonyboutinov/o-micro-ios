@@ -74,7 +74,7 @@ struct MapViewContent: View {
 struct MapViewContent_Previews: PreviewProvider {
     static var previews: some View {
         MapViewContent()
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
             .environmentObject(MapTabModel())
     }
 }

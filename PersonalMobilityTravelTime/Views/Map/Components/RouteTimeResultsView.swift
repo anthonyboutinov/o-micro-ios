@@ -158,7 +158,7 @@ struct RouteTimeResultsView_Previews: PreviewProvider {
         
         RouteTimeResultsView(distances: $long, isExpanded: $expanded)
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
         
 //        RouteTimeResultsView(distances: $medium, isExpanded: $compact)
 //            .previewLayout(.sizeThatFits)

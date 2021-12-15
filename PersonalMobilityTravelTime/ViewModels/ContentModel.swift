@@ -7,61 +7,117 @@
 
 import Foundation
 
+/// Primary view model of the app. Stores the general states of the app and list of user's devices
 class ContentModel: ObservableObject {
     
-    // MARK: - First Launch
-    //
-//    @Published var isFirstLaunch: Bool {
-//        didSet {
-//            if oldValue == true {
-//                isSettingUpProcessActive = true
-//            }
-//        }
-//    }
-    @Published var setUpProcess = SetUpProcess.firstDeviceAddedSoComplete // SetUpProcess.firstLaunch
+    // MARK: - Set Up Process
+    /// Describes the global state of the app: if it should display a welcome screen or other onboarding screens, etc
+    @Published var setUpProcess: SetUpProcess = {
+        let defaultValue = SetUpProcess.firstLaunch
+        if let rawValue = UserDefaults.standard.string(forKey: "setUpProcess") {
+            if let value = SetUpProcess(rawValue: rawValue) {
+                return value
+            } else {
+                return SetUpProcess.unknown
+            }
+        } else {
+            return defaultValue
+        }
+    }() {
+        didSet {
+            UserDefaults.standard.set(self.setUpProcess.rawValue, forKey: "setUpProcess")
+        }
+    }
     
-    enum SetUpProcess {
-        case firstLaunch
-        case noDevices
-        case addFirstDevice
-        case firstDeviceAddedSoComplete
+    /// Possible global states of the app: if it should display a welcome screen or other onboarding screens, etc
+    enum SetUpProcess: String {
+        case firstLaunch = "firstLaunch"
+        case noDevices = "noDevices"
+        case addFirstDevice = "addFirstDevice"
+        case firstDeviceAddedSoComplete = "firstFrviceAddedSoComplete"
+        case unknown = "unknown"
     }
     
     // MARK: - General Properties
     
-    @Published var units = Units.metric
-    
-    @Published var devices = [MobilityDevice]()
-    @Published var selectedDevice: MobilityDevice? {
+    /// User preference on which units of distance to use
+    @Published var units: Units = {
+        let defaultValue = Units.metric
+        if let rawValue = UserDefaults.standard.string(forKey: "units") {
+            if let value = Units(rawValue: rawValue) {
+                return value
+            }
+        }
+        return defaultValue
+    }() {
         didSet {
-            calculate()
+            UserDefaults.standard.set(self.units.rawValue, forKey: "units")
         }
     }
     
-    //    @Published var calculatorTab: CalculatorTabModel
+    /// Stores all of the deivces that the user has
+    @Published var devices: [MobilityDevice] = {
+        var array = [MobilityDevice]()
+        if let rawValues = UserDefaults.standard.array(forKey: "devices") as? [Data] {
+            for rawValue in rawValues {
+                if let value = try? MobilityDevice(from: rawValue) {
+                    array.append(value)
+                }
+            }
+        }
+        return array
+    }() {
+        didSet {
+            UserDefaults.standard.set(self.devices.map({d in
+                d.encoded
+            }), forKey: "devices")
+        }
+    }
+    
+    /// Tells the app which device is currently selected by the user
+    @Published var selectedDevice: MobilityDevice? = {
+        let defaultValue: MobilityDevice? = nil
+        if let data = UserDefaults.standard.object(forKey: "selectedDevice") as? Data {
+            if let value = try? MobilityDevice(from: data) {
+                return value
+            }
+        }
+        return defaultValue
+    }() {
+        didSet {
+            calculate()
+            UserDefaults.standard.set(self.selectedDevice?.encoded, forKey: "selectedDevice")
+        }
+    }
+    
+    // TODO: this probably needs to be reworked. Though it works fine
     @Published var calculator: RouteStat?
-    //    @Published var map: MapTabModel
     
-    @Published var currentTab: Tabs {
+    /// Which tab is currently selected: Map or Calculator
+    @Published var currentTab: Tabs = Tabs(rawValue: UserDefaults.standard.integer(forKey: "selectedTabIndex"))! {
         didSet {
             calculate()
-        }
-    }
-    @Published var selectedTabIndex = 0 {
-        didSet {
-            currentTab = selectedTabIndex == 0 ? .map : .calculator
         }
     }
     
     // MARK: - General Methods
     
+    /// Default init
     init() {
-        currentTab = Tabs.calculator
+        if selectedDevice == nil {
+            selectedDevice = devices.first
+        }
         
-        populateDevices()
-        selectedDevice = devices.first
+        if self.setUpProcess == .unknown {
+            if self.devices.isEmpty {
+                self.setUpProcess = .noDevices
+            } else {
+                self.setUpProcess = .firstDeviceAddedSoComplete
+            }
+        }
     }
     
+    // TODO: ?? Not sure about that
     func calculate(distanceKm: Double?) {
         if currentTab == .calculator {
             if let distanceKm = distanceKm ?? calculator?.distanceKm {
@@ -70,10 +126,12 @@ class ContentModel: ObservableObject {
         }
     }
     
+    // TODO: ?? Not sure about that
     func calculate() {
         calculate(distanceKm: nil)
     }
     
+    /// Adds the device to the list of all devices
     func addDevice(_ device: MobilityDevice) {
         guard device.isValid() else {
             return
@@ -92,6 +150,7 @@ class ContentModel: ObservableObject {
         }
     }
     
+    /// Checks if the device is set up properly and replaces the old instance of it in the list of all devices with this new version
     func updateDevice(_ device: MobilityDevice) {
         guard device.isValid() else {
             return
@@ -103,6 +162,7 @@ class ContentModel: ObservableObject {
         }
     }
     
+    /// Deletes the device from the list of all devices
     func deleteDevice(_ device: MobilityDevice) {
         if let index = devices.lastIndex(where: { d in
             d.id == device.id
@@ -115,47 +175,54 @@ class ContentModel: ObservableObject {
         }
     }
     
-    // MARK: - Testing
-    
-    static let PreviewInImperialUnits: ContentModel = {
-        let a = ContentModel()
-        a.units = .imperial
-        return a
-    }()
-    
-    func sampleData() -> ContentModel {
-        self.populateDevices()
-        return self
-    }
-    
-    func populateDevices() {
-        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, rangeKm: 14.5, transportType: .pedestrian))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
-    }
-    
+    /// Selects a device at a given index
+    // Returnes Self so that it can be chained in texting (in previews)
     func selectDevice(atIndex index: Int) -> Self {
         self.selectedDevice = self.devices[index]
         return self
     }
     
-    // MARK: - General Enums
+    // MARK: - Testing
     
-    enum Tabs {
-        case calculator
-        case map
+    /// Initializer for testing purposes (previews)
+    init(setUpProcess: SetUpProcess, units: Units, devices: [MobilityDevice], selectedDeviceIndex: Int = 0) {
+        self.setUpProcess = setUpProcess
+        self.units = units
+        self.devices = devices
+        self.selectedDevice = devices[selectedDeviceIndex]
     }
     
-    enum Units: CustomStringConvertible, Identifiable {
+    /// Creates an instance of ContentModel for testing (preview), filled in with sample data
+    static func preview() -> ContentModel {
+        return ContentModel(setUpProcess: .firstLaunch, units: .metric, devices: MobilityDevice.sampleDevices())
+    }
+    
+    /// Sets units of measure to a given value, returns Self for the engeneer to be able to chain methods
+    func setUnits(_ units: Units) -> Self {
+        self.units = units
+        return self
+    }
+    
+    // MARK: - General Enums
+    
+    /// List of all the tabs in the app: Map, Calculator
+    enum Tabs: Int {
+        case map
+        case calculator
+    }
+    
+    /// Units of distance: Metric and Imperial
+    enum Units: String, CustomStringConvertible, Identifiable {
         var id: Self { self }
         
-        case metric
-        case imperial
+        case metric = "metric"
+        case imperial = "imperial"
         
         static var all: [Units] {
             return [.metric, .imperial]
         }
         
+        /// Returns short localized string description
         var description: String {
             switch self {
             case .metric: return String(localized: "km")
@@ -163,6 +230,7 @@ class ContentModel: ObservableObject {
             }
         }
         
+        /// Returns the localized name of the units
         var fullDescription: String {
             switch self {
             case .metric: return String(localized: "Kilometers")
@@ -170,6 +238,7 @@ class ContentModel: ObservableObject {
             }
         }
         
+        /// Returns the localized string of \unit per hour
         var perHour: String {
             switch self {
             case .metric: return String(localized: "km/h")

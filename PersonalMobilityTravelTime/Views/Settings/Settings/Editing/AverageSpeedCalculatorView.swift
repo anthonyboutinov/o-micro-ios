@@ -200,6 +200,6 @@ struct AverageSpeedCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         AverageSpeedCalculatorView(device: MobilityDevice.sample())
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel.PreviewInImperialUnits)
+            .environmentObject(ContentModel.preview().setUnits(.imperial))
     }
 }

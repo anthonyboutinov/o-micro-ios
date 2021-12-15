@@ -8,7 +8,8 @@
 import Foundation
 import MapKit
 
-class MobilityDevice: Identifiable, ObservableObject, Hashable {
+/// Describes a mobility device
+final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     var id: UUID = UUID()
     @Published var index: Int = 0
@@ -19,7 +20,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     @Published var averageSpeedCalculatorData: AverageSpeedCalculatorData?
     @Published var averageSpeedKmh: Double = 14
     @Published var rangeKm: Double?
-    @Published var transportType: TransportType = .automobile
+    @Published var transportType: TransportType = .pedestrian
     
     static let suggestedDefaultRangeKm: Double = 10.0
     
@@ -27,6 +28,17 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         self.index = index ?? 0
     }
     
+    /// Initialize from a MobilityDeviceCodableProxy
+    private convenience init(from p: MobilityDeviceCodableProxy) {
+        self.init(id: p.id, index: p.index, title: p.title, iconName: p.iconName, isElectric: p.isElectric, averageSpeedKmh: p.averageSpeedKmh, rangeKm: p.rangeKm, transportType: p.transportType)
+    }
+    
+    /// Initialize from data
+    convenience init(from data: Data) throws {
+        self.init(from: try MobilityDeviceCodableProxy.decode(from: data))
+    }
+    
+    /// Initialize from values
     init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, rangeKm: Double?, transportType: TransportType) {
         self.id = id
         self.index = index
@@ -38,18 +50,36 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         self.transportType = transportType
     }
     
+    /// Returns true if this device instance is set up properly to be added to user's list of devices
     func isValid() -> Bool {
         return iconName != "" && title != "" && averageSpeedKmh > 0 && (isElectric ? rangeKm != nil && rangeKm! > 0 : true)
     }
     
+    /// Returns a single sample device for testing (previews)
     static func sample() -> MobilityDevice {
         return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, rangeKm: 14.5, transportType: .pedestrian)
     }
     
+    /// Returns a list of sample devices for testing (previews)
+    static func sampleDevices() -> [MobilityDevice] {
+        var devices = [MobilityDevice]()
+        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, rangeKm: 14.5, transportType: .pedestrian))
+        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
+        devices.append(MobilityDevice(id: UUID(), index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
+        return devices
+    }
+    
     /// Stores data for the Average Speed Calculator popup in the device's settings screen
-    struct AverageSpeedCalculatorData {
+    struct AverageSpeedCalculatorData: Codable {
         var distanceKm: Double
         var travelTimeMinutes: Double
+    }
+    
+    /// JSON encoded data reprsentation
+    var encoded: Data? {
+        let proxy = MobilityDeviceCodableProxy(id: self.id, index: self.index, title: self.title, iconName: self.iconName, isElectric: self.isElectric, averageSpeedCalculatorData: self.averageSpeedCalculatorData, averageSpeedKmh: self.averageSpeedKmh, rangeKm: self.rangeKm, transportType: self.transportType)
+        let encoder = JSONEncoder()
+        return try? encoder.encode(proxy)
     }
     
     // MARK: - Conforming to Hashable
@@ -107,11 +137,11 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
 //        }
 //    }
     
-    enum TransportType: CustomStringConvertible, Identifiable {
-        case pedestrian
-        case automobile
+    enum TransportType: String, CustomStringConvertible, Identifiable, Codable {
+        case pedestrian = "pedestrian"
+        case automobile = "automobile"
         
-        /// Converts to MKDirectionsTransportType
+        /// Representation in MKDirectionsTransportType
         var mapKit: MKDirectionsTransportType {
             get {
                 switch self {

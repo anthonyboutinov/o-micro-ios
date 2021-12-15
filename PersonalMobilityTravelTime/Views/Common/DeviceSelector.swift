@@ -50,6 +50,6 @@ struct DeviceSelector_Previews: PreviewProvider {
     static var previews: some View {
         DeviceSelector()
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
     }
 }

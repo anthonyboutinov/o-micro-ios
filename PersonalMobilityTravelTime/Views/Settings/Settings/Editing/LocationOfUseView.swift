@@ -27,6 +27,6 @@ struct LocationOfUseView: View {
 struct LocationOfUseView_Previews: PreviewProvider {
     static var previews: some View {
         UnitsOfMeasureView()
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
     }
 }

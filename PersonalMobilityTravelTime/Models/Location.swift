@@ -7,6 +7,7 @@
 
 import MapKit
 
+/// A location. It only contains coordinates and a name. Can be initialized from MKMapItem
 class Location {
     var name: String?
     var coordinates: Coordinate?

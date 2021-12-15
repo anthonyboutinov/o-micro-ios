@@ -24,6 +24,6 @@ struct UnitsOfMeasureView: View {
 struct UnitsOfMeasureView_Previews: PreviewProvider {
     static var previews: some View {
         UnitsOfMeasureView()
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
     }
 }

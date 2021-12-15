@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// View model that controls the Calculator tab
 class CalculatorModel: ObservableObject {
     
     @Published var distance: Double = 5.0

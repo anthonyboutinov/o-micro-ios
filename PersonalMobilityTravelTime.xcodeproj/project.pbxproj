@@ -23,6 +23,7 @@
 		A830CDC52768710700085F3B /* ChooseIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A830CDC42768710700085F3B /* ChooseIconView.swift */; };
 		A8333EF82768ADF9008F25D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8333EFA2768ADF9008F25D7 /* Localizable.strings */; };
 		A8333EFE2768BFEF008F25D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8333EFC2768BFEF008F25D7 /* InfoPlist.strings */; };
+		A8333F022769CA31008F25D7 /* MobilityDeviceCodableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8333F012769CA30008F25D7 /* MobilityDeviceCodableProxy.swift */; };
 		A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397326AE99DB008F5EFF /* EditingView.swift */; };
 		A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397526AEA031008F5EFF /* NormalMenuItem.swift */; };
 		A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */; };
@@ -78,6 +79,7 @@
 		A8333EF92768ADF9008F25D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8333EFB2768AE02008F25D7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8333EFD2768BFEF008F25D7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A8333F012769CA30008F25D7 /* MobilityDeviceCodableProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityDeviceCodableProxy.swift; sourceTree = "<group>"; };
 		A83E397326AE99DB008F5EFF /* EditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingView.swift; sourceTree = "<group>"; };
 		A83E397526AEA031008F5EFF /* NormalMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalMenuItem.swift; sourceTree = "<group>"; };
 		A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainLikeButtonStyle.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				A8EF716926AE7D7500F0D1FD /* MobilityDevice.swift */,
+				A8333F012769CA30008F25D7 /* MobilityDeviceCodableProxy.swift */,
 				A8A9945426B12E4100192203 /* Location.swift */,
 			);
 			path = Models;
@@ -464,6 +467,7 @@
 				A8A9945026B1260000192203 /* GeolocationDeniedView.swift in Sources */,
 				A81ACB8D26AF308300C17F30 /* OnboardingView.swift in Sources */,
 				A815C94127640C02009ECEDF /* RouteTimeResultsView.swift in Sources */,
+				A8333F022769CA31008F25D7 /* MobilityDeviceCodableProxy.swift in Sources */,
 				A8A9944426B0C48700192203 /* DeleteButton.swift in Sources */,
 				A8EF715926ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift in Sources */,
 				A8EF716D26AE7F4A00F0D1FD /* Constants.swift in Sources */,

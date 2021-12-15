@@ -114,6 +114,6 @@ struct CalculatorViewBody_Previews: PreviewProvider {
     static var previews: some View {
         CalculatorViewBody()
             .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
+            .environmentObject(ContentModel.preview())
     }
 }

@@ -64,6 +64,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView().environmentObject(ContentModel())
+        OnboardingView().environmentObject(ContentModel.preview())
     }
 }

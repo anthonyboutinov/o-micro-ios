@@ -24,11 +24,11 @@ struct LaunchView: View {
             }
         } else if model.setUpProcess == .firstDeviceAddedSoComplete {
             NavigationView() {
-                TabView(selection: $model.selectedTabIndex) {
+                TabView(selection: $model.currentTab) {
                     MapView().tabItem {
                         Image(systemName: "map.fill")
                         Text("Map")
-                    }.tag(0)
+                    }.tag(ContentModel.Tabs.map)
                         .environmentObject(mapTabModel)
                         .navigationBarTitle("Map") //this must be empty or set to something
                         .navigationBarHidden(true)
@@ -36,7 +36,7 @@ struct LaunchView: View {
                     CalculatorView().tabItem {
                         Image(systemName: "slider.horizontal.below.rectangle")
                         Text("Calculator")
-                    }.tag(1)
+                    }.tag(ContentModel.Tabs.calculator)
                         .navigationBarTitle("Calculator") //this must be empty or set to something
                         .navigationBarHidden(true)
                         .navigationBarBackButtonHidden(true)

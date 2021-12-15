@@ -7,8 +7,8 @@
 
 import Foundation
 import MapKit
-import CoreLocation
 
+/// View model that controls the Map tab
 class MapTabModel: NSObject, ObservableObject {
     
     enum ViewState: Hashable {

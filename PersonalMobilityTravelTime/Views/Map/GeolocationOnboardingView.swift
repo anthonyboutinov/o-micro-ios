@@ -43,6 +43,6 @@ struct GeolocationOnboardingView: View {
 
 struct GeolocationOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GeolocationOnboardingView().environmentObject(ContentModel())
+        GeolocationOnboardingView().environmentObject(ContentModel.preview())
     }
 }
