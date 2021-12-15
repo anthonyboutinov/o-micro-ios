@@ -2,7 +2,8 @@
   "images" : [
     {
       "filename" : "027-moped.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "language-direction" : "left-to-right"
     }
   ],
   "info" : {

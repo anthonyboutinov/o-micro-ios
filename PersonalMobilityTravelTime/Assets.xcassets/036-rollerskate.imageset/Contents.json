@@ -2,7 +2,8 @@
   "images" : [
     {
       "filename" : "036-rollerskate.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "language-direction" : "left-to-right"
     }
   ],
   "info" : {

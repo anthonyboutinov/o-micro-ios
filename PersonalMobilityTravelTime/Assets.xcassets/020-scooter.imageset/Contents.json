@@ -2,7 +2,8 @@
   "images" : [
     {
       "filename" : "020-scooter.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "language-direction" : "left-to-right"
     }
   ],
   "info" : {

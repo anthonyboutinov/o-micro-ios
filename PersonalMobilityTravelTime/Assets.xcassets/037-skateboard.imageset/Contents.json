@@ -2,7 +2,8 @@
   "images" : [
     {
       "filename" : "037-skateboard.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "language-direction" : "left-to-right"
     }
   ],
   "info" : {

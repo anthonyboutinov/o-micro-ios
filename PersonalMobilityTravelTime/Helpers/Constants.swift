@@ -70,6 +70,7 @@ class Constants {
         "020-scooter",
         "023-scooterwithaseat",
         
+        "100-omafiets",
         "028-bycicle",
         "030-bike",
         

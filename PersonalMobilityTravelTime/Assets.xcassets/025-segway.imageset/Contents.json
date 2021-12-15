@@ -2,7 +2,8 @@
   "images" : [
     {
       "filename" : "025-segway.svg",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "language-direction" : "left-to-right"
     }
   ],
   "info" : {
