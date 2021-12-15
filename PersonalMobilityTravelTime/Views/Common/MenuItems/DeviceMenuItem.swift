@@ -13,12 +13,14 @@ struct DeviceMenuItem: View {
     
     var body: some View {
         HStack(spacing: Constants.UI.horizontalButtonSpacing) {
-            Image(imageName)
-                .renderingMode(.template)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            LinearGradient(gradient: Constants.Colors.primaryGradient, startPoint: .top, endPoint: .bottom)
+                .mask(Image(imageName)
+//                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit))
                 .frame(width: Constants.UI.deviceIconSize, height: Constants.UI.deviceIconSize, alignment: .center)
-                .foregroundColor(Color.primary)
+//                        .foregroundColor(Color.primary))
+            
             Text(label)
                 .multilineTextAlignment(.leading)
         }

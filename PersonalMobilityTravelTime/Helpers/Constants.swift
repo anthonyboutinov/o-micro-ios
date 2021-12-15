@@ -58,6 +58,9 @@ class Constants {
         static var textFieldAlternateBackgroundColor = Color("textFieldAlternateBackgroundColor")
         
         static var route = UIColor(Color("RouteColor"))
+        
+        static var primaryGradient = Gradient(colors: [Color("GradientLighterColor"), Color("GradientDarkerColor")])
+        static var redGradient = Gradient(colors: [Color("RedGradientLighterColor"), Color("RedGradientDarkerColor")])
     }
     
     static let allIcons = [

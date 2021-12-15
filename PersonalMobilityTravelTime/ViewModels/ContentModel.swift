@@ -18,7 +18,7 @@ class ContentModel: ObservableObject {
 //            }
 //        }
 //    }
-    @Published var setUpProcess = SetUpProcess.firstLaunch // SetUpProcess.firstDeviceAddedSoComplete // SetUpProcess.firstLaunch
+    @Published var setUpProcess = SetUpProcess.firstDeviceAddedSoComplete // SetUpProcess.firstLaunch
     
     enum SetUpProcess {
         case firstLaunch

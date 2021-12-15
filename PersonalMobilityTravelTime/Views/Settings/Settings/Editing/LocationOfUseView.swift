@@ -20,6 +20,7 @@ struct LocationOfUseView: View {
             }
         }
         .navigationTitle("Location of Use")
+        .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
     }
 }
 
