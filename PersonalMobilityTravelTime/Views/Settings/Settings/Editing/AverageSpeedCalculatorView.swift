@@ -47,7 +47,7 @@ struct AverageSpeedCalculatorView: View {
         List {
             
             Section(content: {}, footer: {
-                Text("Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually.")
+                Text("editDeviceCalculatorviewInstructions")
                     .lineLimit(Int.max)
             })
             

@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import ScrollViewIfNeeded
 
 struct OnboardingView: View {
     
     @EnvironmentObject var model: ContentModel
     
     var body: some View {
-        VStack {
+        ScrollViewIfNeeded {
             VStack(alignment: .center) {
                 Spacer()
                 
@@ -21,41 +22,46 @@ struct OnboardingView: View {
                     .foregroundColor(Color.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 5)
+                    .padding(.top, Constants.UI.onboardingItemSpacing)
                 
-                Text("Micro-Mobility Travel Time Calculator")
+                Text("O-Micro")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                    .lineLimit(10)
+                    .padding(.bottom, 1)
+                
+                Text("A Micro-Mobility Travel Time Calculator")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(100)
+                    .padding(.bottom, Constants.UI.onboardingItemSpacing)
                 
                 HStack(alignment: .center, spacing: 45, content: {
                     DeviceIcon(named: "022-electricscooter")
                     DeviceIcon(named: "026-one wheel")
                     DeviceIcon(named: "028-bycicle")
                 })
+                    .padding(.bottom, Constants.UI.onboardingItemSpacing)
                 Spacer()
                 
                 Text("onboardingViewCallout")
                     .font(.callout)
                     .foregroundColor(Color.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, Constants.UI.onboardingItemSpacing)
                 
                 Spacer()
             }
             .frame(maxHeight: .infinity)
             
             Button(action: {
-                // TODO: needs more logic
-                
-//                if model.devices.count == 0 {
-                    model.setUpProcess = .noDevices
-//                } else {
-//                    model.setUpProcess = .firstDeviceAddedSoComplete
-//                }
+                model.setUpProcess = .noDevices
             }, label: {
                 Text("Let's Go!")
             })
-            .buttonStyle(PlainLikeButtonStyle(.primary))
-            .padding(.bottom, Constants.UI.onboardingButtonsBottomPadding)
+                .buttonStyle(PlainLikeButtonStyle(.primary))
+                .padding(.bottom, Constants.UI.onboardingButtonsBottomPadding)
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)
@@ -64,6 +70,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView().environmentObject(ContentModel.preview())
+        OnboardingView().previewDevice("iPod touch (7th generation)").environmentObject(ContentModel.preview())
     }
 }

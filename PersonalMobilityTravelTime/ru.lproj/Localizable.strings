@@ -25,7 +25,7 @@
 "Average Speed Calculator" = "Калькулятор средней скорости";
 
 /* Settings/Settings/EditingView */
-"averageSpeedEditLinkFooter" = "Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.";
+"averageSpeedEditLinkFooter" = "Заполните эти данные, основываясь на вашем опыте использования этого средства индивидуальной мобильности. Совершите несколько поездок и замерьте, как в среднем вы его используете.";
 
 /* No comment provided by engineer. */
 "Calculated Values" = "Расчеты";
@@ -136,7 +136,7 @@
 "Privacy Policy" = "Политика конфиденциальности";
 
 /* No comment provided by engineer. */
-"Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually." = "Запишите вашу обычную поездку с помощью любого другого приложения и введите здесь, сколько времени занимает поездка на некоторую дистанцию.\n\nЛибо вы можете ввести значение средней скорости вручную.";
+"editDeviceCalculatorviewInstructions" = "Запишите вашу обычную поездку с помощью любого другого приложения и введите здесь, сколько времени занимает поездка на некоторую дистанцию.\n\nЛибо вы можете ввести значение средней скорости вручную.";
 
 /* (No Comment) */
 "Reorder" = "Сортировать";
@@ -171,3 +171,6 @@
 /* No comment provided by engineer. */
 "White" = "Белый";
 
+"A Micro-Mobility Travel Time Calculator" = "Калькулятор для средств индивидуальной мобильности";
+
+"Reset App" = "Сбросить приложение";

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ScrollViewIfNeeded
 
 struct FullscreenPromptView: View {
     
@@ -16,36 +17,38 @@ struct FullscreenPromptView: View {
     var buttonAction: () -> Void
     
     var body: some View {
-        VStack {
-            Spacer()
-            if let iconName = iconName {
-                Image(systemName: iconName)
-                    .resizable()
-                    .frame(width:75, height: 75, alignment: .center)
-                    .foregroundColor(Color.secondary)
-                    .padding(.bottom, 18)
+        ScrollViewIfNeeded {
+            VStack {
+                Spacer()
+                if let iconName = iconName {
+                    Image(systemName: iconName)
+                        .resizable()
+                        .frame(width:75, height: 75, alignment: .center)
+                        .foregroundColor(Color.secondary)
+                        .padding(.bottom, 18)
+                    
+                } else if let imageName = imageName {
+                    Image(imageName)
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Color.secondary)
+                        .frame(width:75, height: 75, alignment: .center)
+                        .padding(.bottom, 18)
+                }
                 
-            } else if let imageName = imageName {
-                Image(imageName)
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(Color.secondary)
-                    .frame(width:75, height: 75, alignment: .center)
-                    .padding(.bottom, 18)
+                Text(text)
+                    .font(.title2)
+                    .bold()
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+                
+                Button(action: buttonAction, label: {
+                    Text(buttonLabel)
+                })
+                    .buttonStyle(PlainLikeButtonStyle(.primary))
+                    .padding(.bottom, Constants.UI.onboardingButtonsBottomPadding)
             }
-            
-            Text(text)
-                .font(.title2)
-                .bold()
-                .multilineTextAlignment(.center)
-            
-            Spacer()
-            
-            Button(action: buttonAction, label: {
-                Text(buttonLabel)
-            })
-                .buttonStyle(PlainLikeButtonStyle(.primary))
-                .padding(.bottom, Constants.UI.onboardingButtonsBottomPadding)
         }
         .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
         .padding(.vertical, Constants.UI.verticalSectionSpacing)

@@ -43,6 +43,17 @@ struct SettingsView: View {
                     NormalMenuItem(icon: "ruler", label: "Distance units"/*, currentValue: self.model.units.fullDescription*/)
                 }
             }
+            
+            Section(header: Text("Developer Tools")) {
+                Button {
+                    model.devices.removeAll()
+                    model.setUpProcess = .firstLaunch
+                } label: {
+                    Text("Reset App")
+                        .foregroundColor(.primary)
+                }
+            }
+            .opacity(0.3)
         }
         .toolbar {
             if model.devices.count > 1 {

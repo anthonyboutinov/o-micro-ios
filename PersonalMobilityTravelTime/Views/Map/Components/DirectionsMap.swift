@@ -124,6 +124,9 @@ struct DirectionsMap: UIViewRepresentable {
     }
     
     private func getOtherDistances(excluding excludedTransportType: MKDirectionsTransportType) {
+        if model.devices.count <= 1 {
+            return
+        }
         // For other devices only calculate distance based on their transportTypes
         let otherTransportTypeDirections = createOtherTransportTypeRequests(excluding: excludedTransportType)
         print("directions for other transport types created: \(otherTransportTypeDirections)")

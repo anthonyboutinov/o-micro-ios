@@ -47,6 +47,8 @@ class Constants {
         
         static var onboardingButtonsBottomPadding: CGFloat = 24
         
+        static var onboardingItemSpacing: CGFloat = 30
+        
     }
     
     class Colors {

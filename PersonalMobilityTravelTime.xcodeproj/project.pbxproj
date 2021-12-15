@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		A8333EF82768ADF9008F25D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8333EFA2768ADF9008F25D7 /* Localizable.strings */; };
 		A8333EFE2768BFEF008F25D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8333EFC2768BFEF008F25D7 /* InfoPlist.strings */; };
 		A8333F022769CA31008F25D7 /* MobilityDeviceCodableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8333F012769CA30008F25D7 /* MobilityDeviceCodableProxy.swift */; };
+		A8333F052769EF4E008F25D7 /* ScrollViewIfNeeded in Frameworks */ = {isa = PBXBuildFile; productRef = A8333F042769EF4E008F25D7 /* ScrollViewIfNeeded */; };
 		A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397326AE99DB008F5EFF /* EditingView.swift */; };
 		A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397526AEA031008F5EFF /* NormalMenuItem.swift */; };
 		A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */; };
@@ -124,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8333F052769EF4E008F25D7 /* ScrollViewIfNeeded in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +369,7 @@
 			);
 			name = PersonalMobilityTravelTime;
 			packageProductDependencies = (
+				A8333F042769EF4E008F25D7 /* ScrollViewIfNeeded */,
 			);
 			productName = PersonalMobilityTravelTime;
 			productReference = A8EF715526ADF33D00F0D1FD /* PersonalMobilityTravelTime.app */;
@@ -397,6 +400,7 @@
 			);
 			mainGroup = A8EF714C26ADF33C00F0D1FD;
 			packageReferences = (
+				A8333F032769EF4E008F25D7 /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */,
 			);
 			productRefGroup = A8EF715626ADF33D00F0D1FD /* Products */;
 			projectDirPath = "";
@@ -684,6 +688,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A8333F032769EF4E008F25D7 /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/ScrollViewIfNeeded";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A8333F042769EF4E008F25D7 /* ScrollViewIfNeeded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8333F032769EF4E008F25D7 /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */;
+			productName = ScrollViewIfNeeded;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8EF714D26ADF33C00F0D1FD /* Project object */;
 }

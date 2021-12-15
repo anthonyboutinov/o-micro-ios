@@ -11,3 +11,5 @@
 
 /* Settings/Settings/EditingView Footer */
 "averageSpeedEditLinkFooter" = "Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.";
+
+"editDeviceCalculatorviewInstructions" =  "Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually.";
