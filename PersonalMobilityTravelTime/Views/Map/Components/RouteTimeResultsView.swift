@@ -21,7 +21,7 @@ struct RouteTimeResultsView: View {
                 return lhs == model.selectedDevice ? true : (lhs.averageSpeedKmh > rhs.averageSpeedKmh && rhs != model.selectedDevice)
             })
             .filter { e in
-                model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distances[e.transportType]!, capacity: e.rangeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage)
+                model.selectedDevice == e || !e.isElectric || (e.isElectric && MobilityDevice.Calculator.batteryUsage(distance: self.distances[e.transportType]!, capacity: e.rangeKm!) <= Constants.CalculatorUI.batteryUsageDangerPercentage) // FIXME: Found nil while unwrapping optional
             }
         if isExpanded {
             return list.prefix(Int.max)
@@ -48,7 +48,7 @@ struct RouteTimeResultsView: View {
                 
                 Spacer()
                 
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                VStack(alignment: .trailing, spacing: Constants.UI.itemSpacing) {
                     ForEach(devices) { device in
                         
                         HStack(alignment: .center, spacing: 0) {
@@ -63,20 +63,20 @@ struct RouteTimeResultsView: View {
                             
                             if batteryUsage != nil && batteryUsage! > 2.0 {
                                 // if it would be impossible to travel by this electric device, display custom info
-                                Text("☠️")
+                                Text(String("☠️"))
                                 batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
                             } else {
                                 
-                                Text("\(travelTimeFormatted)\(batteryUsage != nil ? " (" : "")")
+                                Text(String("\(travelTimeFormatted)\(batteryUsage != nil ? " (" : "")"))
                                     .bold()
                                     .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
                                 
                                 if (batteryUsage != nil) {
-                                    Text("\(Int(batteryUsage! * 100))%")
+                                    Text(String("\(Int(batteryUsage! * 100))%"))
                                         .bold()
                                         .foregroundColor(warningColor!)
                                     batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
-                                    Text(")")
+                                    Text(String(")"))
                                         .bold()
                                         .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
                                 }
@@ -85,7 +85,7 @@ struct RouteTimeResultsView: View {
                     }
                 }
                 
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
+                VStack(alignment: .trailing, spacing: Constants.UI.itemSpacing) {
                     ForEach(devices) { device in
                         Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
                             .bold()
@@ -129,11 +129,6 @@ struct RouteTimeResultsView: View {
 }
 
 struct RouteTimeResultsView_Previews: PreviewProvider {
-    //    @State static var xlong:  Double? = 400
-    //    @State static var long:   Double? = 24.23653
-    //    @State static var medium: Double? = 11.1
-    //    @State static var short:  Double? = 6
-    //    @State static var xshort: Double? = 0.914
     
     @State static var xlong: [MobilityDevice.TransportType: Double] = [
         MobilityDevice.TransportType.automobile: 400,
@@ -165,20 +160,20 @@ struct RouteTimeResultsView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .environmentObject(ContentModel())
         
-        RouteTimeResultsView(distances: $medium, isExpanded: $compact)
-            .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
-        
-        RouteTimeResultsView(distances: $short, isExpanded: $compact)
-            .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
-        
-        RouteTimeResultsView(distances: $xshort, isExpanded: $compact)
-            .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
-        
-        RouteTimeResultsView(distances: $xlong, isExpanded: $expanded)
-            .previewLayout(.sizeThatFits)
-            .environmentObject(ContentModel())
+//        RouteTimeResultsView(distances: $medium, isExpanded: $compact)
+//            .previewLayout(.sizeThatFits)
+//            .environmentObject(ContentModel())
+//
+//        RouteTimeResultsView(distances: $short, isExpanded: $compact)
+//            .previewLayout(.sizeThatFits)
+//            .environmentObject(ContentModel())
+//
+//        RouteTimeResultsView(distances: $xshort, isExpanded: $compact)
+//            .previewLayout(.sizeThatFits)
+//            .environmentObject(ContentModel())
+//
+//        RouteTimeResultsView(distances: $xlong, isExpanded: $expanded)
+//            .previewLayout(.sizeThatFits)
+//            .environmentObject(ContentModel())
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NormalMenuItem: View {
     var icon: String?
-    var label: String
+    var label: LocalizedStringKey
     var currentValue: String?
     
     var body: some View {

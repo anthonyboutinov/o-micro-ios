@@ -18,7 +18,7 @@ struct SearchFieldOriginLocation: View {
         if (self.map.state == .destinationSet) {
             HStack {
                 Image(self.map.originPointState == .currentLocation ? Constants.SearchbarIcons.currentLocation.rawValue : Constants.SearchbarIcons.circle.rawValue)
-                TextField(Constants.Text.searchPlaceholder, text: self.$map.originLabel)
+                TextField("Search by Name or Address", text: self.$map.originLabel)
                     .focused($focusedField, equals: MapViewContent.FocusField.origin)
             }
             .modifier(InputFieldViewModifier(style: .alternate))
@@ -26,7 +26,7 @@ struct SearchFieldOriginLocation: View {
             .onTapGesture {
                 self.focusedField = .origin
                 // TODO: Remove "Current Location" text from the text field on tap, leaving the input field blank
-//                if self.map.originLabel == Constants.Text.currentLocationLabel {
+//                if self.map.originLabel == "Current Location" {
 //                    self.map.originLabel = ""
 //                }
             }

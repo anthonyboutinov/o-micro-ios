@@ -11,8 +11,8 @@ struct FullscreenPromptView: View {
     
     var imageName: String?
     var iconName: String?
-    var text: String
-    var buttonLabel: String
+    var text: LocalizedStringKey
+    var buttonLabel: LocalizedStringKey
     var buttonAction: () -> Void
     
     var body: some View {

@@ -1,0 +1,173 @@
+/* Localizable.strings
+ PersonalMobilityTravelTime
+ 
+ Created by Anthony van den Brandt on 14.12.2021. */
+
+/* No comment provided by engineer. */
+"Actual range" = "Реальная дальность";
+
+/* No comment provided by engineer. */
+"Add Device" = "Добавить девайс";
+
+/* No comment provided by engineer. */
+"Add device..." = "Добавить девайс...";
+
+/* No comment provided by engineer. */
+"Allow Location Services" = "Разрешить службы геолокации";
+
+/* No comment provided by engineer. */
+"Average speed" = "Средняя скорость";
+
+/* No comment provided by engineer. */
+"Average Speed" = "Средняя скорость";
+
+/* No comment provided by engineer. */
+"Average Speed Calculator" = "Калькулятор средней скорости";
+
+/* Settings/Settings/EditingView */
+"averageSpeedEditLinkFooter" = "Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.";
+
+/* No comment provided by engineer. */
+"Calculated Values" = "Расчеты";
+
+/* No comment provided by engineer. */
+"Calculator" = "Калькулятор";
+
+/* (No Comment) */
+"Cancel" = "Отменить";
+
+/* No comment provided by engineer. */
+"Current Location" = "Текущее местоположение";
+
+/* (No Comment) */
+"Delete" = "Удалить";
+
+/* No comment provided by engineer. */
+"Delete %@" = "Удалить %@";
+
+/* No comment provided by engineer. */
+"Delete Device" = "Удалить девайс";
+
+/* No comment provided by engineer. */
+"Distance" = "Дистанция";
+
+/* No comment provided by engineer. */
+"Distance units" = "Единицы измерения";
+
+/* (No Comment) */
+"Done" = "Готово";
+
+/* No comment provided by engineer. */
+"Enter Your Trip Details" = "Введите детали поездки";
+
+/* No comment provided by engineer. */
+"h" = "ч";
+
+/* No comment provided by engineer. */
+"Icon" = "Иконка";
+
+/* No comment provided by engineer. */
+"Is electric" = "Электрический";
+
+/* No comment provided by engineer. */
+"Kilometers" = "Километры";
+
+/* No comment provided by engineer. */
+"km" = "км";
+
+/* No comment provided by engineer. */
+"km/h" = "км/ч";
+
+/* No comment provided by engineer. */
+"Let's Go!" = "Поехали!";
+
+/* No comment provided by engineer. */
+"Let’s add your first\nmicro-mobility device." = "Давайте добавим ваш\nпервый девайс микро-мобильности.";
+
+/* No comment provided by engineer. */
+"Let’s add your first micro-mobility device" = "Давайте добавим ваш первый девайс микро-мобильности.";
+
+/* No comment provided by engineer. */
+"Location of use" = "Локация использования";
+
+/* No comment provided by engineer. */
+"Location of Use" = "Локация использования";
+
+/* No comment provided by engineer. */
+"Location tracking denied. Enable it in Settings to continue." = "Отслеживанием локации отклонено. Включите доступ к геолокации в Настройках, чтобы продолжить.";
+
+/* No comment provided by engineer. */
+"Map" = "Карта";
+
+/* No comment provided by engineer. */
+"miles" = "м";
+
+/* No comment provided by engineer. */
+"Miles" = "Мили";
+
+/* No comment provided by engineer. */
+"min" = "мин";
+
+/* No comment provided by engineer. */
+"mph" = "м/ч";
+
+/* No comment provided by engineer. */
+"My Devices" = "Мои девайсы";
+
+/* No comment provided by engineer. */
+"New Device" = "Новый девайс";
+
+/* No comment provided by engineer. */
+"onboardingViewCallout" = "С этим приложением вы можете оцениать, как много времени у вас займет путешествие на вашем электронном скутере, моноколесе, велосипеде или другом устройстве микро-мобильности. Мы также оцениваем расход аккумулятора, если это электрический девайс.";
+
+/* No comment provided by engineer. */
+"Open Settings" = "Открыть Настройки";
+
+/* No comment provided by engineer. */
+"Please allow geolocation tracking to use map features." = "Пожалуйста, разрешите отслеживание геопозиции, чтобы использовать функции карты.";
+
+/* No comment provided by engineer. */
+"Preferences" = "Настройки";
+
+/* No comment provided by engineer. */
+"Primary" = "Основной";
+
+/* No comment provided by engineer. */
+"Privacy Policy" = "Политика конфиденциальности";
+
+/* No comment provided by engineer. */
+"Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually." = "Запишите вашу обычную поездку с помощью любого другого приложения и введите здесь, сколько времени занимает поездка на некоторую дистанцию.\n\nЛибо вы можете ввести значение средней скорости вручную.";
+
+/* (No Comment) */
+"Reorder" = "Сортировать";
+
+/* No comment provided by engineer. */
+"Roads" = "Дороги";
+
+/* No comment provided by engineer. */
+"Search by Name or Address" = "Искать по названию или адресу";
+
+/* (No Comment) */
+"Settings" = "Настройки";
+
+/* No comment provided by engineer. */
+"Sidewalks" = "Тротуары";
+
+/* No comment provided by engineer. */
+"Time to Travel" = "Время в пути";
+
+/* No comment provided by engineer. */
+"Title" = "Название";
+
+/* No comment provided by engineer. */
+"Travel Time" = "Время в пути";
+
+/* No comment provided by engineer. */
+"Unnamed" = "Без имени";
+
+/* No comment provided by engineer. */
+"Welcome to" = "Добро пожаловать в";
+
+/* No comment provided by engineer. */
+"White" = "Белый";
+

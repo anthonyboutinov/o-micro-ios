@@ -46,7 +46,7 @@ struct SettingsView: View {
         }
         .toolbar {
             if model.devices.count > 1 {
-                Button(editMode == .inactive ? Constants.Text.reorder : Constants.Text.done) {
+                Button(editMode == .inactive ? String(localized: "Reorder") : String(localized: "Done")) {
                     if editMode == .inactive {
                         editMode = .active
                     } else {
@@ -57,7 +57,7 @@ struct SettingsView: View {
             }
         }
         .environment(\.editMode, $editMode)
-        .navigationTitle(Constants.Text.settings)
+        .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
     }
     

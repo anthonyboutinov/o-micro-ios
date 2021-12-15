@@ -21,6 +21,8 @@
 		A81ACB9326AF365700C17F30 /* MapViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB9226AF365700C17F30 /* MapViewContent.swift */; };
 		A81ACB9526AF396700C17F30 /* DeviceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81ACB9426AF396700C17F30 /* DeviceIcon.swift */; };
 		A830CDC52768710700085F3B /* ChooseIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A830CDC42768710700085F3B /* ChooseIconView.swift */; };
+		A8333EF82768ADF9008F25D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8333EFA2768ADF9008F25D7 /* Localizable.strings */; };
+		A8333EFE2768BFEF008F25D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8333EFC2768BFEF008F25D7 /* InfoPlist.strings */; };
 		A83E397426AE99DB008F5EFF /* EditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397326AE99DB008F5EFF /* EditingView.swift */; };
 		A83E397626AEA031008F5EFF /* NormalMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397526AEA031008F5EFF /* NormalMenuItem.swift */; };
 		A83E397B26AEA566008F5EFF /* PlainLikeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */; };
@@ -73,6 +75,9 @@
 		A81ACB9226AF365700C17F30 /* MapViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewContent.swift; sourceTree = "<group>"; };
 		A81ACB9426AF396700C17F30 /* DeviceIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIcon.swift; sourceTree = "<group>"; };
 		A830CDC42768710700085F3B /* ChooseIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseIconView.swift; path = "../../../../../../../Desktop/untitled folder/Views/Settings/Settings/Editing/ChooseIconView.swift"; sourceTree = "<group>"; };
+		A8333EF92768ADF9008F25D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A8333EFB2768AE02008F25D7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A8333EFD2768BFEF008F25D7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A83E397326AE99DB008F5EFF /* EditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingView.swift; sourceTree = "<group>"; };
 		A83E397526AEA031008F5EFF /* NormalMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalMenuItem.swift; sourceTree = "<group>"; };
 		A83E397A26AEA566008F5EFF /* PlainLikeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainLikeButtonStyle.swift; sourceTree = "<group>"; };
@@ -204,12 +209,14 @@
 			isa = PBXGroup;
 			children = (
 				A8EF715826ADF33D00F0D1FD /* PersonalMobilityTravelTimeApp.swift */,
+				A8333EFA2768ADF9008F25D7 /* Localizable.strings */,
 				A8EF716B26AE7F3B00F0D1FD /* Helpers */,
 				A8EF716826AE7D4200F0D1FD /* ViewModels */,
 				A8EF716726AE7D3300F0D1FD /* Models */,
 				A8EF717426AE929000F0D1FD /* Views */,
 				A8EF715C26ADF34000F0D1FD /* Assets.xcassets */,
 				A8EF716126ADF34000F0D1FD /* Info.plist */,
+				A8333EFC2768BFEF008F25D7 /* InfoPlist.strings */,
 				A8EF715E26ADF34000F0D1FD /* Preview Content */,
 			);
 			path = PersonalMobilityTravelTime;
@@ -383,6 +390,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = A8EF714C26ADF33C00F0D1FD;
 			packageReferences = (
@@ -402,6 +410,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8EF716026ADF34000F0D1FD /* Preview Assets.xcassets in Resources */,
+				A8333EFE2768BFEF008F25D7 /* InfoPlist.strings in Resources */,
+				A8333EF82768ADF9008F25D7 /* Localizable.strings in Resources */,
 				A8EF715D26ADF34000F0D1FD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +474,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A8333EFA2768ADF9008F25D7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8333EF92768ADF9008F25D7 /* en */,
+				A8333EFB2768AE02008F25D7 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		A8333EFC2768BFEF008F25D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8333EFD2768BFEF008F25D7 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A8EF716226ADF34000F0D1FD /* Debug */ = {
@@ -599,6 +629,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = website.boutinov.PersonalMobilityTravelTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -621,6 +652,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = website.boutinov.PersonalMobilityTravelTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

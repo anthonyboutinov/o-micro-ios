@@ -1,0 +1,3 @@
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Получить разрешение, чтобы использовать текущее местоположение для планирования маршрутов";
+

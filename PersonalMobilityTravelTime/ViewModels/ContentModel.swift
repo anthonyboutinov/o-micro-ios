@@ -18,7 +18,7 @@ class ContentModel: ObservableObject {
 //            }
 //        }
 //    }
-    @Published var setUpProcess = SetUpProcess.firstDeviceAddedSoComplete // SetUpProcess.firstLaunch
+    @Published var setUpProcess = SetUpProcess.firstLaunch // SetUpProcess.firstDeviceAddedSoComplete // SetUpProcess.firstLaunch
     
     enum SetUpProcess {
         case firstLaunch
@@ -158,22 +158,22 @@ class ContentModel: ObservableObject {
         
         var description: String {
             switch self {
-            case .metric: return "km"
-            case .imperial: return "miles"
+            case .metric: return String(localized: "km")
+            case .imperial: return String(localized: "miles")
             }
         }
         
         var fullDescription: String {
             switch self {
-            case .metric: return "Kilometers"
-            case .imperial: return "Miles"
+            case .metric: return String(localized: "Kilometers")
+            case .imperial: return String(localized: "Miles")
             }
         }
         
         var perHour: String {
             switch self {
-            case .metric: return "km/h"
-            case .imperial: return "mph"
+            case .metric: return String(localized: "km/h")
+            case .imperial: return String(localized: "mph")
             }
         }
     }

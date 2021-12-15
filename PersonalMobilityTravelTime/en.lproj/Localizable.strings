@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  PersonalMobilityTravelTime
+
+  Created by Anthony van den Brandt on 14.12.2021.
+  
+*/
+
+/* Onboarding View Callout */
+"onboardingViewCallout" = "With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.";
+
+/* Settings/Settings/EditingView Footer */
+"averageSpeedEditLinkFooter" = "Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.";

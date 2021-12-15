@@ -17,11 +17,19 @@ struct DeleteButton: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    private var deleteText: String {
+        if device.title == "" {
+            return String(localized: "Delete Device")
+        } else {
+            return String(localized: "Delete \(device.title)")
+        }
+    }
+    
     var body: some View {
         Button {
             showAlert = true
         } label: {
-            Text("Delete \(device.title == "" ? "Device" : device.title)")
+            Text(deleteText)
                 .frame(maxWidth: .infinity)
         }
         .foregroundColor(Constants.Colors.red)
@@ -32,13 +40,13 @@ struct DeleteButton: View {
     
     private var alert: Alert {
         return Alert(
-            title: Text("Delete \(device.title == "" ? "Device" : device.title)?"),
+            title: Text("\(deleteText)?"),
             primaryButton: .default(
-                Text(Constants.Text.cancel),
+                Text("Cancel"),
                 action: {}
             ),
             secondaryButton: .destructive(
-                Text(Constants.Text.delete),
+                Text("Delete"),
                 action: {
                     model.deleteDevice(device)
                     presentationMode.wrappedValue.dismiss()

@@ -35,7 +35,7 @@ struct OnboardingView: View {
                 })
                 Spacer()
                 
-                Text("With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.")
+                Text("onboardingViewCallout")
                     .font(.callout)
                     .foregroundColor(Color.secondary)
                 

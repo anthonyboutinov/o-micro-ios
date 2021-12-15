@@ -19,7 +19,7 @@ struct SearchFieldDestinationLocation: View {
             Image(self.map.state != .destinationSet ? Constants.SearchbarIcons.magnifyingGlass.rawValue : Constants.SearchbarIcons.destination.rawValue)
                 .renderingMode(.template)
                 .foregroundColor(Color.primary)
-            TextField(Constants.Text.searchPlaceholder, text: self.$map.destinationLabel.didSet({ newValue in
+            TextField("Search by Name or Address", text: self.$map.destinationLabel.didSet({ newValue in
                 if self.map.state == .enteringDestination || self.map.state == .focusedOnEnteringDestination {
                     self.map.searchCompleter.queryFragment = newValue
                     self.map.state = .enteringDestination

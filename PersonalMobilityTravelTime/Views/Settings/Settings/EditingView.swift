@@ -41,7 +41,7 @@ struct EditingView: View {
     var rangeProxy: Binding<String> {
         Binding<String>(
             get: {
-                String(Double(self.rangeInCurrentUnits).removeZerosFromEnd(leaveFirst: 2))
+                String(self.rangeInCurrentUnits > 0 ? Double(self.rangeInCurrentUnits).removeZerosFromEnd(leaveFirst: 2) : "")
             },
             set: {
                 if !($0.last == "." || $0.last == ",") {
@@ -81,12 +81,13 @@ struct EditingView: View {
             Section {
                 averageSpeedEditLink
             } footer: {
-                Text("Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.")
+                Text("averageSpeedEditLinkFooter")
             }
             
             Section {
                 Toggle(isOn: self.$deviceToEdit.isElectric) {
-                    Text("\(Image(systemName: "minus.plus.batteryblock")) Is electric")
+                    Text("\(Image(systemName: "minus.plus.batteryblock"))")
+                    Text(String(localized: "Is electric"))
                 }
                 
                 if self.deviceToEdit.isElectric {
@@ -98,10 +99,9 @@ struct EditingView: View {
                 // MARK: - Done/Delete Buttons
                 
                 if isNew == true {
-                    DismissButton {
+                    DismissButton(disabled: !deviceToEdit.isValid()) {
                         self.model.addDevice(deviceToEdit)
                     }
-                    .disabled(!deviceToEdit.isValid())
                 } else {
                     DeleteButton(device: deviceToEdit)
                 }
@@ -111,9 +111,9 @@ struct EditingView: View {
         .onDisappear(perform: {
             model.updateDevice(deviceToEdit)
         })
-        .navigationTitle("\(deviceToEdit.title == "" ? (isNew ? "New Device" : "Unnamed") : deviceToEdit.title)")
+        .navigationTitle(String("\(deviceToEdit.title == "" ? (isNew ? String(localized:"New Device") : String(localized: "Unnamed")) : deviceToEdit.title)"))
         .onAppear(perform: {
-            self.rangeInCurrentUnits = deviceToEdit.rangeKm?.inCurrentUnits(model.units) ?? MobilityDevice.suggestedDefaultRangeKm.inCurrentUnits(model.units).rounded()
+            self.rangeInCurrentUnits = deviceToEdit.rangeKm?.inCurrentUnits(model.units) ?? 0.0
         })
     }
     
@@ -144,7 +144,7 @@ struct EditingView: View {
             
             Spacer()
             
-            TextField("", text: rangeProxy)
+            TextField("0", text: rangeProxy)
                 .multilineTextAlignment(.trailing)
                 .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
                 .keyboardType(.decimalPad)

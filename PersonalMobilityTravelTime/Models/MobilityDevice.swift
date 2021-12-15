@@ -39,7 +39,7 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
     func isValid() -> Bool {
-        return self.iconName != "" && self.title != "" && self.averageSpeedKmh > 0
+        return iconName != "" && title != "" && averageSpeedKmh > 0 && (isElectric ? rangeKm != nil && rangeKm! > 0 : true)
     }
     
     static func sample() -> MobilityDevice {
@@ -81,14 +81,14 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
                 let fullHours = floor(rounded / 60)
                 let leftoverMinutes = Int(rounded.truncatingRemainder(dividingBy: 60.0))
                 if leftoverMinutes < 3 { // if is full hours ±3 min
-                    return String(format: "%.0f \(Constants.Time.h)", fullHours)
+                    return String(format: "%.0f \(String(localized: "h"))", fullHours)
                 } else if (superCompact) {
                     return String(format: "%.0f:%02d", fullHours, leftoverMinutes)
                 } else {
-                    return String(format: "%.0f \(Constants.Time.h) %.0f \(Constants.Time.min)", fullHours, leftoverMinutes)
+                    return String(format: "%.0f \(String(localized: "h")) %.0f \(String(localized: "min"))", fullHours, leftoverMinutes)
                 }
             } else {
-                return String(format: "%.0f \(Constants.Time.min)", timeToTravel)
+                return String(format: "%.0f \(String(localized: "min"))", timeToTravel)
             }
         }
         
@@ -123,8 +123,8 @@ class MobilityDevice: Identifiable, ObservableObject, Hashable {
         
         var description: String {
             switch self {
-            case .pedestrian: return "Sidewalks"
-            case .automobile: return "Roads"
+            case .pedestrian: return String(localized: "Sidewalks")
+            case .automobile: return String(localized: "Roads")
             }
         }
         

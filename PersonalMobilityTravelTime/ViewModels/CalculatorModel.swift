@@ -41,12 +41,12 @@ class CalculatorModel: ObservableObject {
             let fullHours = floor(rounded / 60)
             let leftoverMinutes = rounded.truncatingRemainder(dividingBy: 60.0)
             if leftoverMinutes < 3 { // if is full hours ±3 min
-                return (label: String(format: "%.0f", fullHours), units: Constants.Time.h)
+                return (label: String(format: "%.0f", fullHours), units: String(localized: "h"))
             } else {
-                return (label: String(format: "%.0f \(Constants.Time.h) %.0f", fullHours, leftoverMinutes), units: Constants.Time.min)
+                return (label: String(format: "%.0f \(String(localized: "h")) %.0f", fullHours, leftoverMinutes), units: String(localized: "min"))
             }
         } else {
-            return (label: String(format: "%.0f", timeToTravel), units: Constants.Time.min)
+            return (label: String(format: "%.0f", timeToTravel), units: String(localized: "min"))
         }
     }
     

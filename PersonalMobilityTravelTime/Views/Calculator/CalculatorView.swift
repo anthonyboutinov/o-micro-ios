@@ -16,7 +16,7 @@ struct CalculatorView: View {
             HStack {
                 DeviceSelector()
                 
-                NavigationLink(Constants.Text.settings, destination: SettingsView())
+                NavigationLink("Settings", destination: SettingsView())
                     .padding(.vertical, Constants.UI.verticalButtonSpacing)
             }
             

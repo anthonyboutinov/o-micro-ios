@@ -10,16 +10,15 @@ import SwiftUI
 
 class Constants {
     
-    class Text {
-        static var searchPlaceholder = "Search by Name or Address"
-        static var currentLocationLabel = "Current Location"
-        
-        static var settings = "Settings"
-        static var cancel = "Cancel"
-        static var done = "Done"
-        static var delete = "Delete"
-        static var reorder = "Reorder"
-    }
+//    class Text {
+////        static var currentLocationLabel = "Current Location"
+//
+//        static var settings = String(localized: "Settings")
+//        static var cancel = String(localized: "Cancel")
+//        static var done = String(localized: "Done")
+//        static var delete = String(localized: "Delete")
+//        static var reorder = String(localized: "Reorder")
+//    }
 
     
     class UI {
@@ -88,11 +87,6 @@ class Constants {
         case currentLocation = "Current Location"
         case destination = "Destination"
         case magnifyingGlass = "Magnifying Glass"
-    }
-    
-    struct Time {
-        static let min = "min"
-        static let h = "h"
     }
     
     struct CalculatorUI {

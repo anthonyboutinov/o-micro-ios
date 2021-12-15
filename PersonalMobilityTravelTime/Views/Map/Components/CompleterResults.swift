@@ -28,7 +28,7 @@ struct CompleterResults: View {
                         .onTapGesture {
                             map.search(for: suggestion)
                             if map.originLabel == "" {
-                                map.originLabel = Constants.Text.currentLocationLabel
+                                map.originLabel = "Current Location"
                                 // TODO: more needs to be done here, or this might need to be moved to the view model
                             }
                             map.state = .sentSearchRequest

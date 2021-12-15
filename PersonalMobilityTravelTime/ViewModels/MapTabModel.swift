@@ -36,7 +36,7 @@ class MapTabModel: NSObject, ObservableObject {
         case otherLocation
     }
     @Published var originPointState = OriginPointState.currentLocation
-    @Published var originLabel: String = Constants.Text.currentLocationLabel
+    @Published var originLabel: String = String(localized: "Current Location")
     
     /// For each type of TransportType that the user's devices have stores route distance in kilometers
     @Published var routeDistances = [MobilityDevice.TransportType: Double]()
@@ -54,7 +54,7 @@ class MapTabModel: NSObject, ObservableObject {
     private func reset() {
         destinationLabel = ""
         originPointState = OriginPointState.currentLocation
-        originLabel = Constants.Text.currentLocationLabel
+        originLabel = String(localized: "Current Location")
         routeDistances.removeAll()
         completerResults = nil
         localSearch = nil // sets places to nil as well

@@ -9,21 +9,24 @@ import SwiftUI
 
 struct DismissButton: View {
     
-    var text: String
+    var text: LocalizedStringKey
     
     var action: Optional<() -> ()>
     
     var backgroundColor: Color
+    
+    var disabled: Bool
     
     enum Style {
         case primary
         case destructive // TODO: I only ever use primary with this view
     }
     
-    init(text: String = Constants.Text.done, backgroundColor: Color = Color.accentColor, action: Optional<() -> ()> = nil) {
+    init(text: LocalizedStringKey = "Done", backgroundColor: Color = Color.accentColor, disabled: Bool = false, action: Optional<() -> ()> = nil) {
         self.text = text
         self.backgroundColor = backgroundColor
         self.action = action
+        self.disabled = disabled
     }
     
     @Environment(\.presentationMode) var presentationMode
@@ -36,8 +39,9 @@ struct DismissButton: View {
             Text(text)
                 .frame(maxWidth: .infinity)
         }
-        .listRowBackground(backgroundColor)
-        .foregroundColor(Color.white)
+        .listRowBackground(disabled ? Constants.Colors.transparent : backgroundColor)
+        .foregroundColor(disabled ? Color.secondary : Color.white)
+        .disabled(disabled)
     }
 }
 
