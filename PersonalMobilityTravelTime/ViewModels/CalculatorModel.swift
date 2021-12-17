@@ -11,26 +11,40 @@ import SwiftUI
 /// View model that controls the Calculator tab
 class CalculatorModel: ObservableObject {
     
-    @Published var distance: Double = 5.0
+    @Published var distance: Double {
+        didSet {
+            update()
+        }
+    }
     
-    var averageSpeedKmh: Double = 10.0
+    private var averageSpeedKmh: Double
+    
+    /// Is nil when the device is not electric
+    private var batteryRange: Double?
     
     @Published var timeToTravelLabel: String = ""
     @Published var timeToTravelUnits: String = ""
     
-    func update() {
+    @Published var batteryUsageLabel: String = ""
+    
+    init(averageSpeedKmh: Double, batteryRange: Double?, distance: Double) {
+        self.averageSpeedKmh = averageSpeedKmh
+        self.batteryRange = batteryRange
+        self.distance = distance
+        update()
+    }
+    
+    private func update() {
         let values = self.formattedTimeToTravel()
         self.timeToTravelLabel = values.label
         self.timeToTravelUnits = values.units
+        
+        if let usage = self.batteryUsage() {
+            self.batteryUsageLabel = String(Int(usage * 100))
+        }
     }
     
-//    func calculateWith(distance d: Double) -> Self {
-//        self.distance = d
-//        update()
-//        return self
-//    }
-//
-    // Returns time in minutes needed to travel a set distance
+    /// Returns time in minutes needed to travel a set distance
     private func timeToTravel(_ distance: Double) -> Double {
         return distance / averageSpeedKmh * 60.0
     }
@@ -49,6 +63,13 @@ class CalculatorModel: ObservableObject {
         } else {
             return (label: String(format: "%.0f", timeToTravel), units: String(localized: "min"))
         }
+    }
+    
+    private func batteryUsage() -> Double? {
+        if let batteryRange = batteryRange {
+            return distance / batteryRange
+        }
+        return nil
     }
     
 }

@@ -85,6 +85,7 @@ class ContentModel: ObservableObject {
         return defaultValue
     }() {
         didSet {
+            print("didSet selectedDevice to \(self.selectedDevice?.title ?? "nil")")
             calculate()
             UserDefaults.standard.set(self.selectedDevice?.encoded, forKey: "selectedDevice")
         }

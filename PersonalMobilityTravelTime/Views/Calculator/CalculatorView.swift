@@ -11,25 +11,25 @@ struct CalculatorView: View {
     
     @EnvironmentObject var model: ContentModel
     
+    @State var distanceInCurrentUnits: Double = 0.0
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: Constants.UI.sectionSpacing) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack {
                 DeviceSelector()
                 
                 NavigationLink("Settings", destination: SettingsView())
                     .padding(.vertical, Constants.UI.verticalButtonSpacing)
             }
+            .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
+            .padding(.top, Constants.UI.verticalSectionSpacing)
             
-            if model.selectedDevice != nil {
-                CalculatorViewBody()
-                    .frame(maxHeight: .infinity)
+            if let selectedDevice = model.selectedDevice {
+                CalculatorViewBody(calculator: CalculatorModel(averageSpeedKmh: selectedDevice.averageSpeedKmh, batteryRange: selectedDevice.rangeKm, distance: distanceInCurrentUnits.inKilometers(model.units)), distanceInCurrentUnits: $distanceInCurrentUnits)
             } else {
                 Spacer()
             }
-            
         }
-        .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
-        .padding(.vertical, Constants.UI.verticalSectionSpacing)
     }
 }
 
