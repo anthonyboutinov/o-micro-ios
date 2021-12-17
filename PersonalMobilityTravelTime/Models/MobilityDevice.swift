@@ -12,7 +12,6 @@ import MapKit
 final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     var id: UUID = UUID()
-    @Published var index: Int = 0
     
     @Published var title: String = ""
     @Published var iconName: String = ""
@@ -24,13 +23,12 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     static let suggestedDefaultRangeKm: Double = 10.0
     
-    init(index: Int?) {
-        self.index = index ?? 0
-    }
+    /// Init for setting up a new device
+    init() {}
     
     /// Initialize from a MobilityDeviceCodableProxy
     private convenience init(from p: MobilityDeviceCodableProxy) {
-        self.init(id: p.id, index: p.index, title: p.title, iconName: p.iconName, isElectric: p.isElectric, averageSpeedKmh: p.averageSpeedKmh, rangeKm: p.rangeKm, transportType: p.transportType)
+        self.init(id: p.id, title: p.title, iconName: p.iconName, isElectric: p.isElectric, averageSpeedKmh: p.averageSpeedKmh, rangeKm: p.rangeKm, transportType: p.transportType)
     }
     
     /// Initialize from data
@@ -39,9 +37,8 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
     /// Initialize from values
-    init(id: UUID = UUID(), index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, rangeKm: Double?, transportType: TransportType) {
+    init(id: UUID = UUID(), title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, rangeKm: Double?, transportType: TransportType) {
         self.id = id
-        self.index = index
         self.title = title
         self.iconName = iconName
         self.isElectric = isElectric
@@ -57,15 +54,15 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     /// Returns a single sample device for testing (previews)
     static func sample() -> MobilityDevice {
-        return MobilityDevice(index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, rangeKm: 14.5, transportType: .pedestrian)
+        return MobilityDevice(title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, rangeKm: 14.5, transportType: .pedestrian)
     }
     
     /// Returns a list of sample devices for testing (previews)
     static func sampleDevices() -> [MobilityDevice] {
         var devices = [MobilityDevice]()
         devices.append(Self.sample())
-        devices.append(MobilityDevice(index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
-        devices.append(MobilityDevice(index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
+        devices.append(MobilityDevice(title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
+        devices.append(MobilityDevice(title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
         return devices
     }
     
@@ -77,7 +74,7 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     /// JSON encoded data reprsentation
     var encoded: Data? {
-        let proxy = MobilityDeviceCodableProxy(id: self.id, index: self.index, title: self.title, iconName: self.iconName, isElectric: self.isElectric, averageSpeedCalculatorData: self.averageSpeedCalculatorData, averageSpeedKmh: self.averageSpeedKmh, rangeKm: self.rangeKm, transportType: self.transportType)
+        let proxy = MobilityDeviceCodableProxy(id: self.id, title: self.title, iconName: self.iconName, isElectric: self.isElectric, averageSpeedCalculatorData: self.averageSpeedCalculatorData, averageSpeedKmh: self.averageSpeedKmh, rangeKm: self.rangeKm, transportType: self.transportType)
         let encoder = JSONEncoder()
         return try? encoder.encode(proxy)
     }

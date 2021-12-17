@@ -25,7 +25,7 @@ struct EditingView: View {
             self.deviceToEdit = deviceToEdit
         } else {
             self.isNew = true
-            self.deviceToEdit = MobilityDevice(index: nil)
+            self.deviceToEdit = MobilityDevice()
         }
     }
     

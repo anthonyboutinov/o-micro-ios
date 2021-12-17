@@ -16,7 +16,6 @@ struct MobilityDeviceCodableProxy: Codable {
     }
     
     var id: UUID = UUID()
-    var index: Int
     var title: String
     var iconName: String
     var isElectric: Bool

@@ -146,11 +146,6 @@ class ContentModel: ObservableObject {
         guard device.isValid() else {
             return
         }
-        if devices.count > 0 {
-            device.index = devices.last!.index + 1
-        } else {
-            device.index = 0
-        }
         devices.append(device)
         
         self.selectedDevice = device
