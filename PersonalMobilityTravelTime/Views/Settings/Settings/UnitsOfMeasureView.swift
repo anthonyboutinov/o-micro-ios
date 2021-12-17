@@ -13,7 +13,7 @@ struct UnitsOfMeasureView: View {
     
     var body: some View {
         List {
-            ForEach(ContentModel.Units.all) {unit in
+            ForEach(Units.all) {unit in
                 UnitOption(unit: unit)
             }
         }

@@ -26,7 +26,7 @@ extension Double {
     
     
     /// Converts to miles from kilometers if needed
-    func inCurrentUnits(_ unit: ContentModel.Units) -> Double {
+    func inCurrentUnits(_ unit: Units) -> Double {
         switch unit {
         case .metric: return self;
         case .imperial: return self.toMiles()
@@ -34,7 +34,7 @@ extension Double {
     }
     
     /// Converts to kilometers from miles if needed
-    func inKilometers(_ unit: ContentModel.Units) -> Double {
+    func inKilometers(_ unit: Units) -> Double {
         switch unit {
         case .metric: return self;
         case .imperial: return self.toKilometers()

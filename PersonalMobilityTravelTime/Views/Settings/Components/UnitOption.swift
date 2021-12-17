@@ -11,14 +11,14 @@ struct UnitOption: View {
     
     @EnvironmentObject var model: ContentModel
     
-    var unit: ContentModel.Units
+    var unit: Units
     
     var body: some View {
         Button {
             model.units = unit
         } label: {
             HStack(alignment: .center, spacing: 0) {
-                Text(unit.fullDescription)
+                Text(unit.optionTitle)
                     .foregroundColor(Color.primary)
                 if model.units == unit {
                     Spacer()

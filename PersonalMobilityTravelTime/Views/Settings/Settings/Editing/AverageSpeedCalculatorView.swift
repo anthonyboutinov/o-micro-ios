@@ -121,7 +121,7 @@ struct AverageSpeedCalculatorView: View {
                 self.focusedField = .distance
             }
             
-            Text(model.units.description)
+            Text(model.units.name)
                 .foregroundColor(Color.secondary)
                 .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
         }

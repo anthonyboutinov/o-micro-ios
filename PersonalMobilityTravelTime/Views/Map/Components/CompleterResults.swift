@@ -7,40 +7,38 @@
 
 import SwiftUI
 import MapKit
+//import ScrollViewIfNeeded
 
 struct CompleterResults: View {
     
     @EnvironmentObject var map: MapTabModel
     
-    //    @Binding var selectedDestination: MKLocalSearchCompletion?
-    
     var body: some View {
         if let suggestions = self.map.completerResults {
-            ScrollView {
-                VStack(alignment: .leading, spacing: Constants.UI.itemSpacing) {
-                    ForEach(suggestions, id: \.self) { suggestion in
+            List {
+                ForEach(suggestions, id: \.self) { suggestion in
+                    Button {
+                        map.search(for: suggestion)
+                        if map.originLabel == "" {
+                            map.originLabel = "Current Location"
+                            // TODO: more needs to be done here, or this might need to be moved to the view model
+                        }
+                        map.state = .sentSearchRequest
+                        UIApplication.shared.endEditing()
+                    } label: {
                         VStack(alignment: .leading, spacing: 0) {
                             Text(self.createHighlightedString(text: suggestion.title, rangeValues: suggestion.titleHighlightRanges))
-                            Text(self.createHighlightedString(text: suggestion.subtitle, rangeValues: suggestion.subtitleHighlightRanges))
-                                .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
-                                .foregroundColor(Color.gray)
-                        }
-                        .onTapGesture {
-                            map.search(for: suggestion)
-                            if map.originLabel == "" {
-                                map.originLabel = "Current Location"
-                                // TODO: more needs to be done here, or this might need to be moved to the view model
+                                .foregroundColor(.primary)
+                            if suggestion.subtitle != "" {
+                                Text(self.createHighlightedString(text: suggestion.subtitle, rangeValues: suggestion.subtitleHighlightRanges))
+                                    .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
+                                    .foregroundColor(.secondary)
                             }
-                            map.state = .sentSearchRequest
-                            UIApplication.shared.endEditing()
                         }
                     }
                 }
-                .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
-                .padding(.vertical, Constants.UI.verticalSectionSpacing)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(0)
+            .listStyle(.plain)
         }
     }
     

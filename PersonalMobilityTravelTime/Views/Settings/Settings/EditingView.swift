@@ -151,7 +151,7 @@ struct EditingView: View {
                 .frame(maxWidth: 50)
                 .focused($focusedField, equals: .range)
             
-            Text(model.units.description)
+            Text(model.units.name)
                 .foregroundColor(Color.secondary)
                 .fontWeight(.regular)
         }

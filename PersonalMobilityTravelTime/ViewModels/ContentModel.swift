@@ -196,40 +196,4 @@ class ContentModel: ObservableObject {
         case map
         case calculator
     }
-    
-    /// Units of distance: Metric and Imperial
-    enum Units: String, CustomStringConvertible, Identifiable {
-        var id: Self { self }
-        
-        case metric
-        case imperial
-        
-        static var all: [Units] {
-            return [.metric, .imperial]
-        }
-        
-        /// Returns short localized string description
-        var description: String {
-            switch self {
-            case .metric: return String(localized: "km")
-            case .imperial: return String(localized: "miles")
-            }
-        }
-        
-        /// Returns the localized name of the units
-        var fullDescription: String {
-            switch self {
-            case .metric: return String(localized: "Kilometers")
-            case .imperial: return String(localized: "Miles")
-            }
-        }
-        
-        /// Returns the localized string of \unit per hour
-        var perHour: String {
-            switch self {
-            case .metric: return String(localized: "km/h")
-            case .imperial: return String(localized: "mph")
-            }
-        }
-    }
 }

@@ -87,7 +87,7 @@ struct RouteTimeResultsView: View {
                 
                 VStack(alignment: .trailing, spacing: Constants.UI.itemSpacing) {
                     ForEach(devices) { device in
-                        Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.description)"))
+                        Text(String("\(self.distances[device.transportType]!.inCurrentUnits(model.units).removeZerosFromEnd(leaveFirst: 1)) \(model.units.name)"))
                             .bold()
                             .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
                     }

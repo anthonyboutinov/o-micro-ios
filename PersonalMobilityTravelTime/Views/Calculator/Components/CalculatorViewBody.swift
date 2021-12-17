@@ -75,7 +75,7 @@ struct CalculatorViewBody: View {
                         focusedField = .distance
                     }
                 
-                Text(model.units.description)
+                Text(model.units.name)
                     .foregroundColor(Color.secondary)
                     .font(.system(size: Constants.UI.systemFontDefaultSize))
                     .frame(minWidth: Self.unitsMinWidth, alignment: .trailing)
