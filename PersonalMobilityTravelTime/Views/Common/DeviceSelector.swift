@@ -20,6 +20,9 @@ struct DeviceSelector: View {
             HStack(alignment: .bottom, spacing: Constants.UI.deviceSelectorItemSpacing) {
                 ForEach(model.devices) { device in
                     Button(action: {
+                        // This line might fix the bug of views not reflecting the change of selectedDevice
+                        model.selectedDevice?.objectWillChange.send()
+                        
                         model.selectedDevice = device
                     }) {
                         VStack(alignment: .leading, spacing: 1) {

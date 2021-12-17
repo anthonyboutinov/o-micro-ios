@@ -26,11 +26,6 @@ struct SettingsView: View {
                     }
                 }
                 .onMove(perform: move)
-                .onLongPressGesture {
-                    withAnimation {
-                        editMode = .active
-                    }
-                }
             }
             
             NavigationLink(destination: EditingView(deviceToEdit: nil)) {
@@ -40,7 +35,7 @@ struct SettingsView: View {
             Section(header: Text("Preferences")
             ) {
                 NavigationLink(destination: UnitsOfMeasureView()) {
-                    NormalMenuItem(icon: "ruler", label: "Distance units"/*, currentValue: self.model.units.fullDescription*/)
+                    NormalMenuItem(icon: "ruler", label: "Distance units")
                 }
             }
             
@@ -75,7 +70,7 @@ struct SettingsView: View {
     private func move(from source: IndexSet, to destination: Int) {
         model.devices.move(fromOffsets: source, toOffset: destination)
         withAnimation {
-            editMode = .active
+            editMode = .inactive
         }
     }
     

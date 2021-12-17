@@ -39,7 +39,7 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
     /// Initialize from values
-    init(id: UUID, index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, rangeKm: Double?, transportType: TransportType) {
+    init(id: UUID = UUID(), index: Int, title: String, iconName: String, isElectric: Bool, averageSpeedKmh: Double, rangeKm: Double?, transportType: TransportType) {
         self.id = id
         self.index = index
         self.title = title
@@ -57,15 +57,15 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     
     /// Returns a single sample device for testing (previews)
     static func sample() -> MobilityDevice {
-        return MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, rangeKm: 14.5, transportType: .pedestrian)
+        return MobilityDevice(index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.8, rangeKm: 14.5, transportType: .pedestrian)
     }
     
     /// Returns a list of sample devices for testing (previews)
     static func sampleDevices() -> [MobilityDevice] {
         var devices = [MobilityDevice]()
-        devices.append(MobilityDevice(id: UUID(), index: 0, title: "Ninebot ES1", iconName: "022-electricscooter", isElectric: true, averageSpeedKmh: 10.22, rangeKm: 14.5, transportType: .pedestrian))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
-        devices.append(MobilityDevice(id: UUID(), index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
+        devices.append(Self.sample())
+        devices.append(MobilityDevice(index: 1, title: "My Bike", iconName: "030-bike", isElectric: false, averageSpeedKmh: 17.34, rangeKm: nil, transportType: .automobile))
+        devices.append(MobilityDevice(index: 1, title: "Jetpack", iconName: "031-jetpack", isElectric: false, averageSpeedKmh: 50, rangeKm: nil, transportType: .pedestrian))
         return devices
     }
     

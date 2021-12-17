@@ -10,11 +10,19 @@ import Foundation
 /// Primary view model of the app. Stores the general states of the app and list of user's devices
 class ContentModel: ObservableObject {
     
+    struct UserDefaultsKeys {
+        static let setUpProcess = "setUpProcess"
+        static let units = "units"
+        static let devices = "devices"
+        static let selectedDevice = "selectedDevice"
+        static let selectedTabIndex = "selectedTabIndex"
+    }
+    
     // MARK: - Set Up Process
     /// Describes the global state of the app: if it should display a welcome screen or other onboarding screens, etc
     @Published var setUpProcess: SetUpProcess = {
         let defaultValue = SetUpProcess.firstLaunch
-        if let rawValue = UserDefaults.standard.string(forKey: "setUpProcess") {
+        if let rawValue = UserDefaults.standard.string(forKey: UserDefaultsKeys.setUpProcess) {
             if let value = SetUpProcess(rawValue: rawValue) {
                 return value
             } else {
@@ -25,17 +33,17 @@ class ContentModel: ObservableObject {
         }
     }() {
         didSet {
-            UserDefaults.standard.set(self.setUpProcess.rawValue, forKey: "setUpProcess")
+            UserDefaults.standard.set(self.setUpProcess.rawValue, forKey: UserDefaultsKeys.setUpProcess)
         }
     }
     
     /// Possible global states of the app: if it should display a welcome screen or other onboarding screens, etc
     enum SetUpProcess: String {
-        case firstLaunch = "firstLaunch"
-        case noDevices = "noDevices"
-        case addFirstDevice = "addFirstDevice"
-        case firstDeviceAddedSoComplete = "firstFrviceAddedSoComplete"
-        case unknown = "unknown"
+        case firstLaunch
+        case noDevices
+        case addFirstDevice
+        case firstDeviceAddedSoComplete
+        case unknown
     }
     
     // MARK: - General Properties
@@ -43,7 +51,7 @@ class ContentModel: ObservableObject {
     /// User preference on which units of distance to use
     @Published var units: Units = {
         let defaultValue = Units.metric
-        if let rawValue = UserDefaults.standard.string(forKey: "units") {
+        if let rawValue = UserDefaults.standard.string(forKey: UserDefaultsKeys.units) {
             if let value = Units(rawValue: rawValue) {
                 return value
             }
@@ -51,14 +59,14 @@ class ContentModel: ObservableObject {
         return defaultValue
     }() {
         didSet {
-            UserDefaults.standard.set(self.units.rawValue, forKey: "units")
+            UserDefaults.standard.set(self.units.rawValue, forKey: UserDefaultsKeys.units)
         }
     }
     
     /// Stores all of the deivces that the user has
     @Published var devices: [MobilityDevice] = {
         var array = [MobilityDevice]()
-        if let rawValues = UserDefaults.standard.array(forKey: "devices") as? [Data] {
+        if let rawValues = UserDefaults.standard.array(forKey: UserDefaultsKeys.devices) as? [Data] {
             for rawValue in rawValues {
                 if let value = try? MobilityDevice(from: rawValue) {
                     array.append(value)
@@ -70,14 +78,14 @@ class ContentModel: ObservableObject {
         didSet {
             UserDefaults.standard.set(self.devices.map({d in
                 d.encoded
-            }), forKey: "devices")
+            }), forKey: UserDefaultsKeys.devices)
         }
     }
     
     /// Tells the app which device is currently selected by the user
     @Published var selectedDevice: MobilityDevice? = {
         let defaultValue: MobilityDevice? = nil
-        if let data = UserDefaults.standard.object(forKey: "selectedDevice") as? Data {
+        if let data = UserDefaults.standard.object(forKey: UserDefaultsKeys.selectedDevice) as? Data {
             if let value = try? MobilityDevice(from: data) {
                 return value
             }
@@ -87,7 +95,7 @@ class ContentModel: ObservableObject {
         didSet {
             print("didSet selectedDevice to \(self.selectedDevice?.title ?? "nil")")
             calculate()
-            UserDefaults.standard.set(self.selectedDevice?.encoded, forKey: "selectedDevice")
+            UserDefaults.standard.set(self.selectedDevice?.encoded, forKey: UserDefaultsKeys.selectedDevice)
         }
     }
     
@@ -95,9 +103,10 @@ class ContentModel: ObservableObject {
     @Published var calculator: RouteStat?
     
     /// Which tab is currently selected: Map or Calculator
-    @Published var currentTab: Tabs = Tabs(rawValue: UserDefaults.standard.integer(forKey: "selectedTabIndex"))! {
+    @Published var currentTab: Tabs = Tabs(rawValue: UserDefaults.standard.integer(forKey: UserDefaultsKeys.selectedTabIndex))! {
         didSet {
             calculate()
+            UserDefaults.standard.set(self.currentTab.rawValue, forKey: UserDefaultsKeys.selectedTabIndex)
         }
     }
     
@@ -216,8 +225,8 @@ class ContentModel: ObservableObject {
     enum Units: String, CustomStringConvertible, Identifiable {
         var id: Self { self }
         
-        case metric = "metric"
-        case imperial = "imperial"
+        case metric
+        case imperial
         
         static var all: [Units] {
             return [.metric, .imperial]
