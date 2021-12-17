@@ -94,18 +94,13 @@ class ContentModel: ObservableObject {
     }() {
         didSet {
             print("didSet selectedDevice to \(self.selectedDevice?.title ?? "nil")")
-            calculate()
             UserDefaults.standard.set(self.selectedDevice?.encoded, forKey: UserDefaultsKeys.selectedDevice)
         }
     }
     
-    // TODO: this probably needs to be reworked. Though it works fine
-    @Published var calculator: RouteStat?
-    
     /// Which tab is currently selected: Map or Calculator
     @Published var currentTab: Tabs = Tabs(rawValue: UserDefaults.standard.integer(forKey: UserDefaultsKeys.selectedTabIndex))! {
         didSet {
-            calculate()
             UserDefaults.standard.set(self.currentTab.rawValue, forKey: UserDefaultsKeys.selectedTabIndex)
         }
     }
@@ -125,20 +120,6 @@ class ContentModel: ObservableObject {
                 self.setUpProcess = .firstDeviceAddedSoComplete
             }
         }
-    }
-    
-    // TODO: ?? Not sure about that
-    func calculate(distanceKm: Double?) {
-        if currentTab == .calculator {
-            if let distanceKm = distanceKm ?? calculator?.distanceKm {
-                calculator = RouteStat(device: selectedDevice, distanceKm: distanceKm)
-            }
-        }
-    }
-    
-    // TODO: ?? Not sure about that
-    func calculate() {
-        calculate(distanceKm: nil)
     }
     
     /// Adds the device to the list of all devices
@@ -250,26 +231,5 @@ class ContentModel: ObservableObject {
             case .imperial: return String(localized: "mph")
             }
         }
-    }
-}
-
-
-// MARK: - RouteStat
-struct RouteStat {
-    weak var device: MobilityDevice?
-    
-    var distanceKm: Double
-    
-    var timeH: Double? {
-        if let device = device {
-            return distanceKm / device.averageSpeedKmh
-        }
-        return nil
-    }
-    var batteryPercentage: Double? {
-        if let rangeKm = device?.rangeKm {
-            return distanceKm / rangeKm
-        }
-        return nil
     }
 }
