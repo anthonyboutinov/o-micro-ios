@@ -40,28 +40,28 @@ struct MapViewContent: View {
                 .padding(.vertical, Constants.UI.verticalSectionSpacing)
                 .background(Constants.Colors.mist)
                 
-                if self.map.completerResults != nil && self.map.state != .destinationSet && self.map.state != .initial {
+                if self.map.completerResults != nil && self.map.state != .endLocationIsSet && self.map.state != .startLocationIsSet && self.map.state != .initial {
                     CompleterResults()
                 }
             }
             
-            if self.map.state == .initial || self.map.state == .destinationSet {
+            if self.map.state == .initial || self.map.state == .endLocationIsSet || self.map.state == .startLocationIsSet {
                 DirectionsMap()
-                    .onTapGesture {
-                        // If displaying route and user taps on the map, enter "full screen" mode
-                        if self.map.state == .destinationSet {
-                            if self.focusedField == .map {
-                                self.focusedField = nil
-                            } else {
-                                self.focusedField = .map
-                            }
-                        }
-                    }
+//                    .onTapGesture {
+//                        // If displaying route and user taps on the map, enter "full screen" mode
+//                        if self.map.state == .endLocationIsSet || self.map.state == .startLocationSet {
+//                            if self.focusedField == .map {
+//                                self.focusedField = nil
+//                            } else {
+//                                self.focusedField = .map
+//                            }
+//                        }
+//                    }
             } else {
                 Spacer()
             }
             
-            if self.map.state == .destinationSet && !self.map.routeDistances.isEmpty {
+            if (self.map.state == .endLocationIsSet || self.map.state == .startLocationIsSet) && !self.map.routeDistances.isEmpty {
                 RouteTimeResultsView(distances: self.$map.routeDistances, isExpanded: self.$map.routeTimeResultsAreExpanded)
             }
         }

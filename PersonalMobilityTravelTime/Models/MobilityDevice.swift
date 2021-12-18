@@ -20,9 +20,7 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     @Published var averageSpeedKmh: Double = 14
     @Published var rangeKm: Double?
     @Published var transportType: TransportType = .pedestrian
-    
-    static let suggestedDefaultRangeKm: Double = 10.0
-    
+        
     /// Init for setting up a new device
     init() {}
     
@@ -125,14 +123,6 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
             return distance / capacity
         }
     }
-    
-//    func batteryUsagePercentage(distance: Double) -> Double? {
-//        if let capacity = self.rangeKm {
-//            return distance / capacity
-//        } else {
-//            return nil
-//        }
-//    }
     
     enum TransportType: String, CustomStringConvertible, Identifiable, Codable {
         case pedestrian = "pedestrian"

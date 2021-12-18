@@ -38,7 +38,7 @@ struct DeviceSelectAndSettingsView: View {
 
 struct DeviceSelectAndSettingsView_Previews: PreviewProvider {
     @State static var d: Double? = 21.2
-    @State static var stateA: MapTabModel.ViewState = .destinationSet
+    @State static var stateA: MapTabModel.ViewState = .endLocationIsSet
     @State static var stateB: MapTabModel.ViewState = .initial
     @FocusState static var focusedField: MapViewContent.FocusField?
     static var previews: some View {

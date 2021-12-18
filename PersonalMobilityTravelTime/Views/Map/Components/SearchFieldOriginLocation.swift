@@ -15,22 +15,47 @@ struct SearchFieldOriginLocation: View {
     
     var body: some View {
         // MARK: Search Field Origin Location
-        if (self.map.state == .destinationSet) {
+        if (self.map.state >= .endLocationIsSet) {
             HStack {
-                Image(self.map.originPointState == .currentLocation ? Constants.SearchbarIcons.currentLocation.rawValue : Constants.SearchbarIcons.circle.rawValue)
-                TextField("Search by Name or Address", text: self.$map.originLabel)
+                Image(iconName())
+                TextField("Search by Name or Address", text: self.$map.originLabel.didSet({ newValue in
+                    if self.map.state == .enteringStartLocation || self.map.state == .focusedOnEnteringStartLocation {
+                        self.map.searchCompleter.queryFragment = newValue
+                        self.map.state = .enteringStartLocation
+                    }
+                }), onEditingChanged: { changed in
+                    if self.map.state == .enteringStartLocation {
+                        self.map.searchCompleter.queryFragment = self.map.originLabel
+                    } else {
+                        self.map.state = .enteringStartLocation
+                    }
+                })
                     .focused($focusedField, equals: MapViewContent.FocusField.origin)
+                    .disableAutocorrection(true)
             }
             .modifier(InputFieldViewModifier(style: .alternate))
             .foregroundColor(self.map.originPointState == .currentLocation ? Color.secondary : Color.primary)
             .onTapGesture {
+                // Remove "Current Location" text from the text field on tap, leaving the input field blank
+                if self.map.originLabel == String(localized: "Current Location") {
+                    self.map.originLabel = ""
+                }
                 self.focusedField = .origin
-                // TODO: Remove "Current Location" text from the text field on tap, leaving the input field blank
-//                if self.map.originLabel == "Current Location" {
-//                    self.map.originLabel = ""
-//                }
+                self.map.state = .focusedOnEnteringStartLocation
             }
         }
+    }
+    
+    func iconName() -> String {
+        var icon: Constants.SearchbarIcons?
+        if self.map.state >= .focusedOnEnteringStartLocation && self.map.state < .startLocationIsSet {
+            icon = .magnifyingGlass
+        } else if self.map.originPointState == .currentLocation {
+            icon = .currentLocation
+        } else {
+            icon = .circle
+        }
+        return icon!.rawValue
     }
 }
 

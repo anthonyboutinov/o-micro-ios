@@ -11,12 +11,28 @@ import MapKit
 /// View model that controls the Map tab
 class MapTabModel: NSObject, ObservableObject {
     
-    enum ViewState: Hashable {
+    /// Handles the progression of setting up the start location and the end location.
+    /// We start in an inital, blank state. Then the user clicks on destination location input field.
+    /// He is presented with options. When he clicks one, we send a request for this location
+    /// and in the callback we set the destination. When that is done, start location input field
+    /// is shown with the default value being `Current Location`. If the user wants to change
+    /// that, he can do the same thing with the start location.
+    enum ViewState: Int, Hashable, Comparable {
         case initial
-        case focusedOnEnteringDestination
-        case enteringDestination
-        case sentSearchRequest
-        case destinationSet
+        
+        case focusedOnEnteringEndLocation
+        case enteringEndLocation
+        case sentSearchRequestForEndLocation
+        case endLocationIsSet
+        
+        case focusedOnEnteringStartLocation
+        case enteringStartLocation
+        case sentSearchRequestForStartLocation
+        case startLocationIsSet
+        
+        static func < (lhs: MapTabModel.ViewState, rhs: MapTabModel.ViewState) -> Bool {
+            lhs.rawValue < rhs.rawValue
+        }
     }
     
     @Published var state = ViewState.initial {
@@ -36,7 +52,15 @@ class MapTabModel: NSObject, ObservableObject {
         case otherLocation
     }
     @Published var originPointState = OriginPointState.currentLocation
-    @Published var originLabel: String = String(localized: "Current Location")
+    @Published var originLabel: String = String(localized: "Current Location") {
+        didSet {
+            if originLabel == String(localized: "Current Location") {
+                originPointState = .currentLocation
+            } else {
+                originPointState = .otherLocation
+            }
+        }
+    }
     
     /// For each type of TransportType that the user's devices have stores route distance in kilometers
     @Published var routeDistances = [MobilityDevice.TransportType: Double]()
@@ -57,8 +81,10 @@ class MapTabModel: NSObject, ObservableObject {
         originLabel = String(localized: "Current Location")
         routeDistances.removeAll()
         completerResults = nil
-        localSearch = nil // sets places to nil as well
-        location = nil
+        localSearch?.cancel()
+        localSearch = nil
+        endLocation = nil
+        startLocation = nil
         routeTimeResultsAreExpanded = false
         displayingRouteForTransportType = nil
     }
@@ -67,7 +93,7 @@ class MapTabModel: NSObject, ObservableObject {
     
     @Published var authorizationState = CLAuthorizationStatus.notDetermined
     
-    @Published var currentPlacemark: CLPlacemark?
+//    @Published var currentPlacemark: CLPlacemark?
     
     var locationManager = CLLocationManager()
     
@@ -105,21 +131,22 @@ class MapTabModel: NSObject, ObservableObject {
     
     // MARK: - Search Requests
     
-    @Published var places: [MKMapItem]? {
+    /// Used by DirectionsMap to create a route: end location
+    @Published var endLocation: Location? {
         didSet {
-            self.completerResults = nil
-            if let place = self.places?.first {
-                self.location = Location(place)
-                
+            if let location = endLocation {
+                self.state = .endLocationIsSet
+                self.destinationLabel = location.name ?? "[no name]"
             }
         }
     }
     
-    @Published var location: Location? {
+    /// Used by DirectionsMap to create a route: start location
+    @Published var startLocation: Location? {
         didSet {
-            if let location = location {
-                self.state = .destinationSet
-                self.destinationLabel = location.name ?? "[no name]"
+            if let originLocation = startLocation {
+                self.state = .startLocationIsSet
+                self.originLabel = originLocation.name ?? "[no name]"
             }
         }
     }
@@ -132,7 +159,6 @@ class MapTabModel: NSObject, ObservableObject {
     private var localSearch: MKLocalSearch? {
         willSet {
             // Clear the results and cancel the currently running local search before starting a new search.
-            places = nil
             localSearch?.cancel()
         }
     }
@@ -165,7 +191,22 @@ class MapTabModel: NSObject, ObservableObject {
                 return
             }
             
-            self.places = response?.mapItems
+            self.completerResults = nil
+            
+            // All places that are given in the response.
+            let places = response?.mapItems
+            
+            // But because of how the UI is made, a user cannot invoke search by himself,
+            // he can only select from pre-queried options. So we expect a one to one
+            // correspondence of the search request with the list of results. This allows
+            // us to assume that there is only one `places` item.
+            if let place = places?.first {
+                if self.state == .sentSearchRequestForEndLocation || self.state == .enteringEndLocation {
+                    self.endLocation = Location(place)
+                } else if self.state == .sentSearchRequestForStartLocation || self.state == .enteringStartLocation {
+                    self.startLocation = Location(place)
+                }
+            }
             
             // Used when setting the map's region in `prepareForSegue`. // ???
             if let updatedRegion = response?.boundingRegion {
@@ -187,51 +228,51 @@ class MapTabModel: NSObject, ObservableObject {
 
 // MARK: - LocationManagerDelegate methods
 extension MapTabModel: CLLocationManagerDelegate {
-    
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
+
         // Update the auth state property
         self.authorizationState = locationManager.authorizationStatus
-        
+
         if locationManager.authorizationStatus == .authorizedAlways || locationManager.authorizationStatus == .authorizedWhenInUse {
             // We have permission here
             // Start geolocating after getting permission
             locationManager.startUpdatingLocation()
-            
+
         } else if locationManager.authorizationStatus == .denied {
             // We don't have permission
-            
+
         } else if locationManager.authorizationStatus == .restricted {
             // Restricted in Settings
-            
+
         }
     }
-    
-    /// Gives us the location of the user
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.first ?? "no location")
-        
-        if let userLocation = locations.first {
-            // We need it once, so stop requesting the location after we get it once
-            locationManager.stopUpdatingLocation()
-            
-            // Get the placemark of the user
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(userLocation) { placemarks, error in
-                print(placemarks ?? "no placemarks")
-                print(error ?? "no error")
-                if error == nil {
-                    // Take the first placemark
-                    self.currentPlacemark = placemarks?.first
-                    self.boundingRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 12_000, longitudinalMeters: 12_000)
-                }
-            }
-            
-            // TODO: Send to Apple Maps API
-            // userlocation
-        }
-        
-    }
+
+//    /// Gives us the location of the user
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print(locations.first ?? "no location")
+//
+//        if let userLocation = locations.first {
+//            // We need it once, so stop requesting the location after we get it once
+//            locationManager.stopUpdatingLocation()
+//
+//            // Get the placemark of the user
+//            let geocoder = CLGeocoder()
+//            geocoder.reverseGeocodeLocation(userLocation) { placemarks, error in
+//                print(placemarks ?? "no placemarks")
+//                print(error ?? "no error")
+//                if error == nil {
+//                    // Take the first placemark
+//                    self.currentPlacemark = placemarks?.first
+//                    self.boundingRegion = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 12_000, longitudinalMeters: 12_000)
+//                }
+//            }
+//
+//            // TODO: Send to Apple Maps API
+//            // userlocation
+//        }
+//
+//    }
 }
 
 // MARK: - SearchCompleterDelegate methods

@@ -14,11 +14,15 @@ struct DirectionsMap: UIViewRepresentable {
     @EnvironmentObject var model: ContentModel
     
     var start: CLLocationCoordinate2D {
-        return map.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+        if let lat = map.startLocation?.coordinates?.latitude, let long = map.startLocation?.coordinates?.longitude {
+            return CLLocationCoordinate2D(latitude: lat, longitude: long)
+        } else {
+            return map.locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+        }
     }
     
     var end: CLLocationCoordinate2D {
-        if let lat = map.location?.coordinates?.latitude, let long = map.location?.coordinates?.longitude {
+        if let lat = map.endLocation?.coordinates?.latitude, let long = map.endLocation?.coordinates?.longitude {
             return CLLocationCoordinate2D(latitude: lat, longitude: long)
         } else {
             return CLLocationCoordinate2D()
@@ -62,7 +66,7 @@ struct DirectionsMap: UIViewRepresentable {
     }
     
     func getRouteAndPlaceItOnTheMap(_ mapView: MKMapView) {
-        if map.location != nil {
+        if map.endLocation != nil {
             
             // Create request for selected device
             let selectedDeviceTransportType = self.model.selectedDevice?.transportType.mapKit ?? .automobile
@@ -93,13 +97,29 @@ struct DirectionsMap: UIViewRepresentable {
             }
             
             // Place annotation for the end point
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = end
-            annotation.title = map.location?.name ?? ""
-            mapView.addAnnotation(annotation)
+            mapView.addAnnotation(endPointAnnotation())
+            
+            // Place annotation for the start point
+            if map.startLocation != nil {
+                mapView.addAnnotation(startPointAnnotation())
+            }
             
             getOtherDistances(excluding: selectedDeviceTransportType)
         }
+    }
+    
+    func endPointAnnotation() -> MKAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = end
+        annotation.title = map.endLocation?.name ?? ""
+        return annotation
+    }
+    
+    func startPointAnnotation() -> MKAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = start
+        annotation.title = map.startLocation?.name ?? ""
+        return annotation
     }
     
     /// Create directions request for said transportType
