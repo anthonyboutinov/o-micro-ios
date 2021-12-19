@@ -92,7 +92,7 @@ final class MobilityDevice: Identifiable, ObservableObject, Hashable {
     }
     
     // MARK: - Calculator subclass
-    class Calculator {
+    final class Calculator {
         private static func timeToTravel(_ distance: Double, averageSpeedKmh: Double) -> Double {
             return distance / averageSpeedKmh * 60.0
         }

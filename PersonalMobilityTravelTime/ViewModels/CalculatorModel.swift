@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// View model that controls the Calculator tab
-class CalculatorModel: ObservableObject {
+final class CalculatorModel: ObservableObject {
     
     @Published var distance: Double {
         didSet {

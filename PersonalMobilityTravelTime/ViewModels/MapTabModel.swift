@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 /// View model that controls the Map tab
-class MapTabModel: NSObject, ObservableObject {
+final class MapTabModel: NSObject, ObservableObject {
     
     /// Handles the progression of setting up the start location and the end location.
     /// We start in an inital, blank state. Then the user clicks on destination location input field.
@@ -45,7 +45,7 @@ class MapTabModel: NSObject, ObservableObject {
     
     @Published var destinationLabel: String = ""
     
-    @Published var waypoints = [Waypoint]()
+//    @Published var waypoints = [Waypoint]()
     
     enum OriginPointState: Hashable {
         case currentLocation
@@ -75,6 +75,7 @@ class MapTabModel: NSObject, ObservableObject {
         }
     }
     
+    /// Resets MapTabModel
     private func reset() {
         destinationLabel = ""
         originPointState = OriginPointState.currentLocation
@@ -91,10 +92,9 @@ class MapTabModel: NSObject, ObservableObject {
     
     // MARK: - Geolocation tracking
     
+    /// Geolocation tracking authorization state
     @Published var authorizationState = CLAuthorizationStatus.notDetermined
-    
-//    @Published var currentPlacemark: CLPlacemark?
-    
+        
     var locationManager = CLLocationManager()
     
     override init() {
@@ -156,6 +156,8 @@ class MapTabModel: NSObject, ObservableObject {
             searchCompleter.region = boundingRegion
         }
     }
+    
+    /// A handle for the MKLocalSearch async request. Needed so that it can be accessed while it's running to cancel it if nesessary
     private var localSearch: MKLocalSearch? {
         willSet {
             // Clear the results and cancel the currently running local search before starting a new search.
@@ -296,15 +298,15 @@ extension MapTabModel: MKLocalSearchCompleterDelegate {
 
 
 
-struct Waypoint {
-    var kind: Waypoint.Kind
-    var label: String?
-    var coordinates: CLLocationCoordinate2D?
-    var address: [String] = [String]()
-    
-    enum Kind {
-        case currentLocation
-        case normal
-        case destination
-    }
-}
+//struct Waypoint {
+//    var kind: Waypoint.Kind
+//    var label: String?
+//    var coordinates: CLLocationCoordinate2D?
+//    var address: [String] = [String]()
+//
+//    enum Kind {
+//        case currentLocation
+//        case normal
+//        case destination
+//    }
+//}

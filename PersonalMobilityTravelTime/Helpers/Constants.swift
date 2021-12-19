@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class Constants {
+struct Constants {
     
 //    class Text {
 ////        static var currentLocationLabel = "Current Location"
@@ -21,7 +21,7 @@ class Constants {
 //    }
 
     
-    class UI {
+    struct UI {
         static var deviceIconSize: CGFloat = 28.0
         static var deviceIconSizeLarge: CGFloat = 46.0
         static var deviceSelectorItemSpacing: CGFloat = 15
@@ -51,7 +51,7 @@ class Constants {
         
     }
     
-    class Colors {
+    struct Colors {
         static var quartz = Color("QuartzColor")
         static var mist = Color("MistColor")
         static var transparent = Color("TransparentColor")

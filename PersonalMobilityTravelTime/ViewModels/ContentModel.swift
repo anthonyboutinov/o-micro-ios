@@ -8,7 +8,7 @@
 import Foundation
 
 /// Primary view model of the app. Stores the general states of the app and list of user's devices
-class ContentModel: ObservableObject {
+final class ContentModel: ObservableObject {
     
     struct UserDefaultsKeys {
         static let setUpProcess = "setUpProcess"

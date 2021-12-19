@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class SearchCompleterDelegate: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
+final class SearchCompleterDelegate: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
     
     @Published var completerResults: [MKLocalSearchCompletion] = [MKLocalSearchCompletion]() {
         didSet {
