@@ -35,9 +35,9 @@ final class CalculatorModel: ObservableObject {
     }
     
     private func update() {
-        let values = self.formattedTimeToTravel()
-        self.timeToTravelLabel = values.label
-        self.timeToTravelUnits = values.units
+        let (label, units) = self.formattedTimeToTravel()
+        self.timeToTravelLabel = label
+        self.timeToTravelUnits = units
         
         if let usage = self.batteryUsage() {
             self.batteryUsageLabel = String(Int(usage * 100))

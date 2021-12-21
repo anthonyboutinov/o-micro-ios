@@ -215,6 +215,35 @@ final class MapTabModel: NSObject, ObservableObject {
                 self.boundingRegion = updatedRegion
             }
         }
+        
+//        localSearch?.start { [unowned self] (response, error) in
+//            guard error == nil else {
+//                self.displaySearchError(error)
+//                return
+//            }
+//
+//            self.completerResults = nil
+//
+//            // All places that are given in the response.
+//            let places = response?.mapItems
+//
+//            // But because of how the UI is made, a user cannot invoke search by himself,
+//            // he can only select from pre-queried options. So we expect a one to one
+//            // correspondence of the search request with the list of results. This allows
+//            // us to assume that there is only one `places` item.
+//            if let place = places?.first {
+//                if self.state == .sentSearchRequestForEndLocation || self.state == .enteringEndLocation {
+//                    self.endLocation = Location(place)
+//                } else if self.state == .sentSearchRequestForStartLocation || self.state == .enteringStartLocation {
+//                    self.startLocation = Location(place)
+//                }
+//            }
+//
+//            // Used when setting the map's region in `prepareForSegue`. // ???
+//            if let updatedRegion = response?.boundingRegion {
+//                self.boundingRegion = updatedRegion
+//            }
+//        }
     }
     
     private func displaySearchError(_ error: Error?) {

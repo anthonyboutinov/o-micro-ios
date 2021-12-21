@@ -22,7 +22,7 @@ enum Units: String, Identifiable {
     var name: String {
         switch self {
         case .metric: return String(localized: "km")
-        case .imperial: return String(localized: "miles")
+        case .imperial: return String(localized: "mi.")
         }
     }
     
