@@ -16,3 +16,24 @@
 
 /* No comment provided by engineer. */
 "min" = "min.";
+
+"022-electricscooter" = "Electric scooter";
+"020-scooter" = "Scooter";
+"023-scooterwithaseat" = "Scooter with a seat";
+
+"100-omafiets" = "Dutch bike";
+"028-bycicle" = "Bycicle";
+"030-bike" = "Sports bike";
+
+"027-moped" = "Moped";
+"021-motorbike" = "Motorbike";
+
+"025-segway" = "Segway";
+"026-one wheel" = "One-wheel";
+
+"037-skateboard" = "Skateboard";
+"038-longboard" = "Longboard";
+"036-rollerskate" = "Rollerskate";
+
+"024-hoverboard" = "Hoverboard";
+"031-jetpack" = "Jetpack";

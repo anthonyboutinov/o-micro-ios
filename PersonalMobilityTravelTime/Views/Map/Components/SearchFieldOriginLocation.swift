@@ -18,6 +18,8 @@ struct SearchFieldOriginLocation: View {
         if (self.map.state >= .endLocationIsSet) {
             HStack {
                 Image(iconName())
+                    .renderingMode(.template)
+                    .foregroundColor(Color.primary)
                 TextField("Search by Name or Address", text: self.$map.originLabel.didSet({ newValue in
                     if self.map.state == .enteringStartLocation || self.map.state == .focusedOnEnteringStartLocation {
                         self.map.searchCompleter.queryFragment = newValue
@@ -35,6 +37,9 @@ struct SearchFieldOriginLocation: View {
             }
             .modifier(InputFieldViewModifier(style: .alternate))
             .foregroundColor(self.map.originPointState == .currentLocation ? Color.secondary : Color.primary)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(self.map.originLabel != "" ? "Origin set to: " + self.map.originLabel : "Origin search text field. Search by name or address")
+            .accessibilityHint("Double tap to edit")
             .onTapGesture {
                 // Remove "Current Location" text from the text field on tap, leaving the input field blank
                 if self.map.originLabel == String(localized: "Current Location") {

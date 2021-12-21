@@ -81,6 +81,8 @@ struct CalculatorViewBody: View {
                     .frame(minWidth: Self.unitsMinWidth, alignment: .trailing)
             }
             .modifier(InputFieldViewModifier())
+            .accessibilityElement(children: .combine)
+            .accessibilityHint("Double tap to edit")
             .onTapGesture {
                 self.focusedField = .distance
             }
@@ -122,6 +124,7 @@ struct CalculatorViewBody: View {
                 .frame(minWidth: Self.unitsMinWidth, alignment: .leading)
         }
         .modifier(InputFieldViewModifier())
+        .accessibilityElement(children: .combine)
     }
     
     /// Battery Usage Row
@@ -142,6 +145,7 @@ struct CalculatorViewBody: View {
                 .frame(minWidth: Self.unitsMinWidth, alignment: .leading)
         }
         .modifier(InputFieldViewModifier())
+        .accessibilityElement(children: .combine)
     }
 }
 

@@ -64,6 +64,7 @@ struct RouteTimeResultsView: View {
                             if batteryUsage != nil && batteryUsage! > 2.0 {
                                 // if it would be impossible to travel by this electric device, display custom info
                                 Text(String("☠️"))
+                                    .accessibilityLabel("Battery would die")
                                 batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
                             } else {
                                 
@@ -72,17 +73,22 @@ struct RouteTimeResultsView: View {
                                     .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
                                 
                                 if (batteryUsage != nil) {
-                                    Text(String("\(Int(batteryUsage! * 100))%"))
-                                        .bold()
-                                        .foregroundColor(warningColor!)
-                                    batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
-                                    Text(String(")"))
-                                        .bold()
-                                        .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
+                                    Group {
+                                        Text(String("\(Int(batteryUsage! * 100))%"))
+                                            .bold()
+                                            .foregroundColor(warningColor!)
+                                        batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
+                                        Text(String(")"))
+                                            .bold()
+                                            .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
+                                    }
+                                    .accessibilityElement(children: .ignore)
+                                    .accessibilityLabel("Battery consumption: \(Int(batteryUsage! * 100))%")
                                 }
                             }
                         }
                     }
+                    .accessibilityElement(children: .combine)
                 }
                 
                 VStack(alignment: .trailing, spacing: Constants.UI.itemSpacing) {
@@ -94,7 +100,6 @@ struct RouteTimeResultsView: View {
                     .padding(.leading, 5.0)
                 }
             }
-            .lineLimit(1)
             .font(.footnote)
             .allowsTightening(true)
             .padding(.horizontal, Constants.UI.horizontalSectionSpacing)

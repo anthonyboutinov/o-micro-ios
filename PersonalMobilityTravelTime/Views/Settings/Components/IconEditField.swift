@@ -20,7 +20,6 @@ struct IconEditField: View {
                 Spacer()
                 if device.iconName != "" {
                     DeviceIcon(named: device.iconName)
-//                        .padding(.vertical, Constants.UI.deviceIconVerticalPaddingInButtons)
                 }
             }
         }
