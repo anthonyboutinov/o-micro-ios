@@ -36,7 +36,7 @@ struct SearchFieldDestinationLocation: View {
         }
         .modifier(InputFieldViewModifier(style: .alternate))
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(self.map.destinationLabel != "" ? "Destination set to: " + self.map.destinationLabel : "Destination search text field. Search by name or address")
+        .accessibilityLabel(self.map.destinationLabel != "" ? LocalizedStringKey("Destination set to: \(self.map.destinationLabel)") : LocalizedStringKey("Destination search text field. Search by name or address"))
         .accessibilityHint("Double tap to edit")
         .onTapGesture {
             self.focusedField = .destination

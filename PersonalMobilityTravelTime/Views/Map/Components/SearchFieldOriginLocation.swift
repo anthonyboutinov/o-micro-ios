@@ -38,7 +38,7 @@ struct SearchFieldOriginLocation: View {
             .modifier(InputFieldViewModifier(style: .alternate))
             .foregroundColor(self.map.originPointState == .currentLocation ? Color.secondary : Color.primary)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel(self.map.originLabel != "" ? "Origin set to: " + self.map.originLabel : "Origin search text field. Search by name or address")
+            .accessibilityLabel(self.map.originLabel != "" ? LocalizedStringKey("Origin set to: \(self.map.originLabel)") : LocalizedStringKey("Origin search text field. Search by name or address"))
             .accessibilityHint("Double tap to edit")
             .onTapGesture {
                 // Remove "Current Location" text from the text field on tap, leaving the input field blank

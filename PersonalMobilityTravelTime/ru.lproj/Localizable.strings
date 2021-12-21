@@ -1,7 +1,59 @@
-/* Localizable.strings
- PersonalMobilityTravelTime
- 
- Created by Anthony van den Brandt on 14.12.2021. */
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@?" = "%@?";
+
+/* No comment provided by engineer. */
+"0" = "0";
+
+/* Accessibility label for an icon */
+"020-scooter" = "Самокат";
+
+/* Accessibility label for an icon */
+"021-motorbike" = "Мотоцикл";
+
+/* Accessibility label for an icon */
+"022-electricscooter" = "Электросамока";
+
+/* Accessibility label for an icon */
+"023-scooterwithaseat" = "Самокат с сиденьем";
+
+/* Accessibility label for an icon */
+"024-hoverboard" = "Хаверборд";
+
+/* Accessibility label for an icon */
+"025-segway" = "Сигвей";
+
+/* Accessibility label for an icon */
+"026-one wheel" = "Моноколесо";
+
+/* Accessibility label for an icon: TTS cannot pronounce "moped" corretly */
+"027-moped" = "Мопед";
+
+/* Accessibility label for an icon */
+"028-bycicle" = "Велосипед";
+
+/* Accessibility label for an icon */
+"030-bike" = "Спортивный велосипед";
+
+/* Accessibility label for an icon */
+"031-jetpack" = "Джетпак";
+
+/* Accessibility label for an icon */
+"036-rollerskate" = "Роликовые коньки";
+
+/* Accessibility label for an icon */
+"037-skateboard" = "Скейтборд";
+
+/* Accessibility label for an icon */
+"038-longboard" = "Лонгборд";
+
+/* Accessibility label for an icon */
+"100-omafiets" = "Голландский велосипед";
+
+/* No comment provided by engineer. */
+"A Micro-Mobility Travel Time Calculator" = "Калькулятор для средств индивидуальной мобильности";
 
 /* No comment provided by engineer. */
 "Actual range" = "Реальная дальность";
@@ -24,8 +76,14 @@
 /* No comment provided by engineer. */
 "Average Speed Calculator" = "Калькулятор средней скорости";
 
-/* Settings/Settings/EditingView */
+/* Settings/Settings/EditingView Footer */
 "averageSpeedEditLinkFooter" = "Заполните эти данные, основываясь на вашем опыте использования этого средства индивидуальной мобильности. Совершите несколько поездок и замерьте, как в среднем вы его используете.";
+
+/* No comment provided by engineer. */
+"Battery Usage" = "Расход аккумулятора";
+
+/* No comment provided by engineer. */
+"Battery would die" = "Аккумулятор умрёт";
 
 /* No comment provided by engineer. */
 "Calculated Values" = "Расчеты";
@@ -33,13 +91,13 @@
 /* No comment provided by engineer. */
 "Calculator" = "Калькулятор";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "Cancel" = "Отменить";
 
 /* No comment provided by engineer. */
 "Current Location" = "Текущее местоположение";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "Delete" = "Удалить";
 
 /* No comment provided by engineer. */
@@ -49,13 +107,31 @@
 "Delete Device" = "Удалить девайс";
 
 /* No comment provided by engineer. */
+"Destination search text field. Search by name or address" = "Поле ввода места назначения. Искать по названию или адресу";
+
+/* No comment provided by engineer. */
+"Destination set to: %@" = "Назначение: %@";
+
+/* No comment provided by engineer. */
+"Destructive" = "Деструктивный";
+
+/* No comment provided by engineer. */
+"Developer Tools" = "Средства разработчика";
+
+/* No comment provided by engineer. */
 "Distance" = "Дистанция";
 
 /* No comment provided by engineer. */
 "Distance units" = "Единицы измерения";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "Done" = "Готово";
+
+/* No comment provided by engineer. */
+"Double tap to edit" = "Нажмите дважды, чтобы редактировать";
+
+/* (No Comment) */
+"editDeviceCalculatorviewInstructions" = "Запишите вашу обычную поездку с помощью любого другого приложения и введите здесь, сколько времени занимает поездка на некоторую дистанцию.\n\nЛибо вы можете ввести значение средней скорости вручную.";
 
 /* No comment provided by engineer. */
 "Enter Your Trip Details" = "Введите детали поездки";
@@ -118,10 +194,19 @@
 "New Device" = "Новый девайс";
 
 /* No comment provided by engineer. */
+"O-Micro" = "O-Micro";
+
+/* Onboarding View Callout */
 "onboardingViewCallout" = "С этим приложением вы можете оцениать, как много времени у вас займет путешествие на вашем электронном скутере, моноколесе, велосипеде или другом устройстве микро-мобильности. Мы также оцениваем расход аккумулятора, если это электрический девайс.";
 
 /* No comment provided by engineer. */
 "Open Settings" = "Открыть Настройки";
+
+/* No comment provided by engineer. */
+"Origin search text field. Search by name or address" = "Поле ввода отправной точки. Искать по названию или адресу";
+
+/* No comment provided by engineer. */
+"Origin set to: %@" = "Отправление: %@";
 
 /* No comment provided by engineer. */
 "Please allow geolocation tracking to use map features." = "Пожалуйста, разрешите отслеживание геопозиции, чтобы использовать функции карты.";
@@ -136,10 +221,10 @@
 "Privacy Policy" = "Политика конфиденциальности";
 
 /* No comment provided by engineer. */
-"editDeviceCalculatorviewInstructions" = "Запишите вашу обычную поездку с помощью любого другого приложения и введите здесь, сколько времени занимает поездка на некоторую дистанцию.\n\nЛибо вы можете ввести значение средней скорости вручную.";
-
-/* (No Comment) */
 "Reorder" = "Сортировать";
+
+/* No comment provided by engineer. */
+"Reset App" = "Сбросить приложение";
 
 /* No comment provided by engineer. */
 "Roads" = "Дороги";
@@ -147,7 +232,7 @@
 /* No comment provided by engineer. */
 "Search by Name or Address" = "Искать по названию или адресу";
 
-/* (No Comment) */
+/* No comment provided by engineer. */
 "Settings" = "Настройки";
 
 /* No comment provided by engineer. */
@@ -171,29 +256,4 @@
 /* No comment provided by engineer. */
 "White" = "Белый";
 
-"A Micro-Mobility Travel Time Calculator" = "Калькулятор для средств индивидуальной мобильности";
-
-"Reset App" = "Сбросить приложение";
-
-"Battery Usage" = "Расход аккумулятора";
-
-"022-electricscooter" = "Электросамока";
-"020-scooter" = "Самокат";
-"023-scooterwithaseat" = "Самокат с сиденьем";
-
-"100-omafiets" = "Голландский велосипед";
-"028-bycicle" = "Велосипед";
-"030-bike" = "Спортивный велосипед";
-
-"027-moped" = "Мопед";
-"021-motorbike" = "Мотоцикл";
-
-"025-segway" = "Сигвей";
-"026-one wheel" = "Моноколесо";
-
-"037-skateboard" = "Скейтборд";
-"038-longboard" = "Лонгборд";
-"036-rollerskate" = "Роликовые коньки";
-
-"024-hoverboard" = "Хаверборд";
-"031-jetpack" = "Джетпак";
+"Battery consumption: %@%" = "Расход аккумулятора: %@ процента";

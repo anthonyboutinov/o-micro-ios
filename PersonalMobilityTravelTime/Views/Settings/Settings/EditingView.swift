@@ -155,6 +155,8 @@ struct EditingView: View {
                 .foregroundColor(Color.secondary)
                 .fontWeight(.regular)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityHint("Double tap to edit")
         .onAppear(perform: {
             lengthFormatter.isForPersonHeightUse = false
             lengthFormatter.numberFormatter.allowsFloats = true

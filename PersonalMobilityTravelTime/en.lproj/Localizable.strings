@@ -6,6 +6,18 @@
   
 */
 
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@?" = "%@?";
+
+/* No comment provided by engineer. */
+"0" = "0";
+
+/* No comment provided by engineer. */
+"O-Micro" = "O-Micro";
+
 /* Onboarding View Callout */
 "onboardingViewCallout" = "With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.";
 
@@ -17,23 +29,49 @@
 /* No comment provided by engineer. */
 "min" = "min.";
 
+/* Accessibility label for an icon */
 "022-electricscooter" = "Electric scooter";
+
+/* Accessibility label for an icon */
 "020-scooter" = "Scooter";
+
+/* Accessibility label for an icon */
 "023-scooterwithaseat" = "Scooter with a seat";
 
+/* Accessibility label for an icon */
 "100-omafiets" = "Dutch bike";
+
+/* Accessibility label for an icon */
 "028-bycicle" = "Bycicle";
+
+/* Accessibility label for an icon */
 "030-bike" = "Sports bike";
 
-"027-moped" = "Moped";
+/* Accessibility label for an icon: TTS cannot pronounce "moped" corretly */
+"027-moped" = "moh-pëëd";
+
+/* Accessibility label for an icon */
 "021-motorbike" = "Motorbike";
 
+/* Accessibility label for an icon */
 "025-segway" = "Segway";
+
+/* Accessibility label for an icon */
 "026-one wheel" = "One-wheel";
 
+/* Accessibility label for an icon */
 "037-skateboard" = "Skateboard";
-"038-longboard" = "Longboard";
-"036-rollerskate" = "Rollerskate";
 
-"024-hoverboard" = "Hoverboard";
+/* Accessibility label for an icon */
+"038-longboard" = "Longboard";
+
+/* Accessibility label for an icon */
+"036-rollerskate" = "Roller skates";
+
+/* Accessibility label for an icon */
+"024-hoverboard" = "Hover board";
+
+/* Accessibility label for an icon */
 "031-jetpack" = "Jetpack";
+
+"Battery consumption: %@%" = "Battery consumption: %@ procent";

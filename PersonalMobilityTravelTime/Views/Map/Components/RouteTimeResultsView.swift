@@ -73,8 +73,9 @@ struct RouteTimeResultsView: View {
                                     .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
                                 
                                 if (batteryUsage != nil) {
-                                    Group {
-                                        Text(String("\(Int(batteryUsage! * 100))%"))
+                                    let batteryValueInt = Int(batteryUsage! * 100)
+                                    HStack(spacing: 0) {
+                                        Text(String("\(batteryValueInt)%"))
                                             .bold()
                                             .foregroundColor(warningColor!)
                                         batterySymbol(percentage: batterySymbolPercentage, color: warningColor!)
@@ -83,7 +84,7 @@ struct RouteTimeResultsView: View {
                                             .foregroundColor(model.selectedDevice == device ? Color.primary : Color.secondary)
                                     }
                                     .accessibilityElement(children: .ignore)
-                                    .accessibilityLabel("Battery consumption: \(Int(batteryUsage! * 100))%")
+                                    .accessibilityLabel("Battery consumption: \(batteryValueInt)%")
                                 }
                             }
                         }
