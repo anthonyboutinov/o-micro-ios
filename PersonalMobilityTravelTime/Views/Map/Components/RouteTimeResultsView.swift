@@ -95,7 +95,7 @@ struct RouteTimeResultsView: View {
                 }
             }
             .lineLimit(1)
-            .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
+            .font(.footnote)
             .allowsTightening(true)
             .padding(.horizontal, Constants.UI.horizontalSectionSpacing)
             .padding(.vertical, Constants.UI.verticalButtonSpacing)

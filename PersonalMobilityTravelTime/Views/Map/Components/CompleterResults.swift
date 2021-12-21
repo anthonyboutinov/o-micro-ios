@@ -41,7 +41,7 @@ struct CompleterResults: View {
                                 .foregroundColor(.primary)
                             if suggestion.subtitle != "" {
                                 Text(self.createHighlightedString(text: suggestion.subtitle, rangeValues: suggestion.subtitleHighlightRanges))
-                                    .dynamicTypeSize(SwiftUI.DynamicTypeSize.xSmall)
+                                    .font(.footnote)
                                     .foregroundColor(.secondary)
                             }
                         }

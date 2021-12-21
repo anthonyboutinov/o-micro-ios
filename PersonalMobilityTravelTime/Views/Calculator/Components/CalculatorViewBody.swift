@@ -62,22 +62,22 @@ struct CalculatorViewBody: View {
             
             HStack {
                 Text("Distance")
-                    .font(.system(size: Constants.UI.systemFontDefaultSize))
+                    .font(.body)
                 
                 Spacer()
                 
                 TextField("0", text: distanceProxy)
                     .multilineTextAlignment(.trailing)
-                    .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
                     .keyboardType(.decimalPad)
                     .focused($focusedField, equals: .distance)
+                    .font(.body.weight(.semibold))
                     .onAppear {
                         focusedField = .distance
                     }
                 
                 Text(model.units.name)
                     .foregroundColor(Color.secondary)
-                    .font(.system(size: Constants.UI.systemFontDefaultSize))
+                    .font(.body)
                     .frame(minWidth: Self.unitsMinWidth, alignment: .trailing)
             }
             .modifier(InputFieldViewModifier())
@@ -108,18 +108,18 @@ struct CalculatorViewBody: View {
     private func timeToTravel() -> some View {
         HStack {
             Text("Time to Travel")
-                .font(.system(size: Constants.UI.systemFontDefaultSize))
+                .font(.body)
             
             Spacer()
             
             Text(calculator.timeToTravelLabel)
-                .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
+                .font(.body.weight(.semibold))
                 .multilineTextAlignment(.trailing)
             
             Text(calculator.timeToTravelUnits)
                 .foregroundColor(Color.secondary)
-                .font(.system(size: Constants.UI.systemFontDefaultSize))
-                .frame(minWidth: Self.unitsMinWidth, alignment: .trailing)
+                .font(.body)
+                .frame(minWidth: Self.unitsMinWidth, alignment: .leading)
         }
         .modifier(InputFieldViewModifier())
     }
@@ -128,18 +128,18 @@ struct CalculatorViewBody: View {
     private func batteryUsage() -> some View {
         HStack {
             Text("Battery Usage")
-                .font(.system(size: Constants.UI.systemFontDefaultSize))
+                .font(.body)
             
             Spacer()
             
             Text(calculator.batteryUsageLabel)
-                .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
+                .font(.body.weight(.semibold))
                 .multilineTextAlignment(.trailing)
             
             Text(String("%"))
                 .foregroundColor(Color.secondary)
-                .font(.system(size: Constants.UI.systemFontDefaultSize))
-                .frame(minWidth: Self.unitsMinWidth, alignment: .trailing)
+                .font(.body)
+                .frame(minWidth: Self.unitsMinWidth, alignment: .leading)
         }
         .modifier(InputFieldViewModifier())
     }

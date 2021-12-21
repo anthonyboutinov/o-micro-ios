@@ -43,7 +43,6 @@ struct Constants {
         static var mapEdgeInsetsHorizontal: CGFloat = 30
         
         static var unitsMinWidth: CGFloat = 41
-        static var systemFontDefaultSize: CGFloat = 16
         
         static var onboardingButtonsBottomPadding: CGFloat = 24
         

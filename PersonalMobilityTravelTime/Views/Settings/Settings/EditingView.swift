@@ -132,7 +132,7 @@ struct EditingView: View {
                 
                 Text(model.units.perHour)
                     .foregroundColor(Color.secondary)
-//                    .frame(minWidth: 34, alignment: .trailing)
+//                    .frame(minWidth: 34, alignment: .leading)
             }
             .foregroundColor(Color.primary)
         }
@@ -146,7 +146,7 @@ struct EditingView: View {
             
             TextField("0", text: rangeProxy)
                 .multilineTextAlignment(.trailing)
-                .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
+                .font(.body.weight(.semibold))
                 .keyboardType(.decimalPad)
                 .frame(maxWidth: 50)
                 .focused($focusedField, equals: .range)

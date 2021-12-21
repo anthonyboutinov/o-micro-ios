@@ -48,7 +48,7 @@ struct AverageSpeedCalculatorView: View {
             
             Section(content: {}, footer: {
                 Text("editDeviceCalculatorviewInstructions")
-                    .lineLimit(Int.max)
+                    .lineLimit(nil)
             })
             
             Section {
@@ -116,14 +116,14 @@ struct AverageSpeedCalculatorView: View {
             .multilineTextAlignment(.trailing)
             .keyboardType(.decimalPad)
             .focused($focusedField, equals: .distance)
-            .font(Font.system(size: Constants.UI.systemFontDefaultSize,weight: .semibold))
+            .font(.body.weight(.semibold))
             .onAppear {
                 self.focusedField = .distance
             }
             
             Text(model.units.name)
                 .foregroundColor(Color.secondary)
-                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
+                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .leading)
         }
         .onTapGesture {
             self.focusedField = .distance
@@ -143,11 +143,11 @@ struct AverageSpeedCalculatorView: View {
             .multilineTextAlignment(.trailing)
             .keyboardType(.numberPad)
             .focused($focusedField, equals: .travelTime)
-            .font(Font.system(size: Constants.UI.systemFontDefaultSize,weight: .semibold))
+            .font(.body.weight(.semibold))
             
             Text("min")
                 .foregroundColor(Color.secondary)
-                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
+                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .leading)
         }
         .onTapGesture {
             self.focusedField = .travelTime
@@ -161,7 +161,7 @@ struct AverageSpeedCalculatorView: View {
             
             TextField("0", text: $speedLabel) { isEditing in } onCommit: {}
             .multilineTextAlignment(.trailing)
-            .font(Font.system(size: Constants.UI.systemFontDefaultSize, weight: .semibold))
+            .font(.body.weight(.semibold))
             .keyboardType(.decimalPad)
             .focused($focusedField, equals: .averageSpeed)
             .onTapGesture {
@@ -174,7 +174,7 @@ struct AverageSpeedCalculatorView: View {
             Text(model.units.perHour)
                 .foregroundColor(Color.secondary)
                 .fontWeight(.regular)
-                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .trailing)
+                .frame(minWidth: Constants.UI.unitsMinWidth, alignment: .leading)
         }
         .onTapGesture {
             self.focusedField = .averageSpeed

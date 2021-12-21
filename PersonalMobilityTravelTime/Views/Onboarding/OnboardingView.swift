@@ -34,7 +34,6 @@ struct OnboardingView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                    .lineLimit(100)
                     .padding(.bottom, Constants.UI.onboardingItemSpacing)
                 
                 HStack(alignment: .center, spacing: 45, content: {
