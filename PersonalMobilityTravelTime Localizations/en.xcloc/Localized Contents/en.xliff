@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="PersonalMobilityTravelTime/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2" build-num="13C90"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>O-Micro</source>
+        <target>O-Micro</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>PersonalMobilityTravelTime</source>
+        <target>PersonalMobilityTravelTime</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSLocationWhenInUseUsageDescription" xml:space="preserve">
+        <source>Grant permission to use Current location in route planning</source>
+        <target>Grant permission to use Current location in route planning</target>
+        <note>Privacy - Location When In Use Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="PersonalMobilityTravelTime/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2" build-num="13C90"/>
+    </header>
+    <body>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@?" xml:space="preserve">
+        <source>%@?</source>
+        <target>%@?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="0" xml:space="preserve">
+        <source>0</source>
+        <target>0</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="020-scooter" xml:space="preserve">
+        <source>Scooter</source>
+        <target>Scooter</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="021-motorbike" xml:space="preserve">
+        <source>Motorbike</source>
+        <target>Motorbike</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="022-electricscooter" xml:space="preserve">
+        <source>Electric scooter</source>
+        <target>Electric scooter</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="023-scooterwithaseat" xml:space="preserve">
+        <source>Scooter with a seat</source>
+        <target>Scooter with a seat</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="024-hoverboard" xml:space="preserve">
+        <source>Hover board</source>
+        <target>Hover board</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="025-segway" xml:space="preserve">
+        <source>Segway</source>
+        <target>Segway</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="026-one wheel" xml:space="preserve">
+        <source>One-wheel</source>
+        <target>One-wheel</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="027-moped" xml:space="preserve">
+        <source>moh-pëëd</source>
+        <target>moh-pëëd</target>
+        <note>Accessibility label for an icon: TTS cannot pronounce "moped" corretly</note>
+      </trans-unit>
+      <trans-unit id="028-bycicle" xml:space="preserve">
+        <source>Bycicle</source>
+        <target>Bycicle</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="030-bike" xml:space="preserve">
+        <source>Sports bike</source>
+        <target>Sports bike</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="031-jetpack" xml:space="preserve">
+        <source>Jetpack</source>
+        <target>Jetpack</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="036-rollerskate" xml:space="preserve">
+        <source>Roller skates</source>
+        <target>Roller skates</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="037-skateboard" xml:space="preserve">
+        <source>Skateboard</source>
+        <target>Skateboard</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="038-longboard" xml:space="preserve">
+        <source>Longboard</source>
+        <target>Longboard</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="100-omafiets" xml:space="preserve">
+        <source>Dutch bike</source>
+        <target>Dutch bike</target>
+        <note>Accessibility label for an icon</note>
+      </trans-unit>
+      <trans-unit id="A Micro-Mobility Travel Time Calculator" xml:space="preserve">
+        <source>A Micro-Mobility Travel Time Calculator</source>
+        <target>A Micro-Mobility Travel Time Calculator</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Actual range" xml:space="preserve">
+        <source>Actual range</source>
+        <target>Actual range</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add Device" xml:space="preserve">
+        <source>Add Device</source>
+        <target>Add Device</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add device..." xml:space="preserve">
+        <source>Add device...</source>
+        <target>Add device...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Allow Location Services" xml:space="preserve">
+        <source>Allow Location Services</source>
+        <target>Allow Location Services</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Average Speed" xml:space="preserve">
+        <source>Average Speed</source>
+        <target>Average Speed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Average Speed Calculator" xml:space="preserve">
+        <source>Average Speed Calculator</source>
+        <target>Average Speed Calculator</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Average speed" xml:space="preserve">
+        <source>Average speed</source>
+        <target>Average speed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Battery Usage" xml:space="preserve">
+        <source>Battery Usage</source>
+        <target>Battery Usage</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Battery would die" xml:space="preserve">
+        <source>Battery would die</source>
+        <target>Battery would die</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Calculated Values" xml:space="preserve">
+        <source>Calculated Values</source>
+        <target>Calculated Values</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Calculator" xml:space="preserve">
+        <source>Calculator</source>
+        <target>Calculator</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cancel" xml:space="preserve">
+        <source>Cancel</source>
+        <target>Cancel</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Current Location" xml:space="preserve">
+        <source>Current Location</source>
+        <target>Current Location</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete" xml:space="preserve">
+        <source>Delete</source>
+        <target>Delete</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete %@" xml:space="preserve">
+        <source>Delete %@</source>
+        <target>Delete %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete Device" xml:space="preserve">
+        <source>Delete Device</source>
+        <target>Delete Device</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Destination search text field. Search by name or address" xml:space="preserve">
+        <source>Destination search text field. Search by name or address</source>
+        <target>Destination search text field. Search by name or address</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Destination set to: %@" xml:space="preserve">
+        <source>Destination set to: %@</source>
+        <target>Destination set to: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Destructive" xml:space="preserve">
+        <source>Destructive</source>
+        <target>Destructive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Developer Tools" xml:space="preserve">
+        <source>Developer Tools</source>
+        <target>Developer Tools</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Distance" xml:space="preserve">
+        <source>Distance</source>
+        <target>Distance</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Distance units" xml:space="preserve">
+        <source>Distance units</source>
+        <target>Distance units</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Done" xml:space="preserve">
+        <source>Done</source>
+        <target>Done</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Double tap to edit" xml:space="preserve">
+        <source>Double tap to edit</source>
+        <target>Double tap to edit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enter Your Trip Details" xml:space="preserve">
+        <source>Enter Your Trip Details</source>
+        <target>Enter Your Trip Details</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Icon" xml:space="preserve">
+        <source>Icon</source>
+        <target>Icon</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Is electric" xml:space="preserve">
+        <source>Is electric</source>
+        <target>Is electric</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Kilometers" xml:space="preserve">
+        <source>Kilometers</source>
+        <target>Kilometers</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Let's Go!" xml:space="preserve">
+        <source>Let's Go!</source>
+        <target>Let's Go!</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Let’s add your first&#10;micro-mobility device." xml:space="preserve">
+        <source>Let’s add your first
+micro-mobility device.</source>
+        <target>Let’s add your first
+micro-mobility device.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Let’s add your first micro-mobility device" xml:space="preserve">
+        <source>Let’s add your first micro-mobility device</source>
+        <target>Let’s add your first micro-mobility device</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Location of Use" xml:space="preserve">
+        <source>Location of Use</source>
+        <target>Location of Use</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Location of use" xml:space="preserve">
+        <source>Location of use</source>
+        <target>Location of use</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Location tracking denied. Enable it in Settings to continue." xml:space="preserve">
+        <source>Location tracking denied. Enable it in Settings to continue.</source>
+        <target>Location tracking denied. Enable it in Settings to continue.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Map" xml:space="preserve">
+        <source>Map</source>
+        <target>Map</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Miles" xml:space="preserve">
+        <source>Miles</source>
+        <target>Miles</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="My Devices" xml:space="preserve">
+        <source>My Devices</source>
+        <target>My Devices</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New Device" xml:space="preserve">
+        <source>New Device</source>
+        <target>New Device</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="O-Micro" xml:space="preserve">
+        <source>O-Micro</source>
+        <target>O-Micro</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open Settings" xml:space="preserve">
+        <source>Open Settings</source>
+        <target>Open Settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Origin search text field. Search by name or address" xml:space="preserve">
+        <source>Origin search text field. Search by name or address</source>
+        <target>Origin search text field. Search by name or address</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Origin set to: %@" xml:space="preserve">
+        <source>Origin set to: %@</source>
+        <target>Origin set to: %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Please allow geolocation tracking to use map features." xml:space="preserve">
+        <source>Please allow geolocation tracking to use map features.</source>
+        <target>Please allow geolocation tracking to use map features.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Preferences" xml:space="preserve">
+        <source>Preferences</source>
+        <target>Preferences</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Primary" xml:space="preserve">
+        <source>Primary</source>
+        <target>Primary</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Privacy Policy" xml:space="preserve">
+        <source>Privacy Policy</source>
+        <target>Privacy Policy</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Reorder" xml:space="preserve">
+        <source>Reorder</source>
+        <target>Reorder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Reset App" xml:space="preserve">
+        <source>Reset App</source>
+        <target>Reset App</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Roads" xml:space="preserve">
+        <source>Roads</source>
+        <target>Roads</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Search by Name or Address" xml:space="preserve">
+        <source>Search by Name or Address</source>
+        <target>Search by Name or Address</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Sidewalks" xml:space="preserve">
+        <source>Sidewalks</source>
+        <target>Sidewalks</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Time to Travel" xml:space="preserve">
+        <source>Time to Travel</source>
+        <target>Time to Travel</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Title" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Travel Time" xml:space="preserve">
+        <source>Travel Time</source>
+        <target>Travel Time</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unnamed" xml:space="preserve">
+        <source>Unnamed</source>
+        <target>Unnamed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Welcome to" xml:space="preserve">
+        <source>Welcome to</source>
+        <target>Welcome to</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="White" xml:space="preserve">
+        <source>White</source>
+        <target>White</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="averageSpeedEditLinkFooter" xml:space="preserve">
+        <source>Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.</source>
+        <target>Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.</target>
+        <note>Settings/Settings/EditingView Footer</note>
+      </trans-unit>
+      <trans-unit id="editDeviceCalculatorviewInstructions" xml:space="preserve">
+        <source>Record your routine commute using any other app and enter here how long it takes you to travel some distance.
+
+Alternatively, you can enter the average speed manually.</source>
+        <target>Record your routine commute using any other app and enter here how long it takes you to travel some distance.
+
+Alternatively, you can enter the average speed manually.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="h" xml:space="preserve">
+        <source>h</source>
+        <target>h</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="km" xml:space="preserve">
+        <source>km</source>
+        <target>km</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="km/h" xml:space="preserve">
+        <source>km/h</source>
+        <target>km/h</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="mi." xml:space="preserve">
+        <source>mi.</source>
+        <target>mi.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="min" xml:space="preserve">
+        <source>min.</source>
+        <target>min.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="mph" xml:space="preserve">
+        <source>mph</source>
+        <target>mph</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="onboardingViewCallout" xml:space="preserve">
+        <source>With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.</source>
+        <target>With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.</target>
+        <note>Onboarding View Callout</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

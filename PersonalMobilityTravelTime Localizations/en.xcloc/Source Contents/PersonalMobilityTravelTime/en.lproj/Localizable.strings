@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  PersonalMobilityTravelTime
+
+  Created by Anthony van den Brandt on 14.12.2021.
+  
+*/
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%@?" = "%@?";
+
+/* No comment provided by engineer. */
+"0" = "0";
+
+/* No comment provided by engineer. */
+"O-Micro" = "O-Micro";
+
+/* Onboarding View Callout */
+"onboardingViewCallout" = "With this app you can get estimates on how long it will take you to travel by your electric scooter, one-wheel, bycicle or other micro-mobility device. We also estimate battery comsumption, if it’s an electric device.";
+
+/* Settings/Settings/EditingView Footer */
+"averageSpeedEditLinkFooter" = "Fill in these details based on your experience with your micro-mobility device. Make a few rides and measure how you use it on average.";
+
+"editDeviceCalculatorviewInstructions" =  "Record your routine commute using any other app and enter here how long it takes you to travel some distance.\n\nAlternatively, you can enter the average speed manually.";
+
+/* No comment provided by engineer. */
+"min" = "min.";
+
+/* Accessibility label for an icon */
+"022-electricscooter" = "Electric scooter";
+
+/* Accessibility label for an icon */
+"020-scooter" = "Scooter";
+
+/* Accessibility label for an icon */
+"023-scooterwithaseat" = "Scooter with a seat";
+
+/* Accessibility label for an icon */
+"100-omafiets" = "Dutch bike";
+
+/* Accessibility label for an icon */
+"028-bycicle" = "Bycicle";
+
+/* Accessibility label for an icon */
+"030-bike" = "Sports bike";
+
+/* Accessibility label for an icon: TTS cannot pronounce "moped" corretly */
+"027-moped" = "moh-pëëd";
+
+/* Accessibility label for an icon */
+"021-motorbike" = "Motorbike";
+
+/* Accessibility label for an icon */
+"025-segway" = "Segway";
+
+/* Accessibility label for an icon */
+"026-one wheel" = "One-wheel";
+
+/* Accessibility label for an icon */
+"037-skateboard" = "Skateboard";
+
+/* Accessibility label for an icon */
+"038-longboard" = "Longboard";
+
+/* Accessibility label for an icon */
+"036-rollerskate" = "Roller skates";
+
+/* Accessibility label for an icon */
+"024-hoverboard" = "Hover board";
+
+/* Accessibility label for an icon */
+"031-jetpack" = "Jetpack";

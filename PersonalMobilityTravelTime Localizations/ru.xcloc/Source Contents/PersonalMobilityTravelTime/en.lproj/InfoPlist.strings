@@ -1,0 +1,6 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "O-Micro";
+/* Bundle name */
+"CFBundleName" = "PersonalMobilityTravelTime";
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Grant permission to use Current location in route planning";

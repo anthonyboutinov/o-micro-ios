@@ -17,6 +17,12 @@ struct OnboardingView: View {
             VStack(alignment: .center) {
                 Spacer()
                 
+                Image("Scooter3D")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.top, -180)
+                    .padding(.bottom, -100)
+                
                 Text("Welcome to")
                     .font(.title3)
                     .foregroundColor(Color.secondary)
@@ -36,13 +42,13 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, Constants.UI.onboardingItemSpacing)
                 
-                HStack(alignment: .center, spacing: 45, content: {
-                    DeviceIcon(named: "022-electricscooter")
-                    DeviceIcon(named: "026-one wheel")
-                    DeviceIcon(named: "028-bycicle")
-                })
-                    .padding(.bottom, Constants.UI.onboardingItemSpacing)
-                Spacer()
+//                HStack(alignment: .center, spacing: 45, content: {
+//                    DeviceIcon(named: "022-electricscooter")
+//                    DeviceIcon(named: "026-one wheel")
+//                    DeviceIcon(named: "028-bycicle")
+//                })
+//                    .padding(.bottom, Constants.UI.onboardingItemSpacing)
+//                Spacer()
                 
                 Text("onboardingViewCallout")
                     .font(.callout)
