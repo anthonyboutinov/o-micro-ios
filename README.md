@@ -1,6 +1,6 @@
 # O-Micro—Micro Mobility Travel Time Calculator
 
-*iOS App, Study Project*
+*iOS App, pet project*
 
 <a href="https://www.behance.net/gallery/154724015/O-MicroNavigation-iOS-App-Study-Project">Behance page for this project</a>
 
